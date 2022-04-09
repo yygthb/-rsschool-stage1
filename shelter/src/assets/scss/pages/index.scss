@@ -1,6 +1,7 @@
-body.index {
-  @import "../base/variables";
+@import "../base/variables";
+@import "../base/typography";
 
+body.index {
   .hero {
     min-height: 600px;
     margin-top: -180px;
@@ -99,7 +100,6 @@ body.index {
         margin: 0 auto;
         display: flex;
         justify-content: space-evenly;
-        background-color: red;
       }
 
       .slider__control {
@@ -136,6 +136,54 @@ body.index {
           margin-bottom: 30px;
         }
       }
+    }
+  }
+
+  .article__help {
+    .article__title {
+      width: 310px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+
+    .help__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 55px;
+    }
+
+    .help__item {
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5) {
+        flex-basis: 19%;
+      }
+
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(8),
+      &:nth-child(9) {
+        flex-basis: 22%;
+      }
+    }
+
+    .help__icon {
+      width: 60px;
+      height: 60px;
+      display: block;
+      margin: 0 auto 30px;
+      fill: $color-primary;
+    }
+
+    .help__title {
+      font-size: 20px;
+      line-height: 23px;
+      color: $color-dark-l;
+      text-align: center;
+      @include fontGeorgia();
     }
   }
 }
