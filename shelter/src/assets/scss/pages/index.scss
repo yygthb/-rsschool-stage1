@@ -40,4 +40,34 @@ body.index {
       }
     }
   }
+
+  .about__container {
+    display: flex;
+    max-width: 850px;
+    margin: 0 auto;
+
+    .img__container {
+      width: calc(50% - 20px);
+      margin-right: 20px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    .article__content {
+      width: 50%;
+
+      .article__title {
+        margin-top: 14px;
+        margin-bottom: 25px;
+        max-width: 280px;
+      }
+
+      .article__text:not(:last-child) {
+        margin-bottom: 25px;
+      }
+    }
+  }
 }
