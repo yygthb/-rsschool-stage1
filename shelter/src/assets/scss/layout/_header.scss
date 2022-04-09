@@ -1,0 +1,63 @@
+.header {
+  position: relative;
+}
+
+.header-container {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+  @include fontArial();
+
+  .logo-container {
+    .logo-text__title {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 32px;
+      line-height: 35px;
+      color: $color-primary;
+      @include fontGeorgia();
+
+      &:hover {
+        color: $color-primary-light;
+      }
+    }
+    .logo-text__subtitle {
+      font-size: 13px;
+      line-height: 15px;
+      color: $color-light-xl;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+
+    .nav-item {
+      margin-left: 35px;
+
+      .nav-link {
+        display: block;
+        font-size: 15px;
+        line-height: 160%;
+        color: $color-dark-s;
+
+        &:hover {
+          color: $color-light-xl;
+        }
+
+        &.active {
+          color: $color-light-xl;
+
+          &::after {
+            display: block;
+            content: "";
+            height: 3px;
+            width: 100%;
+            background-color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+}

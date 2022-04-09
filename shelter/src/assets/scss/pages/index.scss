@@ -1,0 +1,13 @@
+body.index {
+  @import "../base/variables";
+
+  .hero {
+    height: 908px;
+    margin-top: -180px;
+    background: radial-gradient(
+      100% 215.42% at 0% 0%,
+      #5b483a 0%,
+      #262425 100%
+    );
+  }
+}
