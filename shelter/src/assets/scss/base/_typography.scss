@@ -1,0 +1,25 @@
+$font-dir: "../../assets/fonts";
+
+@font-face {
+  font-family: "Arial";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(#{$font-dir}/Arial/Arial-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Georgia";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(#{$font-dir}/Georgia/Georgia-Regular.ttf) format("truetype");
+}
+
+@mixin fontArial {
+  font-family: "Arial", sans-serif;
+}
+
+@mixin fontGeorgia {
+  font-family: "Georgia", serif;
+}

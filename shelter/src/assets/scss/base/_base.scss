@@ -10,15 +10,19 @@ html {
 }
 
 body {
-  font-family: sans-serif;
   font-size: 16px;
   font-weight: 400;
   background-color: #fff;
   color: #000;
+  @include fontGeorgia();
 
   &.lock {
     overflow-y: hidden;
   }
+}
+
+p {
+  @include fontArial();
 }
 
 a {
