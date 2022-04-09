@@ -1,0 +1,24 @@
+.control {
+  display: block;
+  width: 52px;
+  height: 52px;
+  border: 2px solid $color-primary;
+  border-radius: 50%;
+  background-color: transparent;
+
+  .svg {
+    fill: $color-dark-xl;
+  }
+
+  &__svg-arrow {
+    display: block;
+    width: 14px;
+    height: 6px;
+    margin: auto;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    cursor: pointer;
+  }
+}

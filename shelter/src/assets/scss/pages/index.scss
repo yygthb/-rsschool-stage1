@@ -70,4 +70,72 @@ body.index {
       }
     }
   }
+
+  .article__pets {
+    background-color: $color-light-l;
+  }
+
+  .pets__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .article__title {
+      width: 400px;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+
+    .pets__slider {
+      margin-bottom: 60px;
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+
+      .slider__container {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: red;
+      }
+
+      .slider__control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &-next {
+          right: 0;
+        }
+      }
+
+      .slider__item {
+        width: 270px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $color-light-s;
+
+        .pets__img {
+          display: block;
+          width: 100%;
+          margin-bottom: 30px;
+        }
+
+        .pets__name {
+          margin-bottom: 30px;
+          font-size: 20px;
+          line-height: 23px;
+          color: $color-dark-l;
+        }
+
+        .button {
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
 }
