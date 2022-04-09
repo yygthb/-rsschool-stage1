@@ -2,12 +2,42 @@ body.index {
   @import "../base/variables";
 
   .hero {
-    height: 908px;
+    min-height: 600px;
     margin-top: -180px;
     background: radial-gradient(
       100% 215.42% at 0% 0%,
       #5b483a 0%,
       #262425 100%
     );
+
+    .hero-container {
+      padding-top: 180px;
+      display: flex;
+      justify-content: space-between;
+
+      .hero__text-content {
+        padding-top: 163px;
+        max-width: 460px;
+
+        .hero__title {
+          margin-bottom: 42px;
+          max-width: 310px;
+          font-size: 44px;
+          line-height: 57px;
+          color: $color-light-xl;
+        }
+
+        .hero__subtitle {
+          margin-bottom: 42px;
+          font-size: 15px;
+          line-height: 24px;
+          color: $color-dark-s;
+        }
+      }
+
+      .hero__img {
+        width: 58%;
+      }
+    }
   }
 }

@@ -1,0 +1,26 @@
+.button {
+  display: inline-block;
+  padding: 15px 45px;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: 6%;
+  @include fontGeorgia();
+  border: 2px solid $color-primary;
+  border-radius: 100px;
+  background-color: $color-primary;
+
+  &.secondary {
+    background-color: transparent;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $color-primary-light;
+    border-color: $color-primary-light;
+  }
+
+  &:active {
+    background-color: $color-primary;
+    border-color: $color-primary;
+  }
+}
