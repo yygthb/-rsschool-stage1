@@ -72,7 +72,8 @@ body.index {
     }
   }
 
-  .article__pets {
+  .article__pets,
+  .article__donation {
     background-color: $color-light-l;
   }
 
@@ -184,6 +185,61 @@ body.index {
       color: $color-dark-l;
       text-align: center;
       @include fontGeorgia();
+    }
+  }
+
+  .donation__container {
+    max-width: 915px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    @include fontGeorgia();
+
+    .donation__img {
+      max-width: 50%;
+      height: auto;
+    }
+
+    .article__title {
+      max-width: 280px;
+      margin-bottom: 20px;
+    }
+
+    .donation__subtitle {
+      margin-bottom: 20px;
+      font-size: 15px;
+      line-height: 17px;
+      color: $color-dark-l;
+      @include fontGeorgia();
+    }
+
+    .donation__card {
+      display: flex;
+      width: max-content;
+      margin-bottom: 20px;
+      padding: 10px 15px;
+      border-radius: 9px;
+      background-color: $color-primary;
+      font-size: 20px;
+      line-height: 23px;
+      color: $color-dark-l;
+
+      .card__icon {
+        width: 30px;
+        height: 23px;
+        margin-right: 15px;
+        fill: $color-dark-3xl;
+      }
+    }
+
+    .donation__text {
+      max-width: 380px;
+      font-size: 12px;
+      line-height: 18px;
+      color: $color-dark-m;
+      @include fontArial();
+      font-style: italic;
     }
   }
 }
