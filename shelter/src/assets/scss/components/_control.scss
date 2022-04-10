@@ -5,20 +5,53 @@
   border: 2px solid $color-primary;
   border-radius: 50%;
   background-color: transparent;
+  font-size: 20px;
+  line-height: 23px;
+  color: $color-dark-3xl;
 
-  .svg {
+  svg {
+    display: block;
+    margin: auto;
     fill: $color-dark-xl;
   }
 
   &__svg-arrow {
-    display: block;
     width: 14px;
     height: 6px;
-    margin: auto;
   }
 
-  &:hover {
+  &__svg-end {
+    width: 25px;
+    height: 11px;
+  }
+
+  &__svg-step {
+    width: 10px;
+    height: 11px;
+  }
+
+  &.disabled {
+    border-color: $color-dark-s;
+    cursor: unset;
+
+    svg {
+      fill: $color-dark-s;
+    }
+  }
+
+  &.active {
     background-color: $color-primary;
+    cursor: unset;
+  }
+
+  &:not(.disabled, .active):hover {
+    border-color: $color-primary-light;
+    background-color: $color-primary-light;
     cursor: pointer;
+  }
+
+  &:not(.disabled, .active):active {
+    border-color: $color-primary;
+    background-color: $color-primary;
   }
 }

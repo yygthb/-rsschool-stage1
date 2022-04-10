@@ -112,47 +112,6 @@ body.index {
           right: 0;
         }
       }
-
-      .slider__item {
-        width: 270px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: $color-light-s;
-
-        .pets__img {
-          display: block;
-          width: 100%;
-          margin-bottom: 30px;
-        }
-
-        .pets__name {
-          margin-bottom: 30px;
-          font-size: 20px;
-          line-height: 23px;
-          color: $color-dark-l;
-        }
-
-        .button {
-          margin-bottom: 30px;
-        }
-
-        &:hover {
-          background-color: $color-light-xl;
-          cursor: pointer;
-
-          .button {
-            background-color: $color-primary;
-
-            &:hover {
-              background-color: $color-primary-light;
-            }
-            &:active {
-              background-color: $color-primary;
-            }
-          }
-        }
-      }
     }
   }
 

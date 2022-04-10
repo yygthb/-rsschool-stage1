@@ -18,7 +18,7 @@
       <div class="container">
         <div class="header-container">
           <div class="logo-container">
-            <a href="#home" class="logo-text__title">Cozy House</a>
+            <a href="./index.html#home" class="logo-text__title">Cozy House</a>
             <p class="logo-text__subtitle">Shelter for pets in Boston</p>
           </div>
           <nav class="header-nav">
@@ -30,10 +30,12 @@
                 <a href="./pets.html" class="nav-link active">Our pets</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Help the shelter</a>
+                <a href="./index.html#help" class="nav-link"
+                  >Help the shelter</a
+                >
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Contacts</a>
+                <a href="#contacts" class="nav-link">Contacts</a>
               </li>
             </ul>
           </nav>
@@ -41,11 +43,128 @@
       </div>
     </header>
 
-    <main class="main"></main>
+    <main class="main">
+      <article class="article article__pets">
+        <div class="container">
+          <div class="pets__container">
+            <h1 class="article__title">
+              Our friends who<br />
+              are looking for a house
+            </h1>
+            <div class="pets-grid">
+              <div class="pet-card">
+                <img
+                  src="./assets/img/pets/pets-katrine.png"
+                  alt="cat photo"
+                  class="pet__img"
+                />
+                <h4 class="pet__name">Katrine</h4>
+                <button class="button secondary">Learn more</button>
+              </div>
+              <div class="pet-card">
+                <img
+                  src="./assets/img/pets/pets-jennifer.png"
+                  alt="puppy photo"
+                  class="pet__img"
+                />
+                <h4 class="pet__name">Jennifer</h4>
+                <button class="button secondary">Learn more</button>
+              </div>
+              <div class="pet-card">
+                <img
+                  src="./assets/img/pets/pets-woody.png"
+                  alt="dog photo"
+                  class="pet__img"
+                />
+                <h4 class="pet__name">Woody</h4>
+                <button class="button secondary">Learn more</button>
+              </div>
+              <div class="pet-card">
+                <img
+                  src="./assets/img/pets/pets-sophia.png"
+                  alt="dog photo"
+                  class="pet__img"
+                />
+                <h4 class="pet__name">Sophia</h4>
+                <button class="button secondary">Learn more</button>
+              </div>
+              <div class="pet-card">
+                <img
+                  src="./assets/img/pets/pets-timmy.png"
+                  alt="dog photo"
+                  class="pet__img"
+                />
+                <h4 class="pet__name">Timmy</h4>
+                <button class="button secondary">Learn more</button>
+              </div>
+              <div class="pet-card">
+                <img
+                  src="./assets/img/pets/pets-charly.png"
+                  alt="dog photo"
+                  class="pet__img"
+                />
+                <h4 class="pet__name">Charly</h4>
+                <button class="button secondary">Learn more</button>
+              </div>
+              <div class="pet-card">
+                <img
+                  src="./assets/img/pets/pets-scarlett.png"
+                  alt="dog photo"
+                  class="pet__img"
+                />
+                <h4 class="pet__name">Scarlett</h4>
+                <button class="button secondary">Learn more</button>
+              </div>
+              <div class="pet-card">
+                <img
+                  src="./assets/img/pets/pets-freddie.png"
+                  alt="dog photo"
+                  class="pet__img"
+                />
+                <h4 class="pet__name">Freddie</h4>
+                <button class="button secondary">Learn more</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pagination">
+            <button class="control disabled">
+              <svg class="control__svg-end">
+                <use
+                  xlink:href="./assets/img/svg/sprite-control.svg#paginator-first"
+                ></use>
+              </svg>
+            </button>
+            <button class="control disabled">
+              <svg class="control__svg-step">
+                <use
+                  xlink:href="./assets/img/svg/sprite-control.svg#paginator-prev"
+                ></use>
+              </svg>
+            </button>
+            <button class="control active">1</button>
+            <button class="control">
+              <svg class="control__svg-step">
+                <use
+                  xlink:href="./assets/img/svg/sprite-control.svg#paginator-next"
+                ></use>
+              </svg>
+            </button>
+            <button class="control">
+              <svg class="control__svg-end">
+                <use
+                  xlink:href="./assets/img/svg/sprite-control.svg#paginator-last"
+                ></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </main>
 
     <footer class="footer">
       <div class="container">
-        <div class="footer__container">
+        <div class="footer__container" id="contacts">
           <div class="footer__contacts">
             <p class="footer__title">For questions and suggestions</p>
             <a href="mailto:email@shelter.com" class="contacts__email">

@@ -1,6 +1,14 @@
 body.pets {
   @import "../base/variables";
 
+  position: relative;
+
+  .header {
+    position: sticky;
+    top: 0;
+    background-color: $color-light-xl;
+  }
+
   .header-container {
     height: 120px;
 
@@ -32,6 +40,34 @@ body.pets {
           }
         }
       }
+    }
+  }
+
+  .main {
+    background-color: $color-light-l;
+  }
+
+  .article__pets {
+    margin-bottom: 15px;
+
+    .article__title {
+      max-width: 400px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .pets-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 270px);
+      justify-content: space-between;
+      row-gap: 30px;
+    }
+
+    .pagination {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      margin: 45px auto 0;
     }
   }
 }
