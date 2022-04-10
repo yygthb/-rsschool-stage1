@@ -136,6 +136,22 @@ body.index {
         .button {
           margin-bottom: 30px;
         }
+
+        &:hover {
+          background-color: $color-light-xl;
+          cursor: pointer;
+
+          .button {
+            background-color: $color-primary;
+
+            &:hover {
+              background-color: $color-primary-light;
+            }
+            &:active {
+              background-color: $color-primary;
+            }
+          }
+        }
       }
     }
   }
