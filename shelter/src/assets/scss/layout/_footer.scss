@@ -19,16 +19,18 @@
 
     .footer__contacts,
     .footer__location {
-      height: 235px;
+      height: 270px;
       display: flex;
       flex-direction: column;
     }
 
     .footer__title {
-      max-width: 275px;
-      margin-bottom: 40px;
+      max-width: 280px;
+      margin-top: 17px;
+      margin-bottom: 20px;
       font-size: 35px;
       line-height: 45px;
+      letter-spacing: 2px;
       color: $color-light-xl;
       @include fontGeorgia();
     }
@@ -58,6 +60,7 @@
       span {
         font-size: 20px;
         line-height: 23px;
+        letter-spacing: 1.2px;
         color: $color-primary;
       }
 

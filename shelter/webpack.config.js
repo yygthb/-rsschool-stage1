@@ -10,7 +10,7 @@ const pages = ['index', 'pets'];
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  devtool: isProd ? 'source-map' : false, // readable scripts in production
+  devtool: isProd ? false : 'source-map',
   entry: {
     index: './src/index.js',
     pets: './src/pets.js',

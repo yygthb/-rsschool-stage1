@@ -37,9 +37,13 @@ body.index {
       }
 
       .hero__img {
-        width: 58%;
+        width: 58.2%;
       }
     }
+  }
+
+  .article__about {
+    padding-bottom: 95px;
   }
 
   .about__container {
@@ -59,11 +63,12 @@ body.index {
 
     .article__content {
       width: 50%;
+      margin-left: -4px;
 
       .article__title {
         margin-top: 14px;
         margin-bottom: 25px;
-        max-width: 280px;
+        max-width: 320px;
       }
 
       .article__text:not(:last-child) {
@@ -97,7 +102,7 @@ body.index {
       width: 100%;
 
       .slider__container {
-        max-width: 1180px;
+        max-width: 1170px;
         margin: 0 auto;
         display: flex;
         justify-content: space-evenly;
@@ -142,7 +147,7 @@ body.index {
       &:nth-child(7),
       &:nth-child(8),
       &:nth-child(9) {
-        flex-basis: 22%;
+        flex-basis: 20%;
       }
     }
 
@@ -172,12 +177,12 @@ body.index {
     @include fontGeorgia();
 
     .donation__img {
-      max-width: 50%;
+      max-width: 56%;
       height: auto;
     }
 
     .article__title {
-      max-width: 280px;
+      max-width: 300px;
       margin-bottom: 20px;
     }
 
@@ -185,6 +190,7 @@ body.index {
       margin-bottom: 20px;
       font-size: 15px;
       line-height: 17px;
+      letter-spacing: 0.9px;
       color: $color-dark-l;
       @include fontGeorgia();
     }
@@ -198,7 +204,12 @@ body.index {
       background-color: $color-primary;
       font-size: 20px;
       line-height: 23px;
+      letter-spacing: 1.2px;
       color: $color-dark-l;
+
+      &:hover {
+        background-color: $color-primary-light;
+      }
 
       .card__icon {
         width: 30px;

@@ -16,6 +16,7 @@
       margin-bottom: 10px;
       font-size: 32px;
       line-height: 35px;
+      letter-spacing: 2px;
       color: $color-primary;
       @include fontGeorgia();
 
@@ -27,12 +28,14 @@
       margin-left: 4px;
       font-size: 13px;
       line-height: 15px;
+      letter-spacing: 1.3px;
       color: $color-light-xl;
     }
   }
 
   .nav-list {
     display: flex;
+    letter-spacing: 0.1px;
 
     .nav-item {
       margin-left: 35px;

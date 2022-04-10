@@ -4,6 +4,7 @@
   .article__title {
     font-size: 35px;
     line-height: 45px;
+    letter-spacing: 2px;
     color: $color-dark-l;
     @include fontGeorgia();
   }

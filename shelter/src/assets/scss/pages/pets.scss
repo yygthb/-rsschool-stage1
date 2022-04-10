@@ -48,11 +48,9 @@ body.pets {
   }
 
   .article__pets {
-    margin-bottom: 15px;
-
     .article__title {
       max-width: 400px;
-      margin: 0 auto 45px;
+      margin: 0 auto 60px;
       text-align: center;
     }
 
@@ -67,7 +65,7 @@ body.pets {
       display: flex;
       gap: 20px;
       width: max-content;
-      margin: 45px auto 0;
+      margin: 60px auto 0;
     }
   }
 }
