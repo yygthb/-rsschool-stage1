@@ -31,6 +31,25 @@ body.pets {
       .burger-line {
         background-color: #000;
       }
+
+      &.open {
+        .burger-line {
+          background-color: $color-primary;
+        }
+      }
+    }
+
+    .header-nav {
+      .logo-text__title {
+        color: $color-primary;
+
+        &:hover {
+          color: $color-primary-light;
+        }
+      }
+      .logo-text__subtitle {
+        color: $color-light-xl;
+      }
     }
 
     .nav-list {
@@ -44,6 +63,18 @@ body.pets {
 
           &.active {
             color: $color-dark-3xl;
+          }
+
+          @include media(t) {
+            color: $color-dark-s;
+
+            &:hover {
+              color: $color-light-xl;
+            }
+
+            &.active {
+              color: $color-light-xl;
+            }
           }
         }
       }
