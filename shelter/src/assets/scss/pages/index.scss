@@ -36,12 +36,28 @@ body.index {
           align-self: center;
         }
 
+        @include media(m) {
+          margin-bottom: 105px;
+        }
+
         .hero__title {
           margin-bottom: 42px;
           max-width: 310px;
           font-size: 44px;
           line-height: 57px;
           color: $color-light-xl;
+
+          @include media(t) {
+            margin: 0 auto 42px;
+            text-align: center;
+          }
+
+          @include media(m) {
+            max-width: 230px;
+            font-size: 25px;
+            line-height: 32px;
+            letter-spacing: 1.5px;
+          }
         }
 
         .hero__subtitle {
@@ -49,6 +65,10 @@ body.index {
           font-size: 15px;
           line-height: 24px;
           color: $color-dark-s;
+
+          @include media(t) {
+            text-align: center;
+          }
         }
 
         .button {
@@ -67,12 +87,20 @@ body.index {
           width: 80.3%;
           align-self: flex-end;
         }
+
+        @include media(m) {
+          width: 87%;
+        }
       }
     }
   }
 
   .article__about {
     padding-bottom: 95px;
+
+    @include media(m) {
+      padding-bottom: 39px;
+    }
   }
 
   .about__container {
@@ -83,6 +111,11 @@ body.index {
     @include media(d) {
       flex-direction: column-reverse;
       align-items: center;
+    }
+
+    @include media(m) {
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     .img__container {
@@ -97,6 +130,10 @@ body.index {
       img {
         max-width: 100%;
         height: auto;
+
+        @include media(m) {
+          width: 260px;
+        }
       }
     }
 
@@ -110,6 +147,14 @@ body.index {
         margin-bottom: 80px;
       }
 
+      @include media(m) {
+        width: 100%;
+      }
+
+      @include media(m) {
+        margin-bottom: 40px;
+      }
+
       .article__title {
         margin-top: 14px;
         margin-bottom: 25px;
@@ -118,10 +163,29 @@ body.index {
         @include media(d) {
           margin-top: 0;
         }
+
+        @include media(t) {
+          margin: 0 auto 25px;
+          text-align: center;
+        }
+      }
+
+      .article__text {
+        @include media(t) {
+          text-align: justify;
+        }
+
+        @include media(m) {
+          padding: 0 5px;
+        }
       }
 
       .article__text:not(:last-child) {
         margin-bottom: 25px;
+
+        @include media(m) {
+          margin-bottom: 20px;
+        }
       }
     }
   }
@@ -140,10 +204,15 @@ body.index {
       width: 400px;
       margin-bottom: 60px;
       text-align: center;
-    }
 
-    .pets__slider {
-      margin-bottom: 60px;
+      @include media(t) {
+        margin-bottom: 42px;
+      }
+
+      @include media(m) {
+        width: 320px;
+        margin-bottom: 40px;
+      }
     }
 
     .slider {
@@ -164,6 +233,14 @@ body.index {
             display: none;
           }
         }
+
+        @include media(t) {
+          grid-template-columns: repeat(1, 270px);
+
+          .slider__item:nth-child(2) {
+            display: none;
+          }
+        }
       }
 
       .slider__control {
@@ -176,6 +253,29 @@ body.index {
         }
       }
     }
+
+    .pets__slider {
+      margin-bottom: 100px;
+
+      @include media(t) {
+        width: max-content;
+
+        .slider__control {
+          top: unset;
+          bottom: -98px;
+          left: 43px;
+
+          &-next {
+            left: unset;
+            right: 43px;
+          }
+        }
+      }
+
+      @include media(m) {
+        margin-bottom: 114px;
+      }
+    }
   }
 
   .article__help {
@@ -183,6 +283,11 @@ body.index {
       width: 310px;
       margin: 0 auto 60px;
       text-align: center;
+
+      @include media(m) {
+        max-width: 270px;
+        margin-bottom: 35px;
+      }
     }
 
     .help__list {
@@ -190,6 +295,15 @@ body.index {
       flex-wrap: wrap;
       justify-content: center;
       row-gap: 55px;
+
+      @include media(t) {
+        justify-content: flex-start;
+      }
+
+      @include media(m) {
+        justify-content: space-between;
+        row-gap: 25px;
+      }
     }
 
     .help__item {
@@ -203,6 +317,10 @@ body.index {
         @include media(d) {
           flex-basis: 33.3%;
         }
+
+        @include media(t) {
+          flex-basis: 45%;
+        }
       }
 
       &:nth-child(6),
@@ -214,6 +332,10 @@ body.index {
         @include media(d) {
           flex-basis: 33.3%;
         }
+
+        @include media(t) {
+          flex-basis: 45%;
+        }
       }
     }
 
@@ -223,14 +345,25 @@ body.index {
       display: block;
       margin: 0 auto 30px;
       fill: $color-primary;
+
+      @include media(m) {
+        transform: scale(0.84);
+        margin-bottom: 15px;
+      }
     }
 
     .help__title {
       font-size: 20px;
       line-height: 23px;
+      letter-spacing: 1px;
       color: $color-dark-l;
       text-align: center;
       @include fontGeorgia();
+
+      @include media(m) {
+        font-size: 15px;
+        line-height: 17px;
+      }
     }
   }
 
@@ -251,17 +384,34 @@ body.index {
       width: 505px;
       max-width: 100%;
       height: auto;
+
+      @include media(m) {
+        width: 260px;
+      }
     }
 
     .donation__content {
       @include media(d) {
         margin-bottom: 60px;
       }
+
+      @include media(m) {
+        margin-bottom: 42px;
+      }
     }
 
     .article__title {
       max-width: 300px;
       margin-bottom: 20px;
+
+      @include media(t) {
+        margin: 0 auto 20px;
+        text-align: center;
+      }
+
+      @include media(m) {
+        max-width: 210px;
+      }
     }
 
     .donation__subtitle {
@@ -271,10 +421,20 @@ body.index {
       letter-spacing: 0.9px;
       color: $color-dark-l;
       @include fontGeorgia();
+
+      @include media(t) {
+        text-align: center;
+      }
+
+      @include media(m) {
+        letter-spacing: 0;
+        margin-bottom: 25px;
+      }
     }
 
     .donation__card {
       display: flex;
+      align-items: center;
       width: max-content;
       margin-bottom: 20px;
       padding: 10px 15px;
@@ -284,6 +444,17 @@ body.index {
       line-height: 23px;
       letter-spacing: 1.2px;
       color: $color-dark-l;
+
+      @include media(t) {
+        margin: 0 auto 20px;
+      }
+
+      @include media(m) {
+        font-size: 14px;
+        line-height: 17px;
+        width: 282px;
+        padding-right: 10px;
+      }
 
       &:hover {
         background-color: $color-primary-light;
@@ -304,6 +475,14 @@ body.index {
       color: $color-dark-m;
       @include fontArial();
       font-style: italic;
+
+      @include media(t) {
+        text-align: justify;
+      }
+
+      @include media(m) {
+        padding: 0 10px;
+      }
     }
   }
 }
