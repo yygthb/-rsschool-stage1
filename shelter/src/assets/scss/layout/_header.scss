@@ -10,6 +10,10 @@
   background-color: transparent;
   @include fontArial();
 
+  @include media(d) {
+    height: 120px;
+  }
+
   .logo-container {
     .logo-text__title {
       display: block;
