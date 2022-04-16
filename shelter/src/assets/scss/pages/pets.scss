@@ -31,12 +31,6 @@ body.pets {
       .burger-line {
         background-color: #000;
       }
-
-      &.open {
-        .burger-line {
-          background-color: $color-primary;
-        }
-      }
     }
 
     .header-nav {
@@ -49,6 +43,26 @@ body.pets {
       }
       .logo-text__subtitle {
         color: $color-light-xl;
+      }
+
+      @include media(t) {
+        background-color: rgba(#513d2f, 0.8);
+
+        .logo-container {
+          background-color: $color-light-xl;
+
+          .logo-text__title {
+            color: $color-dark-l;
+
+            &:hover {
+              color: $color-dark-3xl;
+            }
+          }
+
+          .logo-text__subtitle {
+            color: $color-dark-3xl;
+          }
+        }
       }
     }
 
@@ -64,19 +78,11 @@ body.pets {
           &.active {
             color: $color-dark-3xl;
           }
-
-          @include media(t) {
-            color: $color-dark-s;
-
-            &:hover {
-              color: $color-light-xl;
-            }
-
-            &.active {
-              color: $color-light-xl;
-            }
-          }
         }
+      }
+
+      @include media(t) {
+        background-color: $color-light-xl;
       }
     }
   }
@@ -86,6 +92,14 @@ body.pets {
   }
 
   .article__pets {
+    @include media(d) {
+      padding-bottom: 76px;
+    }
+
+    @include media(m) {
+      padding-bottom: 44px;
+    }
+
     .article__title {
       max-width: 400px;
       margin: 0 auto 60px;
@@ -104,7 +118,7 @@ body.pets {
       display: grid;
       grid-template-columns: repeat(4, 270px);
       justify-content: space-between;
-      gap: 30px;
+      gap: 30px 40px;
 
       @include media(d) {
         grid-template-columns: repeat(2, 270px);
