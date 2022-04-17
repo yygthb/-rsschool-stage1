@@ -4,6 +4,8 @@ import { createElement } from '../utils/createElement';
 import { getRandom } from '../utils/getRandom';
 import { Pet } from './Pet';
 
+const ANIMATION_SPEED = 300;
+
 export class Slider {
   constructor({ sliderClassNames }) {
     this.cardsToRender = [];
@@ -46,19 +48,24 @@ export class Slider {
   renderCards() {
     const prev = [...this.cardsToRender];
     this.cardsToRender = [];
-    this.sliderContainer.innerHTML = '';
+    this.sliderContainer.classList.add('hide');
 
-    while (this.cardsToRender.length < 3) {
-      let petNum = getRandom();
-      while (this.cardsToRender.includes(petNum) || prev.includes(petNum)) {
-        petNum = getRandom();
+    setTimeout(() => {
+      this.sliderContainer.innerHTML = '';
+      this.sliderContainer.classList.remove('hide');
+
+      while (this.cardsToRender.length < 3) {
+        let petNum = getRandom();
+        while (this.cardsToRender.includes(petNum) || prev.includes(petNum)) {
+          petNum = getRandom();
+        }
+        this.cardsToRender.push(petNum);
       }
-      this.cardsToRender.push(petNum);
-    }
 
-    this.cardsToRender.forEach((idx) => {
-      const $petCard = new Pet(pets[idx]).container;
-      this.sliderContainer.append($petCard);
-    });
+      this.cardsToRender.forEach((idx) => {
+        const $petCard = new Pet(pets[idx]).container;
+        this.sliderContainer.append($petCard);
+      });
+    }, ANIMATION_SPEED);
   }
 }

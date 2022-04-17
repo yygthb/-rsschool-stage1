@@ -230,13 +230,11 @@ body.index {
         display: grid;
         grid-template-columns: repeat(3, 270px);
         justify-content: space-between;
+        opacity: 1;
+        transition: opacity 0.3s ease-out;
 
-        .slider__item:nth-child(4),
-        .slider__item:nth-child(5),
-        .slider__item:nth-child(6),
-        .slider__item:nth-child(7),
-        .slider__item:nth-child(8) {
-          display: none;
+        &.hide {
+          opacity: 0;
         }
 
         @include media(d) {
