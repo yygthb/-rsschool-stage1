@@ -1,5 +1,4 @@
 import { createElement } from '../utils/createElement';
-import { Pet } from './Pet';
 
 const ANIMATION_SPEED = 300;
 
@@ -18,7 +17,7 @@ export class Modal {
     return this;
   }
 
-  open(petData) {
+  open(node) {
     document.querySelector('body').classList.add('lock');
     this.container.classList.add('open');
 
@@ -26,8 +25,7 @@ export class Modal {
       classNames: 'modal',
     });
 
-    const pet = new Pet(petData);
-    this.modal.append(pet.container);
+    this.modal.append(node);
     this.container.append(this.modal);
   }
 

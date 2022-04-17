@@ -13,7 +13,6 @@ export class Slider {
   constructor({ sliderClassNames }) {
     this.cardsToRender = [];
 
-    this.controls = [];
     this.sliderContainer = createElement({
       classNames: 'slider__container',
     });
@@ -24,16 +23,14 @@ export class Slider {
   }
 
   init() {
-    this.getControls();
-    this.controls.forEach((control) => this.container.append(control));
-
+    this.renderControls();
     this.renderCards();
 
     this.container.append(this.sliderContainer);
     return this;
   }
 
-  getControls() {
+  renderControls() {
     Object.keys(controlButtons).forEach((button) => {
       const $controlBtn = createElement({
         tagName: 'button',
@@ -44,7 +41,7 @@ export class Slider {
         e.preventDefault();
         this.renderCards();
       });
-      this.controls.push($controlBtn);
+      this.container.append($controlBtn);
     });
   }
 
@@ -69,7 +66,7 @@ export class Slider {
         const pet = new Pet(pets[idx]);
         pet.container.addEventListener('click', (e) => {
           e.preventDefault();
-          modal.open(pet);
+          modal.open(new Pet(pets[idx]).container);
         });
         this.sliderContainer.append(pet.container);
       });
