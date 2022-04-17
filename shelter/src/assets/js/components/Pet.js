@@ -1,6 +1,6 @@
 import { createElement } from '../utils/createElement.js';
 
-const petCard = (pet) => {
+function createPetCard(pet) {
   const petImg = createElement({
     tagName: 'img',
     classNames: 'pet__img',
@@ -19,6 +19,27 @@ const petCard = (pet) => {
     classNames: 'pet__name',
     child: pet.name,
   });
+  const petBreed = createElement({
+    tagName: 'p',
+    classNames: 'pet__breed',
+    child: `${pet.type} - ${pet.breed}`,
+  });
+  const petInfo = createElement({
+    tagName: 'ul',
+    classNames: 'pet__info',
+    child: [
+      createElement({
+        tagName: 'li',
+        child: createInfoItem('age', pet.age),
+      }),
+      ...Object.entries(pet.info).map(([key, value], idx) => {
+        return createElement({
+          tagName: 'li',
+          child: createInfoItem(key, value),
+        });
+      }),
+    ],
+  });
   const button = createElement({
     tagName: 'button',
     classNames: 'button secondary',
@@ -27,10 +48,21 @@ const petCard = (pet) => {
 
   const card = createElement({
     classNames: 'slider__item pet-card',
-    child: [imgWrap, petName, button],
+    child: [imgWrap, petName, petBreed, petInfo, button],
   });
   return card;
-};
+}
+
+function createInfoItem(key, value) {
+  const keySpan = createElement({
+    tagName: 'span',
+    child: `${key}: `,
+  });
+
+  return typeof value === 'string'
+    ? [keySpan, value]
+    : [keySpan, value.join(', ')];
+}
 
 export class Pet {
   constructor(pet) {
@@ -40,10 +72,8 @@ export class Pet {
     this.breed = pet.breed;
     this.description = pet.description;
     this.age = pet.age;
-    this.inoculations = pet.inoculations;
-    this.diseases = pet.diseases;
-    this.parasites = pet.parasites;
+    this.info = pet.info;
 
-    this.container = petCard(pet);
+    this.container = createPetCard(pet);
   }
 }

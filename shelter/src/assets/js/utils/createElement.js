@@ -2,6 +2,7 @@ export const createElement = ({
   tagName = 'div',
   classNames = '',
   child,
+  parent,
   attributes = [],
 }) => {
   // createElement with classNames
@@ -25,6 +26,11 @@ export const createElement = ({
       el.setAttribute(attrName, attrValue);
     }
   });
+
+  // set parent
+  if (parent) {
+    parent.prepend(el);
+  }
 
   return el;
 };

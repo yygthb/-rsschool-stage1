@@ -6,7 +6,6 @@ if (header) {
   const menuContainer = header.querySelector('.header-nav');
 
   burger.onclick = () => {
-    console.log('click on burger');
     menuContainer.classList.toggle('open');
     burger.classList.toggle('open');
     body.classList.toggle('lock');

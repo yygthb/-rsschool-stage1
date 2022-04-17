@@ -3,8 +3,11 @@ import controlButtons from '../layout/button-slider';
 import { createElement } from '../utils/createElement';
 import { getRandom } from '../utils/getRandom';
 import { Pet } from './Pet';
+import { Modal } from './Modal';
 
 const ANIMATION_SPEED = 300;
+
+const modal = new Modal().init();
 
 export class Slider {
   constructor({ sliderClassNames }) {
@@ -63,8 +66,12 @@ export class Slider {
       }
 
       this.cardsToRender.forEach((idx) => {
-        const $petCard = new Pet(pets[idx]).container;
-        this.sliderContainer.append($petCard);
+        const pet = new Pet(pets[idx]);
+        pet.container.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.open(pet);
+        });
+        this.sliderContainer.append(pet.container);
       });
     }, ANIMATION_SPEED);
   }
