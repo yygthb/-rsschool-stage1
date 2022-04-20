@@ -24,6 +24,11 @@ function createPetCard(pet) {
     classNames: 'pet__breed',
     child: `${pet.type} - ${pet.breed}`,
   });
+  const petDescr = createElement({
+    tagName: 'p',
+    classNames: 'pet__description',
+    child: pet.description,
+  });
   const petInfo = createElement({
     tagName: 'ul',
     classNames: 'pet__info',
@@ -32,13 +37,17 @@ function createPetCard(pet) {
         tagName: 'li',
         child: createInfoItem('age', pet.age),
       }),
-      ...Object.entries(pet.info).map(([key, value], idx) => {
+      ...Object.entries(pet.info).map(([key, value]) => {
         return createElement({
           tagName: 'li',
           child: createInfoItem(key, value),
         });
       }),
     ],
+  });
+  const petText = createElement({
+    classNames: 'pet__text',
+    child: [petName, petBreed, petDescr, petInfo],
   });
   const button = createElement({
     tagName: 'button',
@@ -48,7 +57,7 @@ function createPetCard(pet) {
 
   const card = createElement({
     classNames: 'slider__item pet-card',
-    child: [imgWrap, petName, petBreed, petInfo, button],
+    child: [imgWrap, petText, button],
   });
   return card;
 }

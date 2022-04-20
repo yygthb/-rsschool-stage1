@@ -21,12 +21,7 @@ export class Modal {
     document.querySelector('body').classList.add('lock');
     this.container.classList.add('open');
 
-    this.modal = createElement({
-      classNames: 'modal',
-    });
-
-    this.modal.append(node);
-    this.container.append(this.modal);
+    this.container.append(this.createModal(node));
   }
 
   close(e) {
@@ -39,5 +34,22 @@ export class Modal {
         document.querySelector('body').classList.remove('lock');
       }, ANIMATION_SPEED);
     }
+  }
+
+  createModal(node) {
+    const modalContainer = createElement({
+      classNames: 'modal__container',
+      child: [node],
+    });
+    const modalButtonClose = createElement({
+      classNames: 'modal__button-close control',
+      attributes: [['data-modal', 'close']],
+    });
+    const modal = createElement({
+      classNames: 'modal',
+      child: [modalContainer, modalButtonClose],
+    });
+    console.log(modal);
+    return modal;
   }
 }

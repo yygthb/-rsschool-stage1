@@ -1,0 +1,131 @@
+.modal__container .pet-card {
+  display: flex;
+  width: 900px;
+  border-radius: unset;
+  background-color: rgba(#0d0d0d, 0.04);
+
+  @include media(d) {
+    width: 630px;
+  }
+
+  @include media(t) {
+    width: 260px;
+  }
+
+  .pet__img-wrapper {
+    margin: 0;
+    width: 500px;
+    min-height: 500px;
+    overflow: hidden;
+
+    @include media(d) {
+      width: 350px;
+      min-height: 350px;
+    }
+
+    @include media(t) {
+      display: none;
+    }
+
+    .pet__img {
+      display: block;
+      height: 100%;
+    }
+  }
+
+  .pet__text {
+    flex: 1;
+    margin: 50px 20px 50px 30px;
+
+    @include media(d) {
+      margin: 10px;
+      margin-right: 7px;
+    }
+
+    @include media(t) {
+      margin: 10px;
+    }
+
+    * {
+      @include fontGeorgia();
+    }
+
+    .pet__name {
+      margin-bottom: 10px;
+      font-size: 35px;
+      line-height: 45px;
+      letter-spacing: 2px;
+
+      @include media(t) {
+        text-align: center;
+      }
+    }
+
+    .pet__breed {
+      margin-bottom: 40px;
+      font-size: 20px;
+      line-height: 23px;
+      letter-spacing: 1.2px;
+
+      @include media(d) {
+        margin-bottom: 20px;
+      }
+
+      @include media(t) {
+        text-align: center;
+      }
+    }
+
+    .pet__description {
+      margin-bottom: 40px;
+      font-size: 15px;
+      line-height: 17px;
+      letter-spacing: 0.8px;
+
+      @include media(d) {
+        margin-bottom: 20px;
+        font-size: 13px;
+        line-height: 14px;
+      }
+
+      @include media(t) {
+        text-align: justify;
+      }
+    }
+
+    .pet__info {
+      li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+
+        @include media(d) {
+          margin-bottom: 5px;
+        }
+
+        &::before {
+          content: "\2022";
+          color: $color-primary;
+          display: inline-block;
+          margin-left: 0;
+        }
+
+        span {
+          padding-left: 10px;
+          font-weight: 700;
+          letter-spacing: 1.6px;
+          text-transform: capitalize;
+
+          &::after {
+            display: inline-block;
+            content: " ";
+          }
+        }
+      }
+    }
+  }
+
+  .button {
+    display: none;
+  }
+}
