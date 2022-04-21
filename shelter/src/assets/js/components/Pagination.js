@@ -3,6 +3,7 @@ import controlButtons from '../layout/button-pagination';
 import { createElement } from '../utils/createElement';
 import { Modal } from './Modal';
 import { Pet } from './Pet';
+import { getRandom } from '../utils/getRandom';
 
 const modal = new Modal().init();
 
@@ -20,7 +21,8 @@ export class Pagination {
   }
 
   init() {
-    this.renderCards();
+    this.generateCards();
+    this.renderCards(0, 8);
     this.renderControls();
 
     this.container.append(this.content);
@@ -39,14 +41,33 @@ export class Pagination {
     });
   }
 
-  renderCards() {
-    [...Array(8).keys()].forEach((item, idx) => {
-      const pet = new Pet(pets[idx]);
+  renderCards(start, end) {
+    this.petCards.splice(start, end).forEach((item, idx) => {
+      const pet = new Pet(item);
       pet.container.addEventListener('click', (e) => {
         e.preventDefault();
-        modal.open(new Pet(pets[idx]).container);
+        modal.open(new Pet(item).container);
       });
       this.content.append(pet.container);
     });
+  }
+
+  generateCards() {
+    this.petCards = [];
+    for (let i = 0; i < 6; i++) {
+      const usedNums = [];
+      const usedCards = [];
+
+      while (usedCards.length < 8) {
+        let cardNum = getRandom();
+        while (usedNums.includes(cardNum) && usedCards.length < 8) {
+          cardNum = getRandom();
+        }
+        usedNums.push(cardNum);
+        usedCards.push(pets[cardNum]);
+      }
+
+      this.petCards = [...this.petCards, ...usedCards];
+    }
   }
 }
