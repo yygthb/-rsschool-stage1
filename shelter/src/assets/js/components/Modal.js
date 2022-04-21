@@ -1,4 +1,5 @@
 import { createElement } from '../utils/createElement';
+import { getScrollWidth } from '../utils/getScrollWidth';
 
 const ANIMATION_SPEED = 300;
 
@@ -18,9 +19,12 @@ export class Modal {
   }
 
   open(node) {
-    document.querySelector('body').classList.add('lock');
-    this.container.classList.add('open');
+    const scroll = getScrollWidth();
+    const body = document.querySelector('body');
+    body.style.marginRight = `${scroll}px`;
+    body.classList.add('lock');
 
+    this.container.classList.add('open');
     this.container.append(this.createModal(node));
   }
 
@@ -31,7 +35,10 @@ export class Modal {
       this.container.classList.remove('open');
       setTimeout(() => {
         this.container.textContent = '';
-        document.querySelector('body').classList.remove('lock');
+
+        const body = document.querySelector('body');
+        body.style.marginRight = 0;
+        body.classList.remove('lock');
       }, ANIMATION_SPEED);
     }
   }
@@ -49,7 +56,6 @@ export class Modal {
       classNames: 'modal',
       child: [modalContainer, modalButtonClose],
     });
-    console.log(modal);
     return modal;
   }
 }

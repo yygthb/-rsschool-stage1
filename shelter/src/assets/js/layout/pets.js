@@ -106,7 +106,7 @@ export default [
       'This cute boy, Charly, is three years old and he likes adults and kids. He isn’t fond of many other dogs, so he might do best in a single dog home. Charly has lots of energy, and loves to run and play. We think a fenced yard would make him very happy.',
     age: '8 years',
     info: {
-      inoculations: ['bordetella', 'bronchiseptica', 'leptospirosis'],
+      inoculations: ['bordetella bronchiseptica', 'leptospirosis'],
       diseases: ['deafness', 'blindness'],
       parasites: ['lice', 'fleas'],
     },
