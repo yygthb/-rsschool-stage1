@@ -6,6 +6,7 @@ body.pets {
 
   .header {
     position: sticky;
+    z-index: 2;
     top: 0;
     background-color: $color-light-xl;
   }
@@ -114,7 +115,7 @@ body.pets {
       }
     }
 
-    .pets-grid {
+    .pagination__content {
       display: grid;
       grid-template-columns: repeat(4, 270px);
       justify-content: space-between;
@@ -141,7 +142,7 @@ body.pets {
       }
     }
 
-    .pagination {
+    .pagination__control {
       display: flex;
       gap: 20px;
       width: max-content;
