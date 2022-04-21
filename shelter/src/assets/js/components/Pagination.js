@@ -22,23 +22,53 @@ export class Pagination {
 
   init() {
     this.generateCards();
-    this.renderCards(0, 8);
-    this.renderControls();
+    this.updateConfig();
+    this.renderCards(this.pagination.current - 1, this.pagination.step);
+    this.renderControlBtns();
+    this.handlerControlBtns();
 
     this.container.append(this.content);
     this.container.append(this.control);
     return this;
   }
 
-  renderControls() {
+  renderControlBtns() {
+    const current = createElement({
+      tagName: 'button',
+      classNames: 'control active control__current',
+      child: [`${this.pagination.current}`],
+    });
+    this.control.append(current);
+
+    this.controlBtns = Object.keys(controlButtons).map((button) => {
+      return createElement({
+        tagName: 'button',
+        classNames: `control control__${button}`,
+        child: controlButtons[button],
+        attributes: [['pagination', button]],
+      });
+    });
     Object.keys(controlButtons).forEach((button) => {
       const $controlBtn = createElement({
         tagName: 'button',
-        classNames: 'control',
+        classNames: `control control__${button}`,
         child: controlButtons[button],
+        attributes: [['pagination', button]],
       });
       this.control.append($controlBtn);
     });
+  }
+
+  updateControlBtns() {
+    for (let button of this.control.children) {
+      const paginationAttr = button.getAttribute('pagination');
+      if (this.pagination.current === 1) {
+        if (paginationAttr === 'first' || paginationAttr === 'prev') {
+          button.classList.add('disabled');
+          button.setAttribute('disabled', 'disabled');
+        }
+      }
+    }
   }
 
   renderCards(start, end) {
@@ -69,5 +99,30 @@ export class Pagination {
 
       this.petCards = [...this.petCards, ...usedCards];
     }
+  }
+
+  updateConfig() {
+    const cardsLength = this.petCards.length;
+    const step = 8; // by window width
+    this.pagination = {
+      current: 1,
+      step,
+      pages: Math.ceil(cardsLength / step),
+    };
+  }
+
+  handlerControlBtns() {
+    this.control.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (
+        e.target.classList.contains('control') &&
+        e.target.hasAttribute('pagination')
+      ) {
+        console.log(e.target.getAttribute('pagination'));
+      }
+    });
+
+    this.updateControlBtns();
   }
 }

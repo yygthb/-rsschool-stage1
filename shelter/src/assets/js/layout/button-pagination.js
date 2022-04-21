@@ -11,8 +11,6 @@ export default {
     </svg>
   `,
 
-  current: '',
-
   next: `
     <svg id="paginator-next" width="10" height="11" viewBox="0 0 10 11" >
       <path d="M9.04102 6.08789L0.0078125 10.7852V9.44727L7.51758 5.53125L0.0078125 1.625V0.287109L9.04102 4.98438V6.08789Z" />

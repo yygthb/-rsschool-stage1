@@ -155,6 +155,16 @@ body.pets {
       @include media(m) {
         gap: 10px;
       }
+
+      .control__current {
+      }
+
+      .control__first {
+        order: -2;
+      }
+      .control__prev {
+        order: -1;
+      }
     }
   }
 }
