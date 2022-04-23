@@ -23,63 +23,12 @@ export class Pagination {
   init() {
     this.generateCards();
     this.updateConfig();
-    this.renderCards(this.pagination.current - 1, this.pagination.step);
+    this.renderCards(0);
     this.renderControlBtns();
-    this.handlerControlBtns();
 
     this.container.append(this.content);
     this.container.append(this.control);
     return this;
-  }
-
-  renderControlBtns() {
-    const current = createElement({
-      tagName: 'button',
-      classNames: 'control active control__current',
-      child: [`${this.pagination.current}`],
-    });
-    this.control.append(current);
-
-    this.controlBtns = Object.keys(controlButtons).map((button) => {
-      return createElement({
-        tagName: 'button',
-        classNames: `control control__${button}`,
-        child: controlButtons[button],
-        attributes: [['pagination', button]],
-      });
-    });
-    Object.keys(controlButtons).forEach((button) => {
-      const $controlBtn = createElement({
-        tagName: 'button',
-        classNames: `control control__${button}`,
-        child: controlButtons[button],
-        attributes: [['pagination', button]],
-      });
-      this.control.append($controlBtn);
-    });
-  }
-
-  updateControlBtns() {
-    for (let button of this.control.children) {
-      const paginationAttr = button.getAttribute('pagination');
-      if (this.pagination.current === 1) {
-        if (paginationAttr === 'first' || paginationAttr === 'prev') {
-          button.classList.add('disabled');
-          button.setAttribute('disabled', 'disabled');
-        }
-      }
-    }
-  }
-
-  renderCards(start, end) {
-    this.petCards.splice(start, end).forEach((item, idx) => {
-      const pet = new Pet(item);
-      pet.container.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.open(new Pet(item).container);
-      });
-      this.content.append(pet.container);
-    });
   }
 
   generateCards() {
@@ -101,6 +50,69 @@ export class Pagination {
     }
   }
 
+  renderCards(start) {
+    this.content.innerHTML = '';
+    this.petCards.slice(start, start + 8).forEach((item, idx) => {
+      const pet = new Pet(item);
+      pet.container.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.open(new Pet(item).container);
+      });
+      this.content.append(pet.container);
+    });
+  }
+
+  renderControlBtns() {
+    this.current = createElement({
+      tagName: 'button',
+      classNames: 'control active control__current',
+      child: [`${this.pagination.current}`],
+    });
+    this.control.append(this.current);
+
+    const controlBtns = Object.keys(controlButtons).map((button) => {
+      return createElement({
+        tagName: 'button',
+        classNames: `control control__${button}`,
+        child: controlButtons[button],
+        attributes: [['pagination', button]],
+      });
+    });
+
+    for (let btn of controlBtns) {
+      btn.addEventListener('click', (e) => {
+        this.handlerControlBtns(e);
+      });
+      this.control.append(btn);
+    }
+
+    this.updateControlBtnStyles();
+  }
+
+  updateControlBtnStyles() {
+    for (let button of this.control.children) {
+      const paginationAttr = button.getAttribute('pagination');
+      if (this.pagination.current === 1) {
+        button.classList.remove('disabled');
+        button.removeAttribute('disabled');
+        if (paginationAttr === 'first' || paginationAttr === 'prev') {
+          button.classList.add('disabled');
+          button.setAttribute('disabled', 'disabled');
+        }
+      } else if (this.pagination.current === this.pagination.pages) {
+        button.classList.remove('disabled');
+        button.removeAttribute('disabled');
+        if (paginationAttr === 'next' || paginationAttr === 'last') {
+          button.classList.add('disabled');
+          button.setAttribute('disabled', 'disabled');
+        }
+      } else {
+        button.classList.remove('disabled');
+        button.removeAttribute('disabled');
+      }
+    }
+  }
+
   updateConfig() {
     const cardsLength = this.petCards.length;
     const step = 8; // by window width
@@ -111,18 +123,39 @@ export class Pagination {
     };
   }
 
-  handlerControlBtns() {
-    this.control.addEventListener('click', (e) => {
-      e.preventDefault();
+  handlerControlBtns(e) {
+    e.preventDefault();
 
-      if (
-        e.target.classList.contains('control') &&
-        e.target.hasAttribute('pagination')
-      ) {
-        console.log(e.target.getAttribute('pagination'));
+    const t = e.currentTarget;
+
+    if (t.classList.contains('control') && t.hasAttribute('pagination')) {
+      const paginationAction = t.getAttribute('pagination');
+
+      if (paginationAction === 'next') {
+        this.pagination.current++;
+        this.changePage();
       }
-    });
 
-    this.updateControlBtns();
+      if (paginationAction === 'last') {
+        this.pagination.current = this.pagination.pages;
+        this.changePage();
+      }
+
+      if (paginationAction === 'prev') {
+        this.pagination.current--;
+        this.changePage();
+      }
+
+      if (paginationAction === 'first') {
+        this.pagination.current = 1;
+        this.changePage();
+      }
+    }
+  }
+
+  changePage() {
+    this.current.textContent = this.pagination.current;
+    this.renderCards((this.pagination.current - 1) * this.pagination.step);
+    this.updateControlBtnStyles();
   }
 }
