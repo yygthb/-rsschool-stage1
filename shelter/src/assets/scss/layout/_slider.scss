@@ -88,7 +88,7 @@
   }
 }
 
-$as: 500ms; // animation speed
+$as: 1s; // animation speed
 
 @keyframes transition-right-desktop {
   from {
@@ -128,7 +128,7 @@ $as: 500ms; // animation speed
 
 @keyframes transition-left-tablet {
   from {
-    left: -270px;
+    left: -580px;
   }
   to {
     left: 0px;

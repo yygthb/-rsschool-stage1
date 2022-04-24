@@ -5,16 +5,17 @@ import { getRandom } from '../utils/getRandom';
 import { Pet } from './Pet';
 import { Modal } from './Modal';
 
-const ANIMATION_SPEED = 300;
-
 const modal = new Modal().init();
 
 export class Slider {
   constructor() {
-    this.cardsToRender = [];
+    this.boundFunction = this.animationendEventHandler.bind(this);
   }
 
   init({ sliderClassNames }) {
+    this.currentCardNums = [];
+    this.nextCardNums = [];
+
     this.sliderContainer = createElement({
       classNames: 'slider__container',
     });
@@ -52,26 +53,20 @@ export class Slider {
   }
 
   renderCards() {
-    this.sliderPrev = createElement({
-      classNames: 'slider__item slider__item-prev',
-    });
-    for (let i = 0; i < 3; i++) {
-      this.sliderPrev.append(new Pet(pets[1]).container);
-    }
-
     this.sliderCurrent = createElement({
       classNames: 'slider__item slider__item-current',
     });
-    for (let i = 0; i < 3; i++) {
-      this.sliderCurrent.append(new Pet(pets[0]).container);
-    }
+    this.generateCards(this.sliderCurrent);
+
+    this.sliderPrev = createElement({
+      classNames: 'slider__item slider__item-prev',
+    });
+    this.generateCards(this.sliderPrev);
 
     this.sliderNext = createElement({
-      classNames: 'slider__item slider__item-current',
+      classNames: 'slider__item slider__item-next',
     });
-    for (let i = 0; i < 3; i++) {
-      this.sliderNext.append(new Pet(pets[2]).container);
-    }
+    this.generateCards(this.sliderNext, this.nextCardNums);
 
     this.sliderContainer.append(
       this.sliderPrev,
@@ -80,37 +75,85 @@ export class Slider {
     );
   }
 
+  generateCards(sliderNode, arr) {
+    sliderNode.innerHTML = '';
+    const reservedCards = [...this.currentCardNums];
+    this.currentCardNums = [];
+
+    if (!arr || !(Array.isArray(arr) && arr.length)) {
+      for (let i = 0; i < 3; i++) {
+        while (this.currentCardNums.length < 3) {
+          let petNum = getRandom();
+          while (
+            this.currentCardNums.includes(petNum) ||
+            reservedCards.includes(petNum)
+          ) {
+            petNum = getRandom();
+          }
+          this.currentCardNums.push(petNum);
+          reservedCards.push(petNum);
+          const pet = new Pet(pets[petNum]);
+          pet.container.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.open(new Pet(pets[petNum]).container);
+          });
+          sliderNode.append(pet.container);
+        }
+      }
+      this.nextCardNums = [...this.currentCardNums];
+    } else {
+      for (let item of arr) {
+        const pet = new Pet(pets[item]);
+        pet.container.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.open(new Pet(pets[item]).container);
+        });
+        sliderNode.append(pet.container);
+      }
+    }
+  }
+
   swipe(e) {
     if (e.currentTarget.classList.contains('slider__control-prev')) {
-      console.log('swipe to prev');
       this.controls.forEach((control) => {
         control.classList.add('disabled');
       });
       this.sliderContainer.classList.add('swipe-left');
-      this.sliderContainer.addEventListener('animationend', () => {
-        this.sliderContainer.classList.remove('swipe-left');
-        this.controls.forEach((control) => {
-          control.classList.remove('disabled');
-        });
-        const prev = this.sliderPrev.innerHTML;
-        this.sliderCurrent.innerHTML = prev;
-      });
+      this.sliderContainer.addEventListener('animationend', this.boundFunction);
     }
 
     if (e.currentTarget.classList.contains('slider__control-next')) {
-      console.log('swipe to next');
       this.controls.forEach((control) => {
         control.classList.add('disabled');
       });
       this.sliderContainer.classList.add('swipe-right');
-      this.sliderContainer.addEventListener('animationend', () => {
-        this.sliderContainer.classList.remove('swipe-right');
-        this.controls.forEach((control) => {
-          control.classList.remove('disabled');
-          const next = this.sliderNext.innerHTML;
-          this.sliderCurrent.innerHTML = next;
-        });
-      });
+      this.sliderContainer.addEventListener('animationend', this.boundFunction);
     }
+  }
+
+  animationendEventHandler() {
+    console.log('animationend');
+    this.sliderContainer.classList.remove('swipe-left');
+    this.sliderContainer.classList.remove('swipe-right');
+    this.controls.forEach((control) => {
+      control.classList.remove('disabled');
+    });
+
+    // update sliderCurrent
+    this.sliderCurrent.innerHTML = '';
+    for (let item of this.nextCardNums) {
+      const pet = new Pet(pets[item]);
+      pet.container.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.open(new Pet(pets[item]).container);
+      });
+      this.sliderCurrent.append(pet.container);
+    }
+    this.currentCardNums = [...this.nextCardNums];
+
+    // generate new random cards
+    this.generateCards(this.sliderPrev);
+    console.log('this.nextCardNums: ', this.nextCardNums);
+    this.generateCards(this.sliderNext, this.nextCardNums);
   }
 }
