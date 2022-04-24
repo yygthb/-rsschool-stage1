@@ -52,7 +52,7 @@ function createPetCard(pet) {
   });
 
   const card = createElement({
-    classNames: 'slider__item pet-card',
+    classNames: 'slider__card pet-card',
     child: [imgWrap, petText, button],
   });
   return card;

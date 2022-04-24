@@ -33,6 +33,9 @@
   &.disabled {
     border-color: $color-dark-s;
     cursor: unset;
+    touch-action: none;
+    -ms-touch-action: none;
+    pointer-events: none;
 
     svg {
       fill: $color-dark-s;

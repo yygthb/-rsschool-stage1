@@ -1,9 +1,9 @@
 import { Slider } from './components/Slider';
 
-const pets = document.querySelector('.pets__content');
+const pets = document.querySelector('.rs-slider');
 
-const slider = new Slider({
+const slider = new Slider().init({
   sliderClassNames: 'pets__slider',
-}).init();
+});
 
 pets.append(slider.container);
