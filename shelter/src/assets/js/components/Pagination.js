@@ -4,6 +4,9 @@ import { createElement } from '../utils/createElement';
 import { Modal } from './Modal';
 import { Pet } from './Pet';
 import { getRandom } from '../utils/getRandom';
+import { getWidth } from '../utils/getWidth';
+
+const ANIMATION_SPEED = 300;
 
 const modal = new Modal().init();
 
@@ -21,8 +24,7 @@ export class Pagination {
   }
 
   init() {
-    this.generateCards();
-    this.updateConfig();
+    this.config();
     this.renderCards(0);
     this.renderControlBtns();
 
@@ -31,15 +33,37 @@ export class Pagination {
     return this;
   }
 
-  generateCards() {
+  config() {
+    const cardsLength = 48;
+    let step = 8; // desktop
+
+    const { bodyWidth } = getWidth();
+    if (bodyWidth < 1280) {
+      step = 6;
+
+      if (bodyWidth < 768) {
+        step = 3;
+      }
+    }
+
+    this.pagination = {
+      current: 1,
+      step,
+      pages: Math.ceil(cardsLength / step),
+    };
+
+    this.generateCards(this.pagination.step, this.pagination.pages);
+  }
+
+  generateCards(step, pages) {
     this.petCards = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < pages; i++) {
       const usedNums = [];
       const usedCards = [];
 
-      while (usedCards.length < 8) {
+      while (usedCards.length < step) {
         let cardNum = getRandom();
-        while (usedNums.includes(cardNum) && usedCards.length < 8) {
+        while (usedNums.includes(cardNum) && usedCards.length < step) {
           cardNum = getRandom();
         }
         usedNums.push(cardNum);
@@ -51,15 +75,21 @@ export class Pagination {
   }
 
   renderCards(start) {
-    this.content.innerHTML = '';
-    this.petCards.slice(start, start + 8).forEach((item, idx) => {
-      const pet = new Pet(item);
-      pet.container.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.open(new Pet(item).container);
+    this.content.classList.add('hide');
+
+    setTimeout(() => {
+      this.content.innerHTML = '';
+      this.content.classList.remove('hide');
+
+      this.petCards.slice(start, start + 8).forEach((item, idx) => {
+        const pet = new Pet(item);
+        pet.container.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.open(new Pet(item).container);
+        });
+        this.content.append(pet.container);
       });
-      this.content.append(pet.container);
-    });
+    }, ANIMATION_SPEED);
   }
 
   renderControlBtns() {
@@ -111,16 +141,6 @@ export class Pagination {
         button.removeAttribute('disabled');
       }
     }
-  }
-
-  updateConfig() {
-    const cardsLength = this.petCards.length;
-    const step = 8; // by window width
-    this.pagination = {
-      current: 1,
-      step,
-      pages: Math.ceil(cardsLength / step),
-    };
   }
 
   handlerControlBtns(e) {

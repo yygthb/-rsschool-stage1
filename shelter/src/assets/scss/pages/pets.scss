@@ -120,6 +120,12 @@ body.pets {
       grid-template-columns: repeat(4, 270px);
       justify-content: space-between;
       gap: 30px 40px;
+      opacity: 1;
+      transition: opacity 0.3s ease-out;
+
+      &.hide {
+        opacity: 0;
+      }
 
       @include media(d) {
         grid-template-columns: repeat(2, 270px);
@@ -131,7 +137,7 @@ body.pets {
         }
       }
 
-      @media (max-width: 600px) {
+      @include media(t) {
         grid-template-columns: repeat(1, 270px);
 
         div:nth-child(4),
@@ -154,9 +160,6 @@ body.pets {
 
       @include media(m) {
         gap: 10px;
-      }
-
-      .control__current {
       }
 
       .control__first {

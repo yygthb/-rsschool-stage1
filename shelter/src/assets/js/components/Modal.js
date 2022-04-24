@@ -1,5 +1,5 @@
 import { createElement } from '../utils/createElement';
-import { getScrollWidth } from '../utils/getScrollWidth';
+import { getWidth } from '../utils/getWidth';
 
 const ANIMATION_SPEED = 300;
 
@@ -19,7 +19,7 @@ export class Modal {
   }
 
   open(node) {
-    const scroll = getScrollWidth();
+    const { scrollWidth: scroll } = getWidth();
     const body = document.querySelector('body');
     body.style.marginRight = `${scroll}px`;
     body.classList.add('lock');
