@@ -33,10 +33,6 @@ function createPetCard(pet) {
     tagName: 'ul',
     classNames: 'pet__info',
     child: [
-      createElement({
-        tagName: 'li',
-        child: createInfoItem('age', pet.age),
-      }),
       ...Object.entries(pet.info).map(([key, value]) => {
         return createElement({
           tagName: 'li',
