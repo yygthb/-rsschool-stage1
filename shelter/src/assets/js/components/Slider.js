@@ -132,7 +132,7 @@ export class Slider {
   }
 
   animationendEventHandler() {
-    console.log('animationend');
+    // console.log('animationend');
     this.sliderContainer.classList.remove('swipe-left');
     this.sliderContainer.classList.remove('swipe-right');
     this.controls.forEach((control) => {
@@ -153,7 +153,7 @@ export class Slider {
 
     // generate new random cards
     this.generateCards(this.sliderPrev);
-    console.log('this.nextCardNums: ', this.nextCardNums);
+    console.log('nextCardNums: ', this.nextCardNums);
     this.generateCards(this.sliderNext, this.nextCardNums);
   }
 }
