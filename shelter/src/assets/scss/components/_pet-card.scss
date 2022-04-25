@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 9px;
+  overflow: hidden;
   background-color: $color-light-s;
 
   .pet__img-wrapper {
