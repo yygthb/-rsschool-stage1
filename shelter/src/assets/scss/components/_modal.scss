@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+
+  z-index: -1;
+  opacity: 0;
+  transition: background-color 0.3s ease-out, z-index 0.3s ease-out,
+    opacity 0.3s ease-out;
+
+  &.open {
+    background-color: rgba(#000, 0.3);
+    opacity: 1;
+    z-index: 50;
+  }
+
+  .modal {
+    position: relative;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    cursor: default;
+
+    .modal__container {
+      border-radius: 9px;
+      overflow: hidden;
+    }
+
+    .modal__button-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: url("../img/svg/cross.svg") no-repeat center;
+      transform: translate(43px, -100%);
+
+      @include media(t) {
+        transform: translate(29px, -100%);
+      }
+
+      &:hover {
+        background-color: $color-primary-light;
+      }
+    }
+  }
+}

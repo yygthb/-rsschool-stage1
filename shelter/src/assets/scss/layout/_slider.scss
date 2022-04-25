@@ -1,0 +1,178 @@
+.rs-slider {
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  margin: 0 auto 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include media(d) {
+    justify-content: space-around;
+  }
+
+  @include media(t) {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    width: 290px;
+    margin-bottom: 40px;
+  }
+
+  .slider__wrap {
+    overflow: hidden;
+    width: 1030px;
+    padding: 0 20px;
+
+    @include media(d) {
+      width: 600px;
+      padding: 0 10px;
+    }
+
+    @include media(t) {
+      order: -1;
+      width: 270px;
+      width: 290px;
+    }
+  }
+
+  .slider__container {
+    position: relative;
+    width: max-content;
+    left: -1080px;
+    display: flex;
+    gap: 90px;
+
+    @include media(d) {
+      left: -620px;
+      gap: 40px;
+    }
+
+    @include media(t) {
+      // left: -270px;
+      left: -290px;
+      gap: 20px;
+    }
+
+    .slider__item {
+      display: flex;
+      width: 990px;
+      justify-content: space-between;
+
+      @include media(d) {
+        width: 580px;
+
+        .slider__card:nth-child(3) {
+          display: none;
+        }
+      }
+
+      @include media(t) {
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: center;
+
+        .slider__card:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .slider__control-next {
+    order: 1;
+
+    @include media(t) {
+      margin-left: 80px;
+    }
+  }
+
+  .slider__control {
+    @include media(t) {
+    }
+  }
+}
+
+$as: 0.8s; // animation speed
+
+@keyframes transition-right-desktop {
+  from {
+    left: -1080px;
+  }
+  to {
+    left: -2160px;
+  }
+}
+
+@keyframes transition-right-tablet {
+  from {
+    left: -620px;
+  }
+  to {
+    left: -1240px;
+  }
+}
+
+@keyframes transition-right-mobile {
+  from {
+    left: -290px;
+  }
+  to {
+    left: -580px;
+  }
+}
+
+@keyframes transition-left-desktop {
+  from {
+    left: -1080px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes transition-left-tablet {
+  from {
+    left: -620px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes transition-left-mobile {
+  from {
+    left: -290px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.swipe-right {
+  animation-name: transition-right-desktop;
+  animation-duration: $as;
+
+  @include media(d) {
+    animation-name: transition-right-tablet;
+  }
+
+  @include media(t) {
+    animation-name: transition-right-mobile;
+  }
+}
+
+.swipe-left {
+  animation-name: transition-left-desktop;
+  animation-duration: $as;
+
+  @include media(d) {
+    animation-name: transition-left-tablet;
+  }
+
+  @include media(t) {
+    animation-name: transition-left-mobile;
+  }
+}
