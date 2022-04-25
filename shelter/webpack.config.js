@@ -77,6 +77,13 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.svg/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/img/svg/[name][ext]',
+        },
+      },
     ],
   },
 };
