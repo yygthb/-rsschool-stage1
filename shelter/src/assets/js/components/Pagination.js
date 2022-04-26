@@ -3,7 +3,7 @@ import controlButtons from '../layout/button-pagination';
 import { createElement } from '../utils/createElement';
 import { Modal } from './Modal';
 import { Pet } from './Pet';
-import { getRandom } from '../utils/getRandom';
+import { generateRandomNum, shakeArray } from '../utils/random';
 import { getWidth } from '../utils/getWidth';
 
 const ANIMATION_SPEED = 300;
@@ -30,6 +30,9 @@ export class Pagination {
 
     this.container.append(this.content);
     this.container.append(this.control);
+
+    this.showResult();
+
     return this;
   }
 
@@ -52,26 +55,22 @@ export class Pagination {
       pages: Math.ceil(cardsLength / step),
     };
 
-    this.generateCards(this.pagination.step, this.pagination.pages);
+    this.generateCards(this.pagination.step);
   }
 
-  generateCards(step, pages) {
-    this.petCards = [];
-    for (let i = 0; i < pages; i++) {
-      const usedNums = [];
-      const usedCards = [];
+  generateCards(step) {
+    const ids = pets.map((pet) => pet.id);
+    const arrayOfIds = [].concat.apply([], Array(6).fill(ids)); // 48
 
-      while (usedCards.length < step) {
-        let cardNum = getRandom();
-        while (usedNums.includes(cardNum) && usedCards.length < step) {
-          cardNum = getRandom();
-        }
-        usedNums.push(cardNum);
-        usedCards.push(pets[cardNum]);
-      }
+    const arr = [];
+    for (let i = 0; i < Math.ceil(arrayOfIds.length / step); i++) {
+      const sub = arrayOfIds.slice(i * step, (i + 1) * step);
 
-      this.petCards = [...this.petCards, ...usedCards];
+      arr.push(shakeArray(sub));
     }
+
+    const shakedArray = shakeArray(arr);
+    this.petCards = [].concat.apply([], shakedArray).map((item) => pets[item]);
   }
 
   renderCards(start) {
@@ -177,5 +176,28 @@ export class Pagination {
     this.current.textContent = this.pagination.current;
     this.renderCards((this.pagination.current - 1) * this.pagination.step);
     this.updateControlBtnStyles();
+  }
+
+  showResult() {
+    console.group('randomizer function result:');
+    const res = {};
+
+    const step = this.pagination.step;
+    for (let i = 0; i < 48 / step; i++) {
+      const sub = this.petCards.slice(i * step, (i + 1) * step);
+      console.log(`page ${i + 1}:`, sub);
+    }
+
+    console.log('');
+    console.log('________________________');
+    this.petCards.forEach((petCard) => {
+      if (!res[petCard.name]) {
+        res[petCard.name] = 1;
+      } else {
+        res[petCard.name]++;
+      }
+    });
+
+    console.log('used cards: ', res);
   }
 }

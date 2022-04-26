@@ -1,5 +1,6 @@
 export default [
   {
+    id: 0,
     name: 'Jennifer',
     img: './assets/img/pets/jennifer.png',
     type: 'Dog',
@@ -14,6 +15,7 @@ export default [
     },
   },
   {
+    id: 1,
     name: 'Sophia',
     img: './assets/img/pets/sophia.png',
     type: 'Dog',
@@ -28,6 +30,7 @@ export default [
     },
   },
   {
+    id: 2,
     name: 'Woody',
     img: './assets/img/pets/woody.png',
     type: 'Dog',
@@ -42,6 +45,7 @@ export default [
     },
   },
   {
+    id: 3,
     name: 'Scarlett',
     img: './assets/img/pets/scarlett.png',
     type: 'Dog',
@@ -56,6 +60,7 @@ export default [
     },
   },
   {
+    id: 4,
     name: 'Katrine',
     img: './assets/img/pets/katrine.png',
     type: 'Cat',
@@ -70,6 +75,7 @@ export default [
     },
   },
   {
+    id: 5,
     name: 'Timmy',
     img: './assets/img/pets/timmy.png',
     type: 'Cat',
@@ -84,6 +90,7 @@ export default [
     },
   },
   {
+    id: 6,
     name: 'Freddie',
     img: './assets/img/pets/freddie.png',
     type: 'Cat',
@@ -98,6 +105,7 @@ export default [
     },
   },
   {
+    id: 7,
     name: 'Charly',
     img: './assets/img/pets/charly.png',
     type: 'Dog',

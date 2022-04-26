@@ -71,6 +71,7 @@ function createInfoItem(key, value) {
 
 export class Pet {
   constructor(pet) {
+    this.id = pet.id;
     this.name = pet.name;
     this.img = pet.img;
     this.type = pet.type;

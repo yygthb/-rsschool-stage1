@@ -1,7 +1,7 @@
 import pets from '../layout/pets';
 import controlButtons from '../layout/button-slider';
 import { createElement } from '../utils/createElement';
-import { getRandom } from '../utils/getRandom';
+import { generateRandomNum } from '../utils/random';
 import { Pet } from './Pet';
 import { Modal } from './Modal';
 
@@ -83,12 +83,12 @@ export class Slider {
     if (!arr || !(Array.isArray(arr) && arr.length)) {
       for (let i = 0; i < 3; i++) {
         while (this.currentCardNums.length < 3) {
-          let petNum = getRandom();
+          let petNum = generateRandomNum();
           while (
             this.currentCardNums.includes(petNum) ||
             reservedCards.includes(petNum)
           ) {
-            petNum = getRandom();
+            petNum = generateRandomNum();
           }
           this.currentCardNums.push(petNum);
           reservedCards.push(petNum);
