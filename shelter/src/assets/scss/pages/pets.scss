@@ -67,6 +67,12 @@ body.pets {
       }
     }
 
+    .nav-container {
+      @include media(t) {
+        background-color: $color-light-xl;
+      }
+    }
+
     .nav-list {
       .nav-item {
         .nav-link {
