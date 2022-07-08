@@ -16,27 +16,33 @@
     }
   }
 
-  &__main-content {
+  &__content {
     flex: 1;
-    display: flex;
 
-    @include media(d) {
-      flex-direction: column-reverse;
-    }
-
-    .main {
-      flex: 1;
-
-      background-color: rgba(145, 78, 78, 0.548);
-    }
-  
-    .aside {
-      width: 300px;
+    .store {
+      display: flex;
+      flex-direction: row;
 
       @include media(d) {
-        width: 100%;
+        flex-direction: column;
       }
-      background-color: rgba(144, 179, 76, 0.493);
+
+      &__content {
+        flex: 1;
+
+        background-color: rgba(145, 78, 78, 0.548);
+      }
+
+      &__filter {
+        width: 300px;
+        order: 1;
+
+        @include media(d) {
+          width: 100%;
+          order: -1;
+        }
+        background-color: rgba(144, 179, 76, 0.493);
+      }
     }
   }
 
