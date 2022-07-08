@@ -1,3 +1,3 @@
 import './assets/scss/main.scss';
 
-import './assets/scripts/index';
+import './assets/scripts/app';
