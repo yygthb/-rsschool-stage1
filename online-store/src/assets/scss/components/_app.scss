@@ -1,0 +1,81 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    margin-bottom: 20px;
+    background-color: rgba(173, 216, 230, 0.445);
+
+    .app__title {
+      margin: 10px 0;
+
+      @include media(t) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &__main-content {
+    flex: 1;
+    display: flex;
+
+    @include media(d) {
+      flex-direction: column-reverse;
+    }
+
+    .main {
+      flex: 1;
+
+      background-color: rgba(145, 78, 78, 0.548);
+    }
+  
+    .aside {
+      width: 300px;
+
+      @include media(d) {
+        width: 100%;
+      }
+      background-color: rgba(144, 179, 76, 0.493);
+    }
+  }
+
+  .footer {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+
+    .footer__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      gap: 20px;
+
+      @include media(t) {
+        flex-direction: column;
+      }
+
+      .course-link {
+        .school-logo {
+          display: block;
+          width: 100px;
+        }
+
+        @include media(t) {
+          order: 1;
+        }
+      }
+
+      .info {
+        &__link {
+          color: #666;
+
+          &:hover {
+            color: #444;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
