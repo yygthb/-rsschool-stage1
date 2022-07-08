@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -26,6 +27,14 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: isProd ? 'styles.[contenthash].css' : 'styles.css',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, './src/assets/img'),
+          to: path.resolve(__dirname, './dist/assets/img'),
+        },
+      ],
     }),
   ],
   module: {
