@@ -1,0 +1,17 @@
+.card__item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .item__model {
+    margin-bottom: 7px;
+  }
+
+  .item__price::after {
+    content: ' $'
+  }
+}

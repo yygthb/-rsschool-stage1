@@ -22,6 +22,7 @@
     .store {
       display: flex;
       flex-direction: row;
+      gap: 20px;
 
       @include media(d) {
         flex-direction: column;
@@ -29,8 +30,6 @@
 
       &__content {
         flex: 1;
-
-        background-color: rgba(145, 78, 78, 0.548);
       }
 
       &__filter {
