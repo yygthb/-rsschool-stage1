@@ -2,14 +2,17 @@ import { NodeElement, INodeElement } from '../utils/nodeElement';
 import { IStoreCard, StoreCard } from './card';
 
 export class StoreContent extends NodeElement {
+  state: Array<IStoreCard>;
+
   constructor(props: INodeElement, storeData: Array<IStoreCard>) {
     super(props);
+    this.state = storeData;
 
-    this.render(storeData);
+    this.render();
   }
 
-  render(data: Array<IStoreCard>) {
-    data.forEach((cardItem) => {
+  render() {
+    this.state.forEach((cardItem) => {
       new StoreCard(
         {
           parentNode: this.node,

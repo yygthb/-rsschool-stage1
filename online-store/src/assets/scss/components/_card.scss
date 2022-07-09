@@ -1,7 +1,7 @@
 .card__item {
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: $box-border-radius;
 
   &:not(:last-child) {
     margin-bottom: 10px;

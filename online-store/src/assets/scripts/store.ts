@@ -12,7 +12,6 @@ export class Store extends NodeElement {
 
     this.storeFilter = new StoreFilter({
       parentNode: this.node,
-      content: 'Filter',
       classNames: 'aside store__filter',
     });
 

@@ -3,7 +3,10 @@ export interface INodeElement {
   tagName?: string;
   classNames?: string;
   content?: string;
+  attributes?: Array<AttrType>;
 }
+
+type AttrType = [string, string];
 
 export class NodeElement {
   public node: HTMLElement;
@@ -13,6 +16,7 @@ export class NodeElement {
     tagName = 'div',
     content = '',
     classNames = '',
+    attributes = [],
   }: INodeElement) {
     const el = document.createElement(tagName);
 
@@ -22,6 +26,16 @@ export class NodeElement {
 
     if (parentNode) {
       parentNode.append(el);
+    }
+
+    if (attributes.length) {
+      attributes.forEach(([attrName, attrValue]) => {
+        if (attrName.match(/data-/)) {
+          el.dataset[attrName.slice(5)] = attrValue;
+        } else {
+          el.setAttribute(attrName, attrValue);
+        }
+      });
     }
 
     el.innerHTML = content;
