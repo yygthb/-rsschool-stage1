@@ -1,26 +1,22 @@
+import { IFilterCb } from '../store';
 import { NodeElement, INodeElement } from '../utils/nodeElement';
 import { Select } from './filter/select';
 
-export type SelectorCb = (value: string) => void;
-
-const selectChanged = (value: string): void =>
-  console.log('sort selector changed to ', value);
-
 export class StoreFilter extends NodeElement {
-  constructor(props: INodeElement) {
+  constructor(props: INodeElement, filterCb: IFilterCb) {
     super(props);
 
-    this.init();
+    this.init(filterCb);
   }
 
-  private init() {
+  private init(filterCb: IFilterCb) {
     new Select(
       {
         parentNode: this.node,
         tagName: 'select',
         classNames: 'filter__select',
       },
-      selectChanged
+      filterCb
     );
   }
 }

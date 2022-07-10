@@ -1,45 +1,56 @@
+import { IFilterCb } from '../../store';
 import { INodeElement, NodeElement } from '../../utils/nodeElement';
-import { SelectorCb } from '../filter';
 
-enum SortOption {
+export enum FilterTitle {
+  sort = 'sort',
+}
+
+export enum SortValue {
   titleUp = 'title-up',
   titleDown = 'title-down',
   priceUp = 'price-up',
-  priceDown = 'price-up',
+  priceDown = 'price-down',
+}
+
+enum SortContent {
+  titleUp = 'By title (A-Z)',
+  titleDown = 'By title (Z-A)',
+  priceUp = 'By price (🡥)',
+  priceDown = 'By price (🡦)',
 }
 
 type SelectOptionType = {
-  value: SortOption;
+  value: SortValue;
   content: string;
 };
 
 const sortOptions: SelectOptionType[] = [
   {
-    value: SortOption.titleUp,
-    content: 'By title (A-Z)',
+    value: SortValue.titleUp,
+    content: SortContent.titleUp,
   },
   {
-    value: SortOption.titleDown,
-    content: 'By title (Z-A)',
+    value: SortValue.titleDown,
+    content: SortContent.titleDown,
   },
   {
-    value: SortOption.priceUp,
-    content: 'By price (🡥)',
+    value: SortValue.priceUp,
+    content: SortContent.priceUp,
   },
   {
-    value: SortOption.priceDown,
-    content: 'By price (🡦)',
+    value: SortValue.priceDown,
+    content: SortContent.priceDown,
   },
 ];
 
 export class Select extends NodeElement {
-  constructor(props: INodeElement, cb: SelectorCb) {
+  constructor(props: INodeElement, cb: IFilterCb) {
     super({ ...props, classNames: `select ${props.classNames || null}` });
 
     this.init(cb);
   }
 
-  init(cb: SelectorCb) {
+  init(cb: IFilterCb) {
     sortOptions.forEach((option) => {
       new NodeElement({
         parentNode: this.node,
@@ -51,7 +62,9 @@ export class Select extends NodeElement {
 
     const n = this.node as HTMLSelectElement;
     n.onchange = () => {
-      cb(n.options[n.selectedIndex].value);
+      cb({
+        [FilterTitle.sort]: n.options[n.selectedIndex].value,
+      });
     };
   }
 }
