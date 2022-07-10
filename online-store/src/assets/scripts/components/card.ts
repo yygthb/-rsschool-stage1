@@ -1,4 +1,4 @@
-import { INodeElement, NodeElement } from '../utils/nodeElement';
+import { INodeProps, NodeElement } from '../utils/nodeElement';
 
 export interface IStoreCard {
   id: string;
@@ -21,8 +21,8 @@ export class StoreCard extends NodeElement {
     return this._id;
   }
 
-  constructor(props: INodeElement, data: IStoreCard) {
-    super(props);
+  constructor(nodeProps: INodeProps, data: IStoreCard) {
+    super(nodeProps);
 
     this.render(data);
   }

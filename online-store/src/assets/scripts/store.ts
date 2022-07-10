@@ -2,21 +2,15 @@ import { IStoreCard } from './components/card';
 import { StoreContent } from './components/content';
 import { StoreFilter } from './components/filter';
 import { FilterTitle, SortValue } from './components/filter/select';
-import { NodeElement, INodeElement } from './utils/nodeElement';
+import { NodeElement, INodeProps } from './utils/nodeElement';
 
-export type FilterCbProp = {
-  title: string;
-  value: string;
-};
-// export type FilterProps = { [key in FilterTitle | string]: SortValue | string };
 export interface FilterProps {
-  [FilterTitle.sort]: SortValue;
+  [FilterTitle.Sort]: SortValue;
+  // [key: string]: string;
 }
-export type IFilterCb = (prop: any) => void;
-// export type FilterProps = { [key: string]: string };
 
 const defaultFilterProps: FilterProps = {
-  [FilterTitle.sort]: SortValue.titleUp,
+  [FilterTitle.Sort]: SortValue.TitleUp,
 };
 
 export class Store extends NodeElement {
@@ -24,31 +18,28 @@ export class Store extends NodeElement {
   public storeFilter: StoreFilter;
   private filterProps: FilterProps = { ...defaultFilterProps };
 
-  constructor(props: INodeElement, storeData: Array<IStoreCard>) {
-    super(props);
+  constructor(nodeProps: INodeProps, storeData: Array<IStoreCard>) {
+    super(nodeProps);
 
-    this.storeFilter = new StoreFilter(
-      {
-        parentNode: this.node,
-        classNames: 'aside store__filter',
-      },
-      this.filter
-    );
+    this.storeFilter = new StoreFilter({
+      parentNode: this.node,
+      classNames: 'aside store__filter',
+    });
+    this.storeFilter.init(this.sort);
 
     this.storeContent = new StoreContent(
       {
         parentNode: this.node,
         classNames: 'main store__content',
       },
-      storeData,
-      this.filterProps
+      storeData
     );
+
+    this.storeContent.init(defaultFilterProps[FilterTitle.Sort]);
   }
 
-  filter = (props: FilterProps): void => {
-    console.log('filter: ', props);
-
-    this.filterProps = props;
-    this.storeContent.updateState(this.filterProps);
+  private sort = (selectValue: SortValue): void => {
+    this.filterProps[FilterTitle.Sort] = selectValue;
+    this.storeContent.sort(this.filterProps[FilterTitle.Sort]);
   };
 }

@@ -1,22 +1,20 @@
-import { IFilterCb } from '../store';
-import { NodeElement, INodeElement } from '../utils/nodeElement';
-import { Select } from './filter/select';
+import { NodeElement, INodeProps } from '../utils/nodeElement';
+import { ISelectCb, Select } from './filter/select';
 
 export class StoreFilter extends NodeElement {
-  constructor(props: INodeElement, filterCb: IFilterCb) {
-    super(props);
+  private select: Select;
 
-    this.init(filterCb);
+  constructor(nodeProps: INodeProps) {
+    super(nodeProps);
+
+    this.select = new Select({
+      parentNode: this.node,
+      tagName: 'select',
+      classNames: 'filter__select',
+    });
   }
 
-  private init(filterCb: IFilterCb) {
-    new Select(
-      {
-        parentNode: this.node,
-        tagName: 'select',
-        classNames: 'filter__select',
-      },
-      filterCb
-    );
+  init(sortCb: ISelectCb) {
+    this.select.init(sortCb);
   }
 }

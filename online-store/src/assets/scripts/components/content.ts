@@ -1,25 +1,23 @@
-import { FilterProps } from '../store';
-import { NodeElement, INodeElement } from '../utils/nodeElement';
+import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IStoreCard, StoreCard } from './card';
-import { FilterTitle, SortValue } from './filter/select';
+import { SortValue } from './filter/select';
 
 export class StoreContent extends NodeElement {
   private baseState: Array<IStoreCard> = [];
   private state: Array<IStoreCard>;
 
-  constructor(
-    props: INodeElement,
-    storeData: Array<IStoreCard>,
-    filterProps: FilterProps
-  ) {
-    super(props);
+  constructor(nodeProps: INodeProps, storeData: Array<IStoreCard>) {
+    super(nodeProps);
     this.baseState = storeData;
     this.state = storeData;
-
-    this.updateState(filterProps);
   }
 
-  render() {
+  // init(sortProp: SortValue) {
+  init(sortProp: string) {
+    this.sort(sortProp);
+  }
+
+  private render() {
     this.state.forEach((cardItem) => {
       new StoreCard(
         {
@@ -31,23 +29,17 @@ export class StoreContent extends NodeElement {
     });
   }
 
-  updateState(filterProps: FilterProps) {
+  private clear() {
     this.node.innerHTML = '';
-
-    console.log('filterProps: ', filterProps);
-    for (const k in filterProps) {
-      console.log('key: ', k);
-      if (k === FilterTitle.sort) {
-        this.sort(filterProps[k]);
-      }
-    }
-    this.render();
   }
 
-  private sort(sortProp: unknown): void {
+  // sort(sortProp: SortValue): void {
+  sort(sortProp: string): void {
+    this.clear();
+
     switch (sortProp) {
-      case SortValue.titleUp:
-        this.state = this.baseState.sort((a, b) => {
+      case SortValue.TitleUp:
+        this.state.sort((a, b) => {
           if (a.model.toLowerCase() > b.model.toLowerCase()) {
             return 1;
           } else {
@@ -55,8 +47,8 @@ export class StoreContent extends NodeElement {
           }
         });
         break;
-      case SortValue.titleDown:
-        this.state = this.baseState.sort((a, b) => {
+      case SortValue.TitleDown:
+        this.state.sort((a, b) => {
           if (a.model.toLowerCase() > b.model.toLowerCase()) {
             return -1;
           } else {
@@ -64,14 +56,16 @@ export class StoreContent extends NodeElement {
           }
         });
         break;
-      case SortValue.priceUp:
-        this.state = this.baseState.sort((a, b) => +a.price - +b.price);
+      case SortValue.PriceUp:
+        this.state.sort((a, b) => +a.price - +b.price);
         break;
-      case SortValue.priceDown:
-        this.state = this.baseState.sort((a, b) => +b.price - +a.price);
+      case SortValue.PriceDown:
+        this.state.sort((a, b) => +b.price - +a.price);
         break;
       default:
         break;
     }
+
+    this.render();
   }
 }

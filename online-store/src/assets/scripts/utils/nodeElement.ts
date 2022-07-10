@@ -1,4 +1,4 @@
-export interface INodeElement {
+export interface INodeProps {
   parentNode?: HTMLElement | null;
   tagName?: string;
   classNames?: string;
@@ -17,7 +17,7 @@ export class NodeElement {
     content = '',
     classNames = '',
     attributes = [],
-  }: INodeElement) {
+  }: INodeProps) {
     const el = document.createElement(tagName);
 
     if (classNames) {

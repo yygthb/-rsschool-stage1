@@ -1,22 +1,21 @@
-import { IFilterCb } from '../../store';
-import { INodeElement, NodeElement } from '../../utils/nodeElement';
+import { INodeProps, NodeElement } from '../../utils/nodeElement';
 
 export enum FilterTitle {
-  sort = 'sort',
+  Sort = 'sort',
 }
 
 export enum SortValue {
-  titleUp = 'title-up',
-  titleDown = 'title-down',
-  priceUp = 'price-up',
-  priceDown = 'price-down',
+  TitleUp = 'title-up',
+  TitleDown = 'title-down',
+  PriceUp = 'price-up',
+  PriceDown = 'price-down',
 }
 
 enum SortContent {
-  titleUp = 'By title (A-Z)',
-  titleDown = 'By title (Z-A)',
-  priceUp = 'By price (🡥)',
-  priceDown = 'By price (🡦)',
+  TitleUp = 'By title (A-Z)',
+  TitleDown = 'By title (Z-A)',
+  PriceUp = 'By price (🡥)',
+  PriceDown = 'By price (🡦)',
 }
 
 type SelectOptionType = {
@@ -26,31 +25,34 @@ type SelectOptionType = {
 
 const sortOptions: SelectOptionType[] = [
   {
-    value: SortValue.titleUp,
-    content: SortContent.titleUp,
+    value: SortValue.TitleUp,
+    content: SortContent.TitleUp,
   },
   {
-    value: SortValue.titleDown,
-    content: SortContent.titleDown,
+    value: SortValue.TitleDown,
+    content: SortContent.TitleDown,
   },
   {
-    value: SortValue.priceUp,
-    content: SortContent.priceUp,
+    value: SortValue.PriceUp,
+    content: SortContent.PriceUp,
   },
   {
-    value: SortValue.priceDown,
-    content: SortContent.priceDown,
+    value: SortValue.PriceDown,
+    content: SortContent.PriceDown,
   },
 ];
 
-export class Select extends NodeElement {
-  constructor(props: INodeElement, cb: IFilterCb) {
-    super({ ...props, classNames: `select ${props.classNames || null}` });
+export type ISelectCb = (selectValue: SortValue) => void;
 
-    this.init(cb);
+export class Select extends NodeElement {
+  constructor(nodeProps: INodeProps) {
+    super({
+      ...nodeProps,
+      classNames: `select ${nodeProps.classNames || null}`,
+    });
   }
 
-  init(cb: IFilterCb) {
+  init(cb: ISelectCb) {
     sortOptions.forEach((option) => {
       new NodeElement({
         parentNode: this.node,
@@ -62,9 +64,7 @@ export class Select extends NodeElement {
 
     const n = this.node as HTMLSelectElement;
     n.onchange = () => {
-      cb({
-        [FilterTitle.sort]: n.options[n.selectedIndex].value,
-      });
+      cb(n.options[n.selectedIndex].value as SortValue);
     };
   }
 }
