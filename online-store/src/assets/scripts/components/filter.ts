@@ -1,8 +1,10 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
+import { IInputCb, Input } from './filter/input';
 import { ISelectCb, Select } from './filter/select';
 
 export class StoreFilter extends NodeElement {
   private select: Select;
+  private input: Input;
 
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
@@ -12,9 +14,17 @@ export class StoreFilter extends NodeElement {
       tagName: 'select',
       classNames: 'filter__select',
     });
+
+    this.input = new Input({
+      parentNode: this.node,
+      tagName: 'input',
+      classNames: 'filter__input',
+      attributes: [['placeholder', 'Find by model']],
+    });
   }
 
-  init(sortCb: ISelectCb) {
+  init(sortCb: ISelectCb, inputCb: IInputCb) {
     this.select.init(sortCb);
+    this.input.init(inputCb);
   }
 }

@@ -1,16 +1,32 @@
 import { IStoreCard } from './components/card';
 import { StoreContent } from './components/content';
 import { StoreFilter } from './components/filter';
-import { FilterTitle, SortValue } from './components/filter/select';
+import { SortValue } from './components/filter/select';
 import { NodeElement, INodeProps } from './utils/nodeElement';
 
+export enum FilterMethod {
+  Sort = 'sort',
+  Filter = 'filter',
+}
+
+export enum FilterConfigTitle {
+  Title = 'title',
+}
+
+export interface IFilterConfig {
+  [FilterConfigTitle.Title]: string;
+}
+
 export interface FilterProps {
-  [FilterTitle.Sort]: SortValue;
-  // [key: string]: string;
+  [FilterMethod.Sort]: SortValue;
+  [FilterMethod.Filter]: IFilterConfig;
 }
 
 const defaultFilterProps: FilterProps = {
-  [FilterTitle.Sort]: SortValue.TitleUp,
+  [FilterMethod.Sort]: SortValue.TitleUp,
+  [FilterMethod.Filter]: {
+    [FilterConfigTitle.Title]: '',
+  },
 };
 
 export class Store extends NodeElement {
@@ -25,7 +41,7 @@ export class Store extends NodeElement {
       parentNode: this.node,
       classNames: 'aside store__filter',
     });
-    this.storeFilter.init(this.sort);
+    this.storeFilter.init(this.sort, this.filter);
 
     this.storeContent = new StoreContent(
       {
@@ -35,11 +51,17 @@ export class Store extends NodeElement {
       storeData
     );
 
-    this.storeContent.init(defaultFilterProps[FilterTitle.Sort]);
+    this.storeContent.init(defaultFilterProps[FilterMethod.Sort]);
   }
 
   private sort = (selectValue: SortValue): void => {
-    this.filterProps[FilterTitle.Sort] = selectValue;
-    this.storeContent.sort(this.filterProps[FilterTitle.Sort]);
+    this.filterProps[FilterMethod.Sort] = selectValue;
+    this.storeContent.sort(selectValue);
+  };
+
+  private filter = (value: string): void => {
+    this.filterProps[FilterMethod.Filter][FilterConfigTitle.Title] = value;
+    this.storeContent.filterByInput(value);
+    this.storeContent.sort(this.filterProps[FilterMethod.Sort]);
   };
 }

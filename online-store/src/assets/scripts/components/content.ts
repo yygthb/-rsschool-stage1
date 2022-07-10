@@ -68,4 +68,10 @@ export class StoreContent extends NodeElement {
 
     this.render();
   }
+
+  filterByInput(value: string): void {
+    this.state = this.baseState.filter((item) =>
+      item.model.match(new RegExp(value.trim(), 'i'))
+    );
+  }
 }

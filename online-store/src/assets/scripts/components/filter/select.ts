@@ -1,9 +1,5 @@
 import { INodeProps, NodeElement } from '../../utils/nodeElement';
 
-export enum FilterTitle {
-  Sort = 'sort',
-}
-
 export enum SortValue {
   TitleUp = 'title-up',
   TitleDown = 'title-down',
@@ -62,9 +58,9 @@ export class Select extends NodeElement {
       });
     });
 
-    const n = this.node as HTMLSelectElement;
-    n.onchange = () => {
-      cb(n.options[n.selectedIndex].value as SortValue);
+    const select = this.node as HTMLSelectElement;
+    select.onchange = () => {
+      cb(select.options[select.selectedIndex].value as SortValue);
     };
   }
 }
