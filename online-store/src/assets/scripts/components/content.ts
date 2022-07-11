@@ -1,3 +1,4 @@
+import { IFilterConfig } from '../controller/store';
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IStoreCard, StoreCard } from './card';
 import { SortValue } from './filterElements/select';
@@ -12,9 +13,9 @@ export class StoreContent extends NodeElement {
     this.state = storeData;
   }
 
-  // init(sortProp: SortValue) {
-  init(sortProp: string) {
+  init(sortProp: string, filterProp: IFilterConfig) {
     this.sort(sortProp);
+    this.filter(filterProp);
   }
 
   private render() {
@@ -33,7 +34,6 @@ export class StoreContent extends NodeElement {
     this.node.innerHTML = '';
   }
 
-  // sort(sortProp: SortValue): void {
   sort(sortProp: string): void {
     this.clear();
 
@@ -69,9 +69,17 @@ export class StoreContent extends NodeElement {
     this.render();
   }
 
-  filterByInput(value: string): void {
-    this.state = this.baseState.filter((item) =>
-      item.model.match(new RegExp(value.trim(), 'i'))
-    );
+  filter({ title, price: [min, max] }: IFilterConfig): void {
+    this.state = [...this.baseState];
+
+    this.state = this.state.filter((item) => {
+      if (
+        item.model.match(new RegExp(title.trim(), 'i')) &&
+        +item.price > +min &&
+        +item.price < +max
+      ) {
+        return item;
+      }
+    });
   }
 }

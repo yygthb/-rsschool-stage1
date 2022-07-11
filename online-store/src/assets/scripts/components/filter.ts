@@ -1,7 +1,7 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IInputCb, Input } from './filterElements/input';
 import { ISelectCb, Select } from './filterElements/select';
-import { Slider } from './filterElements/slider';
+import { ISliderCb, Slider } from './filterElements/slider';
 
 export class StoreFilter extends NodeElement {
   private select: Select;
@@ -29,9 +29,9 @@ export class StoreFilter extends NodeElement {
     });
   }
 
-  init(sortCb: ISelectCb, inputCb: IInputCb) {
+  init(sortCb: ISelectCb, sliderCb: ISliderCb, inputCb: IInputCb) {
     this.select.init(sortCb);
     this.input.init(inputCb);
-    this.slider.init();
+    this.slider.init(sliderCb);
   }
 }

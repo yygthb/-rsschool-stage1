@@ -11,28 +11,31 @@ export enum FilterMethod {
 
 export enum FilterConfigTitle {
   Title = 'title',
+  Price = 'price',
 }
 
 export interface IFilterConfig {
   [FilterConfigTitle.Title]: string;
+  [FilterConfigTitle.Price]: [number, number];
 }
 
-export interface FilterProps {
+export interface IFilterProps {
   [FilterMethod.Sort]: SortValue;
   [FilterMethod.Filter]: IFilterConfig;
 }
 
-const defaultFilterProps: FilterProps = {
+const defaultFilterProps: IFilterProps = {
   [FilterMethod.Sort]: SortValue.TitleUp,
   [FilterMethod.Filter]: {
     [FilterConfigTitle.Title]: '',
+    [FilterConfigTitle.Price]: [0, 10000],
   },
 };
 
 export class Store extends NodeElement {
   public storeContent: StoreContent;
   public storeFilter: StoreFilter;
-  private filterProps: FilterProps = { ...defaultFilterProps };
+  private filterProps: IFilterProps = { ...defaultFilterProps };
 
   constructor(nodeProps: INodeProps, storeData: Array<IStoreCard>) {
     super(nodeProps);
@@ -41,7 +44,7 @@ export class Store extends NodeElement {
       parentNode: this.node,
       classNames: 'store__filter',
     });
-    this.storeFilter.init(this.sort, this.filter);
+    this.storeFilter.init(this.sort, this.filterByPrice, this.filterByTitle);
 
     this.storeContent = new StoreContent(
       {
@@ -51,7 +54,10 @@ export class Store extends NodeElement {
       storeData
     );
 
-    this.storeContent.init(defaultFilterProps[FilterMethod.Sort]);
+    this.storeContent.init(
+      defaultFilterProps[FilterMethod.Sort],
+      defaultFilterProps[FilterMethod.Filter]
+    );
   }
 
   private sort = (selectValue: SortValue): void => {
@@ -59,9 +65,18 @@ export class Store extends NodeElement {
     this.storeContent.sort(selectValue);
   };
 
-  private filter = (value: string): void => {
+  private filterByTitle = (value: string): void => {
     this.filterProps[FilterMethod.Filter][FilterConfigTitle.Title] = value;
-    this.storeContent.filterByInput(value);
-    this.storeContent.sort(this.filterProps[FilterMethod.Sort]);
+    this.updateContent();
   };
+
+  private filterByPrice = ([min, max]: [number, number]): void => {
+    this.filterProps[FilterMethod.Filter][FilterConfigTitle.Price] = [min, max];
+    this.updateContent();
+  };
+
+  private updateContent() {
+    this.storeContent.filter(this.filterProps[FilterMethod.Filter]);
+    this.storeContent.sort(this.filterProps[FilterMethod.Sort]);
+  }
 }

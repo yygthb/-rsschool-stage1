@@ -3,20 +3,20 @@ import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
 import { Input } from './input';
 
-export type ISliderCb = (value: string) => void;
+export type ISliderCb = (value: [number, number]) => void;
 
 export class Slider extends NodeElement {
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
   }
 
-  init() {
+  init(cb: ISliderCb) {
     const slider = this.node as noUiSlider.target;
 
     noUiSlider.create(slider, {
       start: [0, 10000],
       connect: true,
-      step: 100,
+      step: 1000,
       range: {
         min: 0,
         max: 10000,
@@ -44,10 +44,11 @@ export class Slider extends NodeElement {
 
     if (slider.noUiSlider) {
       slider.noUiSlider.on(
-        'update',
+        'change',
         function ([valueMin, valueMax]: (string | number)[]) {
           inputMin.value = valueMin.toString();
           inputMax.value = valueMax.toString();
+          cb([+valueMin, +valueMax]);
         }
       );
     }
