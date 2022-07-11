@@ -1,6 +1,6 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IStoreCard, StoreCard } from './card';
-import { SortValue } from './filter/select';
+import { SortValue } from './filterElements/select';
 
 export class StoreContent extends NodeElement {
   private baseState: Array<IStoreCard> = [];

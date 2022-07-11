@@ -1,6 +1,6 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
-import { IInputCb, Input } from './filter/input';
-import { ISelectCb, Select } from './filter/select';
+import { IInputCb, Input } from './filterElements/input';
+import { ISelectCb, Select } from './filterElements/select';
 
 export class StoreFilter extends NodeElement {
   private select: Select;

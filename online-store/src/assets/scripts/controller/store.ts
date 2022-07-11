@@ -1,8 +1,8 @@
-import { IStoreCard } from './components/card';
-import { StoreContent } from './components/content';
-import { StoreFilter } from './components/filter';
-import { SortValue } from './components/filter/select';
-import { NodeElement, INodeProps } from './utils/nodeElement';
+import { IStoreCard } from '../components/card';
+import { StoreContent } from '../components/content';
+import { StoreFilter } from '../components/filter';
+import { SortValue } from '../components/filterElements/select';
+import { NodeElement, INodeProps } from '../utils/nodeElement';
 
 export enum FilterMethod {
   Sort = 'sort',
@@ -39,14 +39,14 @@ export class Store extends NodeElement {
 
     this.storeFilter = new StoreFilter({
       parentNode: this.node,
-      classNames: 'aside store__filter',
+      classNames: 'store__filter',
     });
     this.storeFilter.init(this.sort, this.filter);
 
     this.storeContent = new StoreContent(
       {
         parentNode: this.node,
-        classNames: 'main store__content',
+        classNames: 'store__content',
       },
       storeData
     );

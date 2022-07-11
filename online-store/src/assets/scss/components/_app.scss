@@ -16,35 +16,8 @@
     }
   }
 
-  &__content {
+  .main {
     flex: 1;
-
-    .store {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-
-      @include media(d) {
-        flex-direction: column;
-      }
-
-      &__content {
-        flex: 1;
-      }
-
-      &__filter {
-        width: 300px;
-        min-height: 600px;
-        order: 1;
-        border-radius: $box-border-radius;
-
-        @include media(d) {
-          width: 100%;
-          order: -1;
-        }
-        background-color: rgba(144, 179, 76, 0.493);
-      }
-    }
   }
 
   .footer {

@@ -1,13 +1,30 @@
-import { Store } from './store';
-import state from './state/state.json';
+import { Footer } from './components/footer';
+import { Header } from './components/header';
+import { Main } from './components/main';
+import { INodeProps, NodeElement } from './utils/nodeElement';
 
-const storeContainer = document.querySelector('#store') as HTMLElement;
-if (storeContainer) {
-  new Store(
-    {
-      parentNode: storeContainer,
-      classNames: 'store',
-    },
-    state.notebooks
-  );
+class App extends NodeElement {
+  constructor(nodeProps: INodeProps) {
+    super(nodeProps);
+  }
+}
+
+const body = document.querySelector('body');
+if (body) {
+  const app = new App({
+    parentNode: body,
+    classNames: 'app',
+  });
+
+  new Header({
+    parentNode: app.node,
+  });
+
+  new Main({
+    parentNode: app.node,
+  });
+
+  new Footer({
+    parentNode: app.node,
+  });
 }
