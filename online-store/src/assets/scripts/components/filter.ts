@@ -3,6 +3,12 @@ import { IInputCb, Input } from './filterElements/input';
 import { ISelectCb, Select } from './filterElements/select';
 import { ISliderCb, Slider } from './filterElements/slider';
 
+export interface IFilterCb {
+  sortCb: ISelectCb;
+  sliderCb: ISliderCb;
+  inputCb: IInputCb;
+}
+
 export class StoreFilter extends NodeElement {
   private select: Select;
   private input: Input;
@@ -29,7 +35,7 @@ export class StoreFilter extends NodeElement {
     });
   }
 
-  init(sortCb: ISelectCb, sliderCb: ISliderCb, inputCb: IInputCb) {
+  init({ sortCb, sliderCb, inputCb }: IFilterCb) {
     this.select.init(sortCb);
     this.input.init(inputCb);
     this.slider.init(sliderCb);

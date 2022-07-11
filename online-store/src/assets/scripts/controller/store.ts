@@ -44,7 +44,11 @@ export class Store extends NodeElement {
       parentNode: this.node,
       classNames: 'store__filter',
     });
-    this.storeFilter.init(this.sort, this.filterByPrice, this.filterByTitle);
+    this.storeFilter.init({
+      sortCb: this.sort,
+      sliderCb: this.filterByPrice,
+      inputCb: this.filterByTitle,
+    });
 
     this.storeContent = new StoreContent(
       {
