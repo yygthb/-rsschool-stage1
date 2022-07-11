@@ -4,7 +4,7 @@ export type IInputCb = (value: string) => void;
 
 export class Input extends NodeElement {
   constructor(nodeProps: INodeProps) {
-    super(nodeProps);
+    super({ ...nodeProps, tagName: 'input' });
   }
 
   init(cb: IInputCb) {
