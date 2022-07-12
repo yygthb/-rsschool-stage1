@@ -1,0 +1,158 @@
+[
+  {
+    "id": "201",
+    "brand": "Harley-Davidson",
+    "model": "Softail Standard",
+    "type": "cruiser",
+    "price": 1790000,
+    "engine": {
+      "type": "gas",
+      "power": "87 л.с."
+    },
+    "color": "black",
+    "condition": "new"
+  },
+  {
+    "id": "202",
+    "brand": "BMW",
+    "model": "R 18 Classic",
+    "type": "cruiser",
+    "price": 2630000,
+    "engine": {
+      "type": "gas",
+      "power": "91 л.с."
+    },
+    "color": "black",
+    "condition": "new"
+  },
+  {
+    "id": "203",
+    "brand": "Harley-Davidson",
+    "model": "Street Bob",
+    "type": "cruiser",
+    "price": 2350000,
+    "engine": {
+      "type": "gas",
+      "power": "95 л.с."
+    },
+    "color": "green",
+    "condition": "new"
+  },
+  {
+    "id": "204",
+    "brand": "BMW",
+    "model": "R 18",
+    "type": "cruiser",
+    "price": 2800000,
+    "engine": {
+      "type": "gas",
+      "power": "91 л.с."
+    },
+    "color": "blue",
+    "condition": "new"
+  },
+  {
+    "id": "205",
+    "brand": "Harley-Davidson",
+    "model": "Street Bob",
+    "type": "cruiser",
+    "price": 2400000,
+    "engine": {
+      "type": "gas",
+      "power": "95 л.с."
+    },
+    "color": "green",
+    "condition": "new"
+  },
+  {
+    "id": "206",
+    "brand": "Harley-Davidson",
+    "model": "Low Rider",
+    "type": "cruiser",
+    "price": 2600000,
+    "engine": {
+      "type": "gas",
+      "power": "106 л.с."
+    },
+    "color": "black",
+    "condition": "new"
+  },
+  {
+    "id": "207",
+    "brand": "Honda",
+    "model": "CMX 1100 Rebel",
+    "type": "cruiser",
+    "price": 1790000,
+    "engine": {
+      "type": "gas",
+      "power": "87 л.с."
+    },
+    "color": "red",
+    "condition": "new"
+  },
+  {
+    "id": "208",
+    "brand": "Honda",
+    "model": "VT 600",
+    "type": "cruiser",
+    "price": 270000,
+    "engine": {
+      "type": "gas",
+      "power": "41 л.с."
+    },
+    "color": "blue",
+    "condition": "used"
+  },
+  {
+    "id": "209",
+    "brand": "Yamaha",
+    "model": "XVS1300",
+    "type": "cruiser",
+    "price": 580000,
+    "engine": {
+      "type": "gas",
+      "power": "42 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "210",
+    "brand": "Yamaha",
+    "model": "XV950 Bolt",
+    "type": "cruiser",
+    "price": 700000,
+    "engine": {
+      "type": "gas",
+      "power": "52 л.с."
+    },
+    "color": "white",
+    "condition": "used"
+  },
+  {
+    "id": "211",
+    "brand": "Harley-Davidson",
+    "model": "Street Rod",
+    "type": "cruiser",
+    "price": 780000,
+    "engine": {
+      "type": "gas",
+      "power": "71 л.с."
+    },
+    "color": "gray",
+    "condition": "used"
+  },
+  {
+    "id": "212",
+    "brand": "Ducati",
+    "model": "Diavel",
+    "type": "cruiser",
+    "price": 1065000,
+    "engine": {
+      "type": "gas",
+      "power": "163 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  }
+]

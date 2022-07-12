@@ -1,0 +1,171 @@
+[
+  {
+    "id": "101",
+    "brand": "Yamaha",
+    "model": "YZF-R3",
+    "type": "sport",
+    "price": 400000,
+    "engine": {
+      "type": "gas",
+      "power": "42 л.с."
+    },
+    "color": "gray",
+    "condition": "used"
+  },
+  {
+    "id": "102",
+    "brand": "Yamaha",
+    "model": "YZF-R3",
+    "type": "sport",
+    "price": 579000,
+    "engine": {
+      "type": "gas",
+      "power": "42 л.с."
+    },
+    "color": "gray",
+    "condition": "used"
+  },
+  {
+    "id": "103",
+    "brand": "BMW",
+    "model": "S 1000 RR",
+    "type": "sport",
+    "price": 2550000,
+    "engine": {
+      "type": "gas",
+      "power": "207 л.с."
+    },
+    "color": "black",
+    "condition": "new"
+  },
+  {
+    "id": "104",
+    "brand": "BMW",
+    "model": "S 1000 R",
+    "type": "sport",
+    "price": 1349000,
+    "engine": {
+      "type": "gas",
+      "power": "165 л.с."
+    },
+    "color": "gray",
+    "condition": "used"
+  },
+  {
+    "id": "105",
+    "brand": "BMW",
+    "model": "R 1200 S",
+    "type": "sport",
+    "price": 500000,
+    "engine": {
+      "type": "gas",
+      "power": "122 л.с."
+    },
+    "color": "yellow",
+    "condition": "used"
+  },
+  {
+    "id": "106",
+    "brand": "BMW",
+    "model": "S 1000 RR",
+    "type": "sport",
+    "price": 1500000,
+    "engine": {
+      "type": "gas",
+      "power": "199 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "107",
+    "brand": "Ducati",
+    "model": "1299 Panigale",
+    "type": "sport",
+    "price": 1350000,
+    "engine": {
+      "type": "gas",
+      "power": "175 л.с."
+    },
+    "color": "blue",
+    "condition": "used"
+  },
+  {
+    "id": "108",
+    "brand": "Ducati",
+    "model": "Diavel Carbon",
+    "type": "sport",
+    "price": 1650000,
+    "engine": {
+      "type": "gas",
+      "power": "158 л.с."
+    },
+    "color": "gray",
+    "condition": "used"
+  },
+  {
+    "id": "109",
+    "brand": "Ducati",
+    "model": "1199 Panigale",
+    "type": "sport",
+    "price": 1699999,
+    "engine": {
+      "type": "gas",
+      "power": "183 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "110",
+    "brand": "Honda",
+    "model": "CBR 600RR",
+    "type": "sport",
+    "price": 610000,
+    "engine": {
+      "type": "gas",
+      "power": "120 л.с."
+    },
+    "color": "white",
+    "condition": "used"
+  },
+  {
+    "id": "111",
+    "brand": "Honda",
+    "model": "CBR 1000 RR/RA Fireblade",
+    "type": "sport",
+    "price": 850000,
+    "engine": {
+      "type": "gas",
+      "power": "180 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "112",
+    "brand": "BMW",
+    "model": "K 1300 R",
+    "type": "sport",
+    "price": 970000,
+    "engine": {
+      "type": "gas",
+      "power": "172 л.с."
+    },
+    "color": "yellow",
+    "condition": "used"
+  },
+  {
+    "id": "113",
+    "brand": "BMW",
+    "model": "S 1000 RR",
+    "type": "sport",
+    "price": 2300000,
+    "engine": {
+      "type": "gas",
+      "power": "207 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  }
+]

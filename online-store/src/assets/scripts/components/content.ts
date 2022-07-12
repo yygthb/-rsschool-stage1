@@ -1,13 +1,13 @@
 import { IFilterConfig } from '../controller/store';
 import { NodeElement, INodeProps } from '../utils/nodeElement';
-import { IStoreCard, StoreCard } from './card';
+import { IMotoCard, StoreCard } from './card';
 import { SortValue } from './filterElements/select';
 
 export class StoreContent extends NodeElement {
-  private baseState: Array<IStoreCard> = [];
-  private state: Array<IStoreCard>;
+  private baseState: Array<IMotoCard> = [];
+  private state: Array<IMotoCard>;
 
-  constructor(nodeProps: INodeProps, storeData: Array<IStoreCard>) {
+  constructor(nodeProps: INodeProps, storeData: Array<IMotoCard>) {
     super(nodeProps);
     this.baseState = storeData;
     this.state = storeData;
@@ -40,7 +40,10 @@ export class StoreContent extends NodeElement {
     switch (sortProp) {
       case SortValue.TitleUp:
         this.state.sort((a, b) => {
-          if (a.model.toLowerCase() > b.model.toLowerCase()) {
+          if (
+            (a.brand + a.model).toLowerCase() >
+            (b.brand + b.model).toLowerCase()
+          ) {
             return 1;
           } else {
             return -1;
@@ -49,7 +52,10 @@ export class StoreContent extends NodeElement {
         break;
       case SortValue.TitleDown:
         this.state.sort((a, b) => {
-          if (a.model.toLowerCase() > b.model.toLowerCase()) {
+          if (
+            (a.brand + a.model).toLowerCase() >
+            (b.brand + b.model).toLowerCase()
+          ) {
             return -1;
           } else {
             return 1;
@@ -57,10 +63,10 @@ export class StoreContent extends NodeElement {
         });
         break;
       case SortValue.PriceUp:
-        this.state.sort((a, b) => +a.price - +b.price);
+        this.state.sort((a, b) => a.price - b.price);
         break;
       case SortValue.PriceDown:
-        this.state.sort((a, b) => +b.price - +a.price);
+        this.state.sort((a, b) => b.price - a.price);
         break;
       default:
         break;
@@ -74,7 +80,7 @@ export class StoreContent extends NodeElement {
 
     this.state = this.state.filter((item) => {
       if (
-        item.model.match(new RegExp(title.trim(), 'i')) &&
+        (item.brand + ' ' + item.model).match(new RegExp(title.trim(), 'i')) &&
         +item.price > +min &&
         +item.price < +max
       ) {

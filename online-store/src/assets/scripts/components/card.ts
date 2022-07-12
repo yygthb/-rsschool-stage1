@@ -1,13 +1,17 @@
 import { INodeProps, NodeElement } from '../utils/nodeElement';
 
-export interface IStoreCard {
+export interface IMotoCard {
   id: string;
+  brand: string;
   model: string;
-  price: string;
-  display: {
-    diagonal: string;
-    resolution: string;
+  type: string;
+  price: number;
+  engine: {
+    type: string;
+    power: string;
   };
+  color: string;
+  condition: string;
 }
 
 export class StoreCard extends NodeElement {
@@ -21,27 +25,38 @@ export class StoreCard extends NodeElement {
     return this._id;
   }
 
-  constructor(nodeProps: INodeProps, data: IStoreCard) {
+  constructor(nodeProps: INodeProps, data: IMotoCard) {
     super(nodeProps);
 
     this.render(data);
   }
 
-  render({ id, model, price }: IStoreCard) {
+  render({ id, brand, model, price, type }: IMotoCard) {
     this.id = id;
 
-    new NodeElement({
+    const img = new NodeElement({
       parentNode: this.node,
-      tagName: 'h3',
-      classNames: 'item__model',
-      content: model,
+      classNames: 'item__img',
+    });
+    img.node.style.backgroundImage = `url(assets/img/moto/${type}/${id}.webp)`;
+
+    const info = new NodeElement({
+      parentNode: this.node,
+      classNames: 'item__info',
     });
 
     new NodeElement({
-      parentNode: this.node,
+      parentNode: info.node,
+      tagName: 'h3',
+      classNames: 'item__title',
+      content: `${brand} ${model}`,
+    });
+
+    new NodeElement({
+      parentNode: info.node,
       tagName: 'p',
       classNames: 'item__price',
-      content: price,
+      content: price.toLocaleString(),
     });
   }
 }

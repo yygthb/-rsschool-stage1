@@ -1,17 +1,53 @@
 .card__item {
   padding: 10px;
+  display: flex;
+  gap: 10px;
   border: 1px solid #ddd;
   border-radius: $box-border-radius;
+  display: grid;
+  grid-template-columns: 180px 1fr;
 
-  &:not(:last-child) {
-    margin-bottom: 10px;
+  @include media(d) {
+    grid-template-columns: 180px 1fr;
   }
 
-  .item__model {
+  @include media(m) {
+    grid-template-columns: 1fr;
+  }
+
+  .item__img {
+    position: relative;
+    display: block;
+    height: 150px;
+    background-color: rgba(#ddd, 0.2);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: block;
+      content: "";
+      background-color: rgba(#000, 0.1);
+      transition: background-color 0.3s ease-out;
+    }
+  }
+
+  .item__title {
     margin-bottom: 7px;
   }
 
   .item__price::after {
-    content: ' $'
+    content: " ₽";
+  }
+
+  &:hover {
+    .item__img::before {
+      background-color: transparent;
+    }
   }
 }

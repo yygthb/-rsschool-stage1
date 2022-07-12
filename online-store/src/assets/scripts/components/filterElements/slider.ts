@@ -14,12 +14,12 @@ export class Slider extends NodeElement {
     const slider = this.node as noUiSlider.target;
 
     noUiSlider.create(slider, {
-      start: [0, 10000],
+      start: [0, 3000000],
       connect: true,
-      step: 1000,
+      step: 10000,
       range: {
         min: 0,
-        max: 10000,
+        max: 3000000,
       },
       format: {
         from: function (value) {

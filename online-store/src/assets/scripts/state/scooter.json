@@ -1,0 +1,106 @@
+[
+  {
+    "id": "401",
+    "brand": "BMW",
+    "model": "C 400 X",
+    "type": "scooter",
+    "price": 1310000,
+    "engine": {
+      "type": "gas",
+      "power": "34 л.с."
+    },
+    "color": "gray",
+    "condition": "new"
+  },
+  {
+    "id": "402",
+    "brand": "BMW",
+    "model": "CE 04",
+    "type": "scooter",
+    "price": 2500000,
+    "engine": {
+      "type": "electro",
+      "power": "42 л.с."
+    },
+    "color": "white",
+    "condition": "new"
+  },
+  {
+    "id": "403",
+    "brand": "BMW",
+    "model": "C 650 Sport",
+    "type": "scooter",
+    "price": 595000,
+    "engine": {
+      "type": "gas",
+      "power": "60 л.с."
+    },
+    "color": "white",
+    "condition": "used"
+  },
+  {
+    "id": "404",
+    "brand": "BMW",
+    "model": "C evolution",
+    "type": "scooter",
+    "price": 1700000,
+    "engine": {
+      "type": "gas",
+      "power": "43 л.с."
+    },
+    "color": "gray",
+    "condition": "used"
+  },
+  {
+    "id": "405",
+    "brand": "Honda",
+    "model": "Forza",
+    "type": "scooter",
+    "price": 1500000,
+    "engine": {
+      "type": "gas",
+      "power": "57 л.с."
+    },
+    "color": "gray",
+    "condition": "new"
+  },
+  {
+    "id": "406",
+    "brand": "Honda",
+    "model": "PCX 125",
+    "type": "scooter",
+    "price": 530000,
+    "engine": {
+      "type": "gas",
+      "power": "14 л.с."
+    },
+    "color": "red",
+    "condition": "new"
+  },
+  {
+    "id": "407",
+    "brand": "Honda",
+    "model": "Giorno",
+    "type": "scooter",
+    "price": 129000,
+    "engine": {
+      "type": "gas",
+      "power": "4 л.с."
+    },
+    "color": "white",
+    "condition": "used"
+  },
+  {
+    "id": "408",
+    "brand": "Honda",
+    "model": "Silver Wing 400",
+    "type": "scooter",
+    "price": 450000,
+    "engine": {
+      "type": "gas",
+      "power": "38 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  }
+]

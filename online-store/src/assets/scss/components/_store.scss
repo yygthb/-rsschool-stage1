@@ -9,11 +9,18 @@
 
   &__content {
     flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @include media(t) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__filter {
     width: 300px;
-    min-height: 600px;
+    height: max-content;
     order: 1;
     display: flex;
     flex-direction: column;

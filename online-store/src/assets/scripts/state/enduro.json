@@ -1,0 +1,93 @@
+[
+  {
+    "id": "301",
+    "brand": "BMW",
+    "model": "G 310 GS",
+    "type": "enduro",
+    "price": 485000,
+    "engine": {
+      "type": "gas",
+      "power": "34 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "302",
+    "brand": "BMW",
+    "model": "G 310 GS",
+    "type": "enduro",
+    "price": 510000,
+    "engine": {
+      "type": "gas",
+      "power": "34 л.с."
+    },
+    "color": "white",
+    "condition": "used"
+  },
+  {
+    "id": "303",
+    "brand": "Honda",
+    "model": "CRF 250L",
+    "type": "enduro",
+    "price": 475000,
+    "engine": {
+      "type": "gas",
+      "power": "25 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "304",
+    "brand": "Honda",
+    "model": "CRF 450X",
+    "type": "enduro",
+    "price": 470000,
+    "engine": {
+      "type": "gas",
+      "power": "60 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "305",
+    "brand": "Honda",
+    "model": "XR 250",
+    "type": "enduro",
+    "price": 300000,
+    "engine": {
+      "type": "gas",
+      "power": "28 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  },
+  {
+    "id": "306",
+    "brand": "Ducati",
+    "model": "Scrambler",
+    "type": "enduro",
+    "price": 1605000,
+    "engine": {
+      "type": "gas",
+      "power": "73 л.с."
+    },
+    "color": "red",
+    "condition": "new"
+  },
+  {
+    "id": "307",
+    "brand": "Sur-ron",
+    "model": "Light Bee",
+    "type": "enduro",
+    "price": 350000,
+    "engine": {
+      "type": "gas",
+      "power": "7 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  }
+]

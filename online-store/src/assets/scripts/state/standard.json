@@ -1,0 +1,238 @@
+[
+  {
+    "id": "1",
+    "brand": "BMW",
+    "model": "F 900 R",
+    "type": "standard",
+    "price": 2250000,
+    "engine": {
+      "type": "gas",
+      "power": "105 л.с."
+    },
+    "color": "gray",
+    "condition": "new"
+  },
+  {
+    "id": "2",
+    "brand": "BMW",
+    "model": "G 310 R",
+    "type": "standard",
+    "price": 875000,
+    "engine": {
+      "type": "gas",
+      "power": "34 л.с."
+    },
+    "color": "black",
+    "condition": "new"
+  },
+  {
+    "id": "3",
+    "brand": "BMW",
+    "model": "G 310 R",
+    "type": "standard",
+    "price": 479000,
+    "engine": {
+      "type": "gas",
+      "power": "34 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  },
+  {
+    "id": "4",
+    "brand": "BMW",
+    "model": "F 900 R",
+    "type": "standard",
+    "price": 1420000,
+    "engine": {
+      "type": "gas",
+      "power": "34 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "5",
+    "brand": "BMW",
+    "model": "R 1250 R",
+    "type": "standard",
+    "price": 1950000,
+    "engine": {
+      "type": "gas",
+      "power": "136 л.с."
+    },
+    "color": "white",
+    "condition": "used"
+  },
+  {
+    "id": "6",
+    "brand": "Ducati",
+    "model": "Scrambler 1100",
+    "type": "standard",
+    "price": 1950000,
+    "engine": {
+      "type": "gas",
+      "power": "86 л.с."
+    },
+    "color": "gray",
+    "condition": "new"
+  },
+  {
+    "id": "7",
+    "brand": "Ducati",
+    "model": "Monster 1200",
+    "type": "standard",
+    "price": 830000,
+    "engine": {
+      "type": "gas",
+      "power": "147 л.с."
+    },
+    "gear_box": "",
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "8",
+    "brand": "Honda",
+    "model": "CB 650R",
+    "type": "standard",
+    "price": 1750000,
+    "engine": {
+      "type": "gas",
+      "power": "95 л.с."
+    },
+    "color": "red",
+    "condition": "new"
+  },
+  {
+    "id": "9",
+    "brand": "Honda",
+    "model": "NC 750S",
+    "type": "standard",
+    "price": 635000,
+    "engine": {
+      "type": "gas",
+      "power": "54 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  },
+  {
+    "id": "10",
+    "brand": "Honda",
+    "model": "CB 300R",
+    "type": "standard",
+    "price": 333000,
+    "engine": {
+      "type": "gas",
+      "power": "31 л.с."
+    },
+    "color": "gray",
+    "condition": "used"
+  },
+  {
+    "id": "11",
+    "brand": "Honda",
+    "model": "NC 750S",
+    "type": "standard",
+    "price": 530000,
+    "engine": {
+      "type": "gas",
+      "power": "54 л.с."
+    },
+    "color": "white",
+    "condition": "used"
+  },
+  {
+    "id": "12",
+    "brand": "Honda",
+    "model": "X4",
+    "type": "standard",
+    "price": 520000,
+    "engine": {
+      "type": "gas",
+      "power": "100 л.с."
+    },
+    "gear_box": "5 передач",
+    "color": "gray",
+    "condition": "used"
+  },
+  {
+    "id": "13",
+    "brand": "Honda",
+    "model": "CB 600F (Hornet)",
+    "type": "standard",
+    "price": 520000,
+    "engine": {
+      "type": "gas",
+      "power": "102 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  },
+  {
+    "id": "14",
+    "brand": "Yamaha",
+    "model": "MT-03",
+    "type": "standard",
+    "price": 639000,
+    "engine": {
+      "type": "gas",
+      "power": "42 л.с."
+    },
+    "color": "blue",
+    "condition": "new"
+  },
+  {
+    "id": "15",
+    "brand": "Yamaha",
+    "model": "XSR900",
+    "type": "standard",
+    "price": 1150000 ,
+    "engine": {
+      "type": "gas",
+      "power": "95 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "16",
+    "brand": "Yamaha",
+    "model": "MT-07 (FZ-07)",
+    "type": "standard",
+    "price": 699999,
+    "engine": {
+      "type": "gas",
+      "power": "75 л.с."
+    },
+    "color": "red",
+    "condition": "used"
+  },
+  {
+    "id": "17",
+    "brand": "Super Soco",
+    "model": "TCmax",
+    "type": "standard",
+    "price": 400000,
+    "engine": {
+      "type": "electro",
+      "power": "8 л.с."
+    },
+    "color": "black",
+    "condition": "used"
+  },
+  {
+    "id": "18",
+    "brand": "Super Soco",
+    "model": "TC",
+    "type": "standard",
+    "price": 250000,
+    "engine": {
+      "type": "electro",
+      "power": "5 л.с."
+    },
+    "color": "brown",
+    "condition": "used"
+  }
+]

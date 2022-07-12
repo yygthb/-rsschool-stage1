@@ -1,4 +1,4 @@
-import { IStoreCard } from '../components/card';
+import { IMotoCard } from '../components/card';
 import { StoreContent } from '../components/content';
 import { StoreFilter } from '../components/filter';
 import { SortValue } from '../components/filterElements/select';
@@ -28,7 +28,7 @@ const defaultFilterProps: IControlProps = {
   [ControlMethod.Sort]: SortValue.TitleUp,
   [ControlMethod.Filter]: {
     [FilterProp.Title]: '',
-    [FilterProp.Price]: [0, 10000],
+    [FilterProp.Price]: [0, 3000000],
   },
 };
 
@@ -37,7 +37,7 @@ export class Store extends NodeElement {
   public storeFilter: StoreFilter;
   private filterProps: IControlProps = { ...defaultFilterProps };
 
-  constructor(nodeProps: INodeProps, storeData: Array<IStoreCard>) {
+  constructor(nodeProps: INodeProps, storeData: Array<IMotoCard>) {
     super(nodeProps);
 
     this.storeFilter = new StoreFilter({

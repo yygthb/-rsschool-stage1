@@ -1,7 +1,7 @@
 import { INodeProps, NodeElement } from '../utils/nodeElement';
 import { Container } from './container';
 import { Store } from '../controller/store';
-import state from '../state/state.json';
+import { state } from '../state/state';
 
 export class Main extends NodeElement {
   private container: Container;
@@ -28,7 +28,7 @@ export class Main extends NodeElement {
         parentNode: this.content.node,
         classNames: 'store',
       },
-      state.notebooks
+      state
     );
   }
 }
