@@ -18,11 +18,11 @@
   .item__img {
     position: relative;
     display: block;
-    height: 150px;
+    height: 135px;
     background-color: rgba(#ddd, 0.2);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 
     &::before {
       position: absolute;
