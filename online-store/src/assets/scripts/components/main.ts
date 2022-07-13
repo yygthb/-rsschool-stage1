@@ -1,7 +1,6 @@
 import { INodeProps, NodeElement } from '../utils/nodeElement';
 import { Container } from './container';
-import { Store } from '../controller/store';
-import { state } from '../state/state';
+import { Store } from './store';
 
 export class Main extends NodeElement {
   private container: Container;
@@ -23,12 +22,9 @@ export class Main extends NodeElement {
   }
 
   private renderStore() {
-    new Store(
-      {
-        parentNode: this.content.node,
-        classNames: 'store',
-      },
-      state
-    );
+    new Store({
+      parentNode: this.content.node,
+      classNames: 'store',
+    });
   }
 }
