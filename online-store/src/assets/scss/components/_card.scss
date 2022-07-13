@@ -1,11 +1,11 @@
 .card__item {
   padding: 10px;
-  display: flex;
+  height: max-content;
+  display: grid;
+  grid-template-columns: 180px 1fr;
   gap: 10px;
   border: 1px solid #ddd;
   border-radius: $box-border-radius;
-  display: grid;
-  grid-template-columns: 180px 1fr;
 
   @include media(d) {
     grid-template-columns: 180px 1fr;

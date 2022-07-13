@@ -20,6 +20,7 @@ const defaultControls: IControls = {
       [EngineProp.Type]: 'all',
       [EngineProp.Power]: [0, 300],
     },
+    [FilterProp.Condition]: 'all',
   },
 };
 
@@ -54,7 +55,8 @@ export class Store extends NodeElement {
       titleCb: this.filterByTitleCb.bind(this),
       priceCb: this.filterByPriceCb.bind(this),
       powerCb: this.filterByPowerCb.bind(this),
-      engineTypeCb: this.filterByEngineType.bind(this),
+      engineTypeCb: this.filterByEngineTypeCb.bind(this),
+      conditionCb: this.filterByConditionCb.bind(this),
     });
 
     this.storeContent.render(this.controller.state);
@@ -80,8 +82,13 @@ export class Store extends NodeElement {
     this.storeContent.render(this.controller.state);
   }
 
-  private filterByEngineType(value: string) {
-    this.controller.filterByEndineType(value);
+  private filterByEngineTypeCb(value: string) {
+    this.controller.filterByEngineType(value);
+    this.storeContent.render(this.controller.state);
+  }
+
+  private filterByConditionCb(value: string) {
+    this.controller.filterByCondition(value);
     this.storeContent.render(this.controller.state);
   }
 }

@@ -24,7 +24,7 @@ export class SelectRadio extends NodeElement {
           ['type', 'radio'],
           ['id', `${radioBtn.id}-${radioBtn.value}`],
           ['value', radioBtn.value],
-          ['name', 'enginetype'],
+          ['name', radioBtn.id],
         ],
       });
       input.initRadio(radioBtn.checked, cb);

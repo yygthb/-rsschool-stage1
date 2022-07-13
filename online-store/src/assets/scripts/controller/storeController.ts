@@ -10,6 +10,7 @@ export enum FilterProp {
   Title = 'title',
   Price = 'price',
   Engine = 'engine',
+  Condition = 'condition',
 }
 
 export enum EngineProp {
@@ -26,6 +27,7 @@ export interface IFilterConfig {
     [EngineProp.Type]: string;
     [EngineProp.Power]: [number, number];
   };
+  [FilterProp.Condition]: string;
 }
 
 export interface IControls {
@@ -95,9 +97,14 @@ export class StoreController {
     this.updateContentState();
   };
 
-  filterByEndineType = (value: string): void => {
+  filterByEngineType = (value: string): void => {
     this.controls[ControlMethod.Filter][FilterProp.Engine][EngineProp.Type] =
       value;
+    this.updateContentState();
+  };
+
+  filterByCondition = (value: string): void => {
+    this.controls[ControlMethod.Filter][FilterProp.Condition] = value;
     this.updateContentState();
   };
 
@@ -151,6 +158,7 @@ export class StoreController {
         power: [powerMin, powerMax],
         type,
       },
+      condition,
     } = this.controls[ControlMethod.Filter];
 
     this.state = [...this.baseState];
@@ -166,7 +174,9 @@ export class StoreController {
         +item.engine.power > +powerMin &&
         +item.engine.power < +powerMax &&
         // filter by engine type
-        (type === 'all' || item.engine.type === type)
+        (type === 'all' || item.engine.type === type) &&
+        // filter by condition
+        (condition === 'all' || item.condition === condition)
       ) {
         return item;
       }
