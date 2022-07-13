@@ -7,7 +7,7 @@
     "price": 400000,
     "engine": {
       "type": "gas",
-      "power": "42 л.с."
+      "power": "42"
     },
     "color": "gray",
     "condition": "used"
@@ -20,7 +20,7 @@
     "price": 579000,
     "engine": {
       "type": "gas",
-      "power": "42 л.с."
+      "power": "42"
     },
     "color": "gray",
     "condition": "used"
@@ -33,7 +33,7 @@
     "price": 2550000,
     "engine": {
       "type": "gas",
-      "power": "207 л.с."
+      "power": "207"
     },
     "color": "black",
     "condition": "new"
@@ -46,7 +46,7 @@
     "price": 1349000,
     "engine": {
       "type": "gas",
-      "power": "165 л.с."
+      "power": "165"
     },
     "color": "gray",
     "condition": "used"
@@ -59,7 +59,7 @@
     "price": 500000,
     "engine": {
       "type": "gas",
-      "power": "122 л.с."
+      "power": "122"
     },
     "color": "yellow",
     "condition": "used"
@@ -72,7 +72,7 @@
     "price": 1500000,
     "engine": {
       "type": "gas",
-      "power": "199 л.с."
+      "power": "199"
     },
     "color": "red",
     "condition": "used"
@@ -85,7 +85,7 @@
     "price": 1350000,
     "engine": {
       "type": "gas",
-      "power": "175 л.с."
+      "power": "175"
     },
     "color": "blue",
     "condition": "used"
@@ -98,7 +98,7 @@
     "price": 1650000,
     "engine": {
       "type": "gas",
-      "power": "158 л.с."
+      "power": "158"
     },
     "color": "gray",
     "condition": "used"
@@ -111,7 +111,7 @@
     "price": 1699999,
     "engine": {
       "type": "gas",
-      "power": "183 л.с."
+      "power": "183"
     },
     "color": "red",
     "condition": "used"
@@ -124,7 +124,7 @@
     "price": 610000,
     "engine": {
       "type": "gas",
-      "power": "120 л.с."
+      "power": "120"
     },
     "color": "white",
     "condition": "used"
@@ -137,7 +137,7 @@
     "price": 850000,
     "engine": {
       "type": "gas",
-      "power": "180 л.с."
+      "power": "180"
     },
     "color": "red",
     "condition": "used"
@@ -150,7 +150,7 @@
     "price": 970000,
     "engine": {
       "type": "gas",
-      "power": "172 л.с."
+      "power": "172"
     },
     "color": "yellow",
     "condition": "used"
@@ -163,7 +163,7 @@
     "price": 2300000,
     "engine": {
       "type": "gas",
-      "power": "207 л.с."
+      "power": "207"
     },
     "color": "black",
     "condition": "used"

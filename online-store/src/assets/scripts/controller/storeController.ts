@@ -9,11 +9,21 @@ export enum ControlMethod {
 export enum FilterProp {
   Title = 'title',
   Price = 'price',
+  Engine = 'engine',
+}
+
+export enum EngineProp {
+  Type = 'type',
+  Power = 'power',
 }
 
 export interface IFilterConfig {
   [FilterProp.Title]: string;
   [FilterProp.Price]: [number, number];
+  [FilterProp.Engine]: {
+    [EngineProp.Type]: 'gas' | 'electro' | null;
+    [EngineProp.Power]: [number, number];
+  };
 }
 
 export interface IControls {
@@ -75,6 +85,14 @@ export class StoreController {
     this.updateContentState();
   };
 
+  filterByPower = ([min, max]: [number, number]): void => {
+    this.controls[ControlMethod.Filter][FilterProp.Engine][EngineProp.Power] = [
+      min,
+      max,
+    ];
+    this.updateContentState();
+  };
+
   private updateContentState() {
     this.filterState();
     this.sortState();
@@ -120,7 +138,10 @@ export class StoreController {
   private filterState(): void {
     const {
       title,
-      price: [min, max],
+      price: [priceMin, priceMax],
+      engine: {
+        power: [powerMin, powerMax],
+      },
     } = this.controls[ControlMethod.Filter];
 
     this.state = [...this.baseState];
@@ -128,8 +149,10 @@ export class StoreController {
     this.state = this.state.filter((item) => {
       if (
         (item.brand + ' ' + item.model).match(new RegExp(title.trim(), 'i')) &&
-        +item.price > +min &&
-        +item.price < +max
+        +item.price > +priceMin &&
+        +item.price < +priceMax &&
+        +item.engine.power > +powerMin &&
+        +item.engine.power < +powerMax
       ) {
         return item;
       }

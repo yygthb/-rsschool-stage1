@@ -4,6 +4,7 @@ import { SortValue } from './filterElements/select';
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import {
   ControlMethod,
+  EngineProp,
   FilterProp,
   IControls,
   StoreController,
@@ -15,6 +16,10 @@ const defaultControls: IControls = {
   [ControlMethod.Filter]: {
     [FilterProp.Title]: '',
     [FilterProp.Price]: [0, 3000000],
+    [FilterProp.Engine]: {
+      [EngineProp.Type]: null,
+      [EngineProp.Power]: [0, 300],
+    },
   },
 };
 
@@ -46,8 +51,9 @@ export class Store extends NodeElement {
   private init() {
     this.storeFilter.init({
       sortCb: this.sortCallback.bind(this),
-      inputCb: this.filterByTitleCb.bind(this),
-      sliderCb: this.filterByPriceCb.bind(this),
+      titleCb: this.filterByTitleCb.bind(this),
+      priceCb: this.filterByPriceCb.bind(this),
+      powerCb: this.filterByPowerCb.bind(this),
     });
 
     this.storeContent.render(this.controller.state);
@@ -65,6 +71,11 @@ export class Store extends NodeElement {
 
   private filterByPriceCb([min, max]: [number, number]) {
     this.controller.filterByPrice([min, max]);
+    this.storeContent.render(this.controller.state);
+  }
+
+  private filterByPowerCb([min, max]: [number, number]) {
+    this.controller.filterByPower([min, max]);
     this.storeContent.render(this.controller.state);
   }
 }

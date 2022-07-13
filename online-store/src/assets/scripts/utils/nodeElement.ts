@@ -42,4 +42,8 @@ export class NodeElement {
 
     this.node = el;
   }
+
+  updateContent(value: string) {
+    this.node.innerHTML = value;
+  }
 }

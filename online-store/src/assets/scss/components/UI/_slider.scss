@@ -1,0 +1,13 @@
+.slider {
+  margin-bottom: 30px;
+  background-color: lightblue;
+
+  .slider__info {
+    display: flex;
+    justify-content: space-between;
+
+    .slider-value {
+      padding: 5px;
+    }
+  }
+}

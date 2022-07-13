@@ -1,25 +1,24 @@
 import { INodeProps, NodeElement } from '../../utils/nodeElement';
 import * as noUiSlider from 'nouislider';
 import 'nouislider/dist/nouislider.css';
-import { Input } from './input';
 
 export type ISliderCb = (value: [number, number]) => void;
 
 export class Slider extends NodeElement {
   constructor(nodeProps: INodeProps) {
-    super(nodeProps);
+    super({ ...nodeProps, classNames: `slider ${nodeProps.classNames}` });
   }
 
-  init(cb: ISliderCb) {
+  init(cb: ISliderCb, [min, max, step]: [number, number, number]) {
     const slider = this.node as noUiSlider.target;
 
     noUiSlider.create(slider, {
-      start: [0, 3000000],
+      start: [min, max],
       connect: true,
-      step: 10000,
+      step: step,
       range: {
-        min: 0,
-        max: 3000000,
+        min: min,
+        max: max,
       },
       format: {
         from: function (value) {
@@ -31,23 +30,29 @@ export class Slider extends NodeElement {
       },
     });
 
-    const input1 = new Input({
+    const sliderInfo = new NodeElement({
       parentNode: this.node,
-      classNames: 'filter__slider-min',
+      classNames: 'slider__info',
     });
-    const inputMin = input1.node as HTMLInputElement;
-    const input2: Input = new Input({
-      parentNode: this.node,
-      classNames: 'filter__slider-max',
+    const spanMin = new NodeElement({
+      parentNode: sliderInfo.node,
+      tagName: 'p',
+      classNames: 'slider-value slider-value-min',
+      content: min.toString(),
     });
-    const inputMax = input2.node as HTMLInputElement;
+    const spanMax = new NodeElement({
+      parentNode: sliderInfo.node,
+      tagName: 'p',
+      classNames: 'slider-value slider-value-max',
+      content: max.toString(),
+    });
 
     if (slider.noUiSlider) {
       slider.noUiSlider.on(
         'change',
         function ([valueMin, valueMax]: (string | number)[]) {
-          inputMin.value = valueMin.toString();
-          inputMax.value = valueMax.toString();
+          spanMin.updateContent(valueMin.toString());
+          spanMax.updateContent(valueMax.toString());
           cb([+valueMin, +valueMax]);
         }
       );

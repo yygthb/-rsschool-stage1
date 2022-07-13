@@ -7,7 +7,7 @@
     "price": 1310000,
     "engine": {
       "type": "gas",
-      "power": "34 л.с."
+      "power": "34"
     },
     "color": "gray",
     "condition": "new"
@@ -20,7 +20,7 @@
     "price": 2500000,
     "engine": {
       "type": "electro",
-      "power": "42 л.с."
+      "power": "42"
     },
     "color": "white",
     "condition": "new"
@@ -33,7 +33,7 @@
     "price": 595000,
     "engine": {
       "type": "gas",
-      "power": "60 л.с."
+      "power": "60"
     },
     "color": "white",
     "condition": "used"
@@ -46,7 +46,7 @@
     "price": 1700000,
     "engine": {
       "type": "gas",
-      "power": "43 л.с."
+      "power": "43"
     },
     "color": "gray",
     "condition": "used"
@@ -59,7 +59,7 @@
     "price": 1500000,
     "engine": {
       "type": "gas",
-      "power": "57 л.с."
+      "power": "57"
     },
     "color": "gray",
     "condition": "new"
@@ -72,7 +72,7 @@
     "price": 530000,
     "engine": {
       "type": "gas",
-      "power": "14 л.с."
+      "power": "14"
     },
     "color": "red",
     "condition": "new"
@@ -85,7 +85,7 @@
     "price": 129000,
     "engine": {
       "type": "gas",
-      "power": "4 л.с."
+      "power": "4"
     },
     "color": "white",
     "condition": "used"
@@ -98,7 +98,7 @@
     "price": 450000,
     "engine": {
       "type": "gas",
-      "power": "38 л.с."
+      "power": "38"
     },
     "color": "black",
     "condition": "used"

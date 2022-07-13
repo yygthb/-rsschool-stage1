@@ -1,18 +1,20 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IInputCb, Input } from './filterElements/input';
 import { ISelectCb, Select } from './filterElements/select';
-import { ISliderCb, Slider } from './filterElements/slider';
+import { ISliderCb, Slider } from './UI/slider';
 
 export interface IFilterCb {
   sortCb: ISelectCb;
-  sliderCb: ISliderCb;
-  inputCb: IInputCb;
+  priceCb: ISliderCb;
+  titleCb: IInputCb;
+  powerCb: ISliderCb;
 }
 
 export class StoreFilter extends NodeElement {
   private select: Select;
-  private input: Input;
-  private slider: Slider;
+  private titleFilter: Input;
+  private priceFilter: Slider;
+  private powerFilter: Slider;
 
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
@@ -23,21 +25,27 @@ export class StoreFilter extends NodeElement {
       classNames: 'filter__element filter__element-select',
     });
 
-    this.input = new Input({
+    this.titleFilter = new Input({
       parentNode: this.node,
       classNames: 'filter__element filter__element-input',
       attributes: [['placeholder', 'Find by model']],
     });
 
-    this.slider = new Slider({
+    this.priceFilter = new Slider({
+      parentNode: this.node,
+      classNames: 'filter__element filter__element-slider',
+    });
+
+    this.powerFilter = new Slider({
       parentNode: this.node,
       classNames: 'filter__element filter__element-slider',
     });
   }
 
-  init({ sortCb, sliderCb, inputCb }: IFilterCb) {
+  init({ sortCb, priceCb, titleCb, powerCb }: IFilterCb) {
     this.select.init(sortCb);
-    this.input.init(inputCb);
-    this.slider.init(sliderCb);
+    this.titleFilter.init(titleCb);
+    this.priceFilter.init(priceCb, [0, 3000000, 10000]);
+    this.powerFilter.init(powerCb, [0, 300, 1]);
   }
 }
