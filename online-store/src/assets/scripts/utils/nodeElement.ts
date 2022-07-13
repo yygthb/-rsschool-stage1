@@ -6,7 +6,7 @@ export interface INodeProps {
   attributes?: Array<AttrType>;
 }
 
-type AttrType = [string, string];
+type AttrType = [string, string] | [string];
 
 export class NodeElement {
   public node: HTMLElement;
@@ -29,11 +29,13 @@ export class NodeElement {
     }
 
     if (attributes.length) {
-      attributes.forEach(([attrName, attrValue]) => {
-        if (attrName.match(/data-/)) {
-          el.dataset[attrName.slice(5)] = attrValue;
-        } else {
-          el.setAttribute(attrName, attrValue);
+      attributes.forEach((attr) => {
+        if (attr.length === 2) {
+          if (attr[0].match(/data-/)) {
+            el.dataset[attr[0].slice(5)] = attr[1];
+          } else {
+            el.setAttribute(attr[0], attr[1]);
+          }
         }
       });
     }

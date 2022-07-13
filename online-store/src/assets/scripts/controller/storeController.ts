@@ -17,11 +17,13 @@ export enum EngineProp {
   Power = 'power',
 }
 
+export type EngineType = 'all' | 'gas' | 'electro';
+
 export interface IFilterConfig {
   [FilterProp.Title]: string;
   [FilterProp.Price]: [number, number];
   [FilterProp.Engine]: {
-    [EngineProp.Type]: 'gas' | 'electro' | null;
+    [EngineProp.Type]: string;
     [EngineProp.Power]: [number, number];
   };
 }
@@ -93,6 +95,12 @@ export class StoreController {
     this.updateContentState();
   };
 
+  filterByEndineType = (value: string): void => {
+    this.controls[ControlMethod.Filter][FilterProp.Engine][EngineProp.Type] =
+      value;
+    this.updateContentState();
+  };
+
   private updateContentState() {
     this.filterState();
     this.sortState();
@@ -141,6 +149,7 @@ export class StoreController {
       price: [priceMin, priceMax],
       engine: {
         power: [powerMin, powerMax],
+        type,
       },
     } = this.controls[ControlMethod.Filter];
 
@@ -148,11 +157,16 @@ export class StoreController {
 
     this.state = this.state.filter((item) => {
       if (
+        // filter by title
         (item.brand + ' ' + item.model).match(new RegExp(title.trim(), 'i')) &&
+        // fiilter by price
         +item.price > +priceMin &&
         +item.price < +priceMax &&
+        // filter by engine power
         +item.engine.power > +powerMin &&
-        +item.engine.power < +powerMax
+        +item.engine.power < +powerMax &&
+        // filter by engine type
+        (type === 'all' || item.engine.type === type)
       ) {
         return item;
       }

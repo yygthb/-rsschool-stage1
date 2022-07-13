@@ -1,20 +1,29 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IInputCb, Input } from './filterElements/input';
 import { ISelectCb, Select } from './filterElements/select';
+import { SelectRadio } from './UI/radio';
 import { ISliderCb, Slider } from './UI/slider';
 
 export interface IFilterCb {
   sortCb: ISelectCb;
-  priceCb: ISliderCb;
   titleCb: IInputCb;
+  priceCb: ISliderCb;
   powerCb: ISliderCb;
+  engineTypeCb: IInputCb;
 }
+
+const engineFilterBtns = [
+  { id: 'engine', content: 'все', value: 'all', checked: true },
+  { id: 'engine', content: 'gas', value: 'gas', checked: false },
+  { id: 'engine', content: 'electro', value: 'electro', checked: false },
+];
 
 export class StoreFilter extends NodeElement {
   private select: Select;
   private titleFilter: Input;
   private priceFilter: Slider;
   private powerFilter: Slider;
+  private engineType: SelectRadio;
 
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
@@ -40,12 +49,17 @@ export class StoreFilter extends NodeElement {
       parentNode: this.node,
       classNames: 'filter__element filter__element-slider',
     });
+
+    this.engineType = new SelectRadio({
+      parentNode: this.node,
+    });
   }
 
-  init({ sortCb, priceCb, titleCb, powerCb }: IFilterCb) {
+  init({ sortCb, priceCb, titleCb, powerCb, engineTypeCb }: IFilterCb) {
     this.select.init(sortCb);
     this.titleFilter.init(titleCb);
     this.priceFilter.init(priceCb, [0, 3000000, 10000]);
     this.powerFilter.init(powerCb, [0, 300, 1]);
+    this.engineType.init(engineTypeCb, engineFilterBtns);
   }
 }

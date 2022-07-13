@@ -17,7 +17,7 @@ const defaultControls: IControls = {
     [FilterProp.Title]: '',
     [FilterProp.Price]: [0, 3000000],
     [FilterProp.Engine]: {
-      [EngineProp.Type]: null,
+      [EngineProp.Type]: 'all',
       [EngineProp.Power]: [0, 300],
     },
   },
@@ -54,6 +54,7 @@ export class Store extends NodeElement {
       titleCb: this.filterByTitleCb.bind(this),
       priceCb: this.filterByPriceCb.bind(this),
       powerCb: this.filterByPowerCb.bind(this),
+      engineTypeCb: this.filterByEngineType.bind(this),
     });
 
     this.storeContent.render(this.controller.state);
@@ -76,6 +77,11 @@ export class Store extends NodeElement {
 
   private filterByPowerCb([min, max]: [number, number]) {
     this.controller.filterByPower([min, max]);
+    this.storeContent.render(this.controller.state);
+  }
+
+  private filterByEngineType(value: string) {
+    this.controller.filterByEndineType(value);
     this.storeContent.render(this.controller.state);
   }
 }
