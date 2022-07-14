@@ -2,30 +2,10 @@ import { StoreContent } from './content';
 import { StoreFilter } from './filter';
 import { SortValue } from './filterElements/select';
 import { NodeElement, INodeProps } from '../utils/nodeElement';
-import {
-  ControlMethod,
-  EngineProp,
-  FilterProp,
-  IControls,
-  StoreController,
-} from '../controller/storeController';
+import { StoreController } from '../controller/storeController';
 import { state } from '../state/state';
 import { CheckboxCbValue } from './filterElements/checkbox';
-
-const defaultControls: IControls = {
-  [ControlMethod.Sort]: SortValue.TitleUp,
-  [ControlMethod.Filter]: {
-    [FilterProp.Title]: '',
-    [FilterProp.MotoType]: 'all',
-    [FilterProp.Price]: [0, 3000000],
-    [FilterProp.Engine]: {
-      [EngineProp.Type]: 'all',
-      [EngineProp.Power]: [0, 300],
-    },
-    [FilterProp.Condition]: 'all',
-    [FilterProp.Colors]: [],
-  },
-};
+import { defaultControls } from '../config/filterConfig';
 
 export class Store extends NodeElement {
   public storeContent: StoreContent;

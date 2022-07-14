@@ -1,5 +1,5 @@
 import { INodeProps, NodeElement } from '../../utils/nodeElement';
-import { IInputCb, Input } from '../UI/input';
+import { IInputCb, Input } from '../UI/Input';
 
 type RadioInput = {
   id: string;
