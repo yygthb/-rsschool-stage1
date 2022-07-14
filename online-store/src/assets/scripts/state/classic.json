@@ -5,10 +5,8 @@
     "model": "F 900 R",
     "type": "classic",
     "price": 2250000,
-    "engine": {
-      "type": "gas",
-      "power": "105"
-    },
+    "engineType": "gas",
+    "enginePower": "105",
     "color": "gray",
     "condition": "new"
   },
@@ -18,10 +16,8 @@
     "model": "G 310 R",
     "type": "classic",
     "price": 875000,
-    "engine": {
-      "type": "gas",
-      "power": "34"
-    },
+    "engineType": "gas",
+    "enginePower": "34",
     "color": "black",
     "condition": "new"
   },
@@ -31,10 +27,8 @@
     "model": "G 310 R",
     "type": "classic",
     "price": 479000,
-    "engine": {
-      "type": "gas",
-      "power": "34"
-    },
+    "engineType": "gas",
+    "enginePower": "34",
     "color": "black",
     "condition": "used"
   },
@@ -44,10 +38,8 @@
     "model": "F 900 R",
     "type": "classic",
     "price": 1420000,
-    "engine": {
-      "type": "gas",
-      "power": "34"
-    },
+    "engineType": "gas",
+    "enginePower": "34",
     "color": "red",
     "condition": "used"
   },
@@ -57,10 +49,8 @@
     "model": "R 1250 R",
     "type": "classic",
     "price": 1950000,
-    "engine": {
-      "type": "gas",
-      "power": "136"
-    },
+    "engineType": "gas",
+    "enginePower": "136",
     "color": "white",
     "condition": "used"
   },
@@ -70,10 +60,8 @@
     "model": "Scrambler 1100",
     "type": "classic",
     "price": 1950000,
-    "engine": {
-      "type": "gas",
-      "power": "86"
-    },
+    "engineType": "gas",
+    "enginePower": "86",
     "color": "gray",
     "condition": "new"
   },
@@ -83,11 +71,8 @@
     "model": "Monster 1200",
     "type": "classic",
     "price": 830000,
-    "engine": {
-      "type": "gas",
-      "power": "147"
-    },
-    "gear_box": "",
+    "engineType": "gas",
+    "enginePower": "147",
     "color": "red",
     "condition": "used"
   },
@@ -97,10 +82,8 @@
     "model": "CB 650R",
     "type": "classic",
     "price": 1750000,
-    "engine": {
-      "type": "gas",
-      "power": "95"
-    },
+    "engineType": "gas",
+    "enginePower": "95",
     "color": "red",
     "condition": "new"
   },
@@ -110,10 +93,8 @@
     "model": "NC 750S",
     "type": "classic",
     "price": 635000,
-    "engine": {
-      "type": "gas",
-      "power": "54"
-    },
+    "engineType": "gas",
+    "enginePower": "54",
     "color": "black",
     "condition": "used"
   },
@@ -123,10 +104,8 @@
     "model": "CB 300R",
     "type": "classic",
     "price": 333000,
-    "engine": {
-      "type": "gas",
-      "power": "31"
-    },
+    "engineType": "gas",
+    "enginePower": "31",
     "color": "gray",
     "condition": "used"
   },
@@ -136,10 +115,8 @@
     "model": "NC 750S",
     "type": "classic",
     "price": 530000,
-    "engine": {
-      "type": "gas",
-      "power": "54"
-    },
+    "engineType": "gas",
+    "enginePower": "54",
     "color": "white",
     "condition": "used"
   },
@@ -149,11 +126,8 @@
     "model": "X4",
     "type": "classic",
     "price": 520000,
-    "engine": {
-      "type": "gas",
-      "power": "100"
-    },
-    "gear_box": "5 передач",
+    "engineType": "gas",
+    "enginePower": "100",
     "color": "gray",
     "condition": "used"
   },
@@ -163,10 +137,8 @@
     "model": "CB 600F (Hornet)",
     "type": "classic",
     "price": 520000,
-    "engine": {
-      "type": "gas",
-      "power": "102"
-    },
+    "engineType": "gas",
+    "enginePower": "102",
     "color": "black",
     "condition": "used"
   },
@@ -176,10 +148,8 @@
     "model": "MT-03",
     "type": "classic",
     "price": 639000,
-    "engine": {
-      "type": "gas",
-      "power": "42"
-    },
+    "engineType": "gas",
+    "enginePower": "42",
     "color": "blue",
     "condition": "new"
   },
@@ -188,11 +158,9 @@
     "brand": "Yamaha",
     "model": "XSR900",
     "type": "classic",
-    "price": 1150000 ,
-    "engine": {
-      "type": "gas",
-      "power": "95"
-    },
+    "price": 1150000,
+    "engineType": "gas",
+    "enginePower": "95",
     "color": "red",
     "condition": "used"
   },
@@ -202,10 +170,8 @@
     "model": "MT-07 (FZ-07)",
     "type": "classic",
     "price": 699999,
-    "engine": {
-      "type": "gas",
-      "power": "75"
-    },
+    "engineType": "gas",
+    "enginePower": "75",
     "color": "red",
     "condition": "used"
   },
@@ -215,10 +181,8 @@
     "model": "TCmax",
     "type": "classic",
     "price": 400000,
-    "engine": {
-      "type": "electro",
-      "power": "8"
-    },
+    "engineType": "electro",
+    "enginePower": "8",
     "color": "black",
     "condition": "used"
   },
@@ -228,10 +192,8 @@
     "model": "TC",
     "type": "classic",
     "price": 250000,
-    "engine": {
-      "type": "electro",
-      "power": "5"
-    },
+    "engineType": "electro",
+    "enginePower": "5",
     "color": "brown",
     "condition": "used"
   }

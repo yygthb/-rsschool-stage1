@@ -12,6 +12,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    height: max-content;
 
     @include media(t) {
       grid-template-columns: 1fr;

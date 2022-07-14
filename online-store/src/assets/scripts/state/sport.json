@@ -5,10 +5,8 @@
     "model": "YZF-R3",
     "type": "sport",
     "price": 400000,
-    "engine": {
-      "type": "gas",
-      "power": "42"
-    },
+    "engineType": "gas",
+    "enginePower": "42",
     "color": "gray",
     "condition": "used"
   },
@@ -18,10 +16,8 @@
     "model": "YZF-R3",
     "type": "sport",
     "price": 579000,
-    "engine": {
-      "type": "gas",
-      "power": "42"
-    },
+    "engineType": "gas",
+    "enginePower": "42",
     "color": "gray",
     "condition": "used"
   },
@@ -31,10 +27,8 @@
     "model": "S 1000 RR",
     "type": "sport",
     "price": 2550000,
-    "engine": {
-      "type": "gas",
-      "power": "207"
-    },
+    "engineType": "gas",
+    "enginePower": "207",
     "color": "black",
     "condition": "new"
   },
@@ -44,10 +38,8 @@
     "model": "S 1000 R",
     "type": "sport",
     "price": 1349000,
-    "engine": {
-      "type": "gas",
-      "power": "165"
-    },
+    "engineType": "gas",
+    "enginePower": "165",
     "color": "gray",
     "condition": "used"
   },
@@ -57,10 +49,8 @@
     "model": "R 1200 S",
     "type": "sport",
     "price": 500000,
-    "engine": {
-      "type": "gas",
-      "power": "122"
-    },
+    "engineType": "gas",
+    "enginePower": "122",
     "color": "yellow",
     "condition": "used"
   },
@@ -70,10 +60,8 @@
     "model": "S 1000 RR",
     "type": "sport",
     "price": 1500000,
-    "engine": {
-      "type": "gas",
-      "power": "199"
-    },
+    "engineType": "gas",
+    "enginePower": "199",
     "color": "red",
     "condition": "used"
   },
@@ -83,10 +71,8 @@
     "model": "1299 Panigale",
     "type": "sport",
     "price": 1350000,
-    "engine": {
-      "type": "gas",
-      "power": "175"
-    },
+    "engineType": "gas",
+    "enginePower": "175",
     "color": "blue",
     "condition": "used"
   },
@@ -96,10 +82,8 @@
     "model": "Diavel Carbon",
     "type": "sport",
     "price": 1650000,
-    "engine": {
-      "type": "gas",
-      "power": "158"
-    },
+    "engineType": "gas",
+    "enginePower": "158",
     "color": "gray",
     "condition": "used"
   },
@@ -109,10 +93,8 @@
     "model": "1199 Panigale",
     "type": "sport",
     "price": 1699999,
-    "engine": {
-      "type": "gas",
-      "power": "183"
-    },
+    "engineType": "gas",
+    "enginePower": "183",
     "color": "red",
     "condition": "used"
   },
@@ -122,10 +104,8 @@
     "model": "CBR 600RR",
     "type": "sport",
     "price": 610000,
-    "engine": {
-      "type": "gas",
-      "power": "120"
-    },
+    "engineType": "gas",
+    "enginePower": "120",
     "color": "white",
     "condition": "used"
   },
@@ -135,10 +115,8 @@
     "model": "CBR 1000 RR/RA Fireblade",
     "type": "sport",
     "price": 850000,
-    "engine": {
-      "type": "gas",
-      "power": "180"
-    },
+    "engineType": "gas",
+    "enginePower": "180",
     "color": "red",
     "condition": "used"
   },
@@ -148,10 +126,8 @@
     "model": "K 1300 R",
     "type": "sport",
     "price": 970000,
-    "engine": {
-      "type": "gas",
-      "power": "172"
-    },
+    "engineType": "gas",
+    "enginePower": "172",
     "color": "yellow",
     "condition": "used"
   },
@@ -161,10 +137,8 @@
     "model": "S 1000 RR",
     "type": "sport",
     "price": 2300000,
-    "engine": {
-      "type": "gas",
-      "power": "207"
-    },
+    "engineType": "gas",
+    "enginePower": "207",
     "color": "black",
     "condition": "used"
   }

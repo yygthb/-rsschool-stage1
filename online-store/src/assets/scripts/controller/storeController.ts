@@ -11,7 +11,8 @@ export enum FilterProp {
   Title = 'title',
   MotoType = 'motoType',
   Price = 'price',
-  Engine = 'engine',
+  EngineType = 'engineType',
+  EnginePower = 'enginePower',
   Condition = 'condition',
   Colors = 'colors',
 }
@@ -35,10 +36,8 @@ export interface IFilterConfig {
   [FilterProp.Title]: string;
   [FilterProp.MotoType]: string;
   [FilterProp.Price]: [number, number];
-  [FilterProp.Engine]: {
-    [EngineProp.Type]: string;
-    [EngineProp.Power]: [number, number];
-  };
+  [FilterProp.EngineType]: string;
+  [FilterProp.EnginePower]: [number, number];
   [FilterProp.Condition]: string;
   [FilterProp.Colors]: CheckboxCbValue;
 }
@@ -78,7 +77,7 @@ export class StoreController {
   }
 
   constructor(data: Array<IMotoCard>, controls: IControls) {
-    this.controls = { ...controls };
+    this.controls = controls;
 
     this.baseState = [...data];
     this.state = [...data];
@@ -107,16 +106,12 @@ export class StoreController {
   };
 
   filterByPower = ([min, max]: [number, number]): void => {
-    this.controls[ControlMethod.Filter][FilterProp.Engine][EngineProp.Power] = [
-      min,
-      max,
-    ];
+    this.controls[ControlMethod.Filter][FilterProp.EnginePower] = [min, max];
     this.updateContentState();
   };
 
   filterByEngineType = (value: string): void => {
-    this.controls[ControlMethod.Filter][FilterProp.Engine][EngineProp.Type] =
-      value;
+    this.controls[ControlMethod.Filter][FilterProp.EngineType] = value;
     this.updateContentState();
   };
 
@@ -129,6 +124,11 @@ export class StoreController {
     this.controls[ControlMethod.Filter][FilterProp.Colors] = value;
     this.updateContentState();
   };
+
+  resetFilter(filterProps: IFilterConfig) {
+    this.controls[ControlMethod.Filter] = { ...filterProps };
+    this.updateContentState();
+  }
 
   private updateContentState() {
     this.filterState();
@@ -170,6 +170,7 @@ export class StoreController {
       default:
         break;
     }
+    console.log(this.state.length);
   }
 
   private filterState(): void {
@@ -177,10 +178,8 @@ export class StoreController {
       title,
       motoType,
       price: [priceMin, priceMax],
-      engine: {
-        power: [powerMin, powerMax],
-        type,
-      },
+      engineType,
+      enginePower: [powerMin, powerMax],
       condition,
       colors,
     } = this.controls[ControlMethod.Filter];
@@ -197,10 +196,10 @@ export class StoreController {
         +item.price > +priceMin &&
         +item.price < +priceMax &&
         // filter by engine power
-        +item.engine.power > +powerMin &&
-        +item.engine.power < +powerMax &&
+        +item.enginePower > +powerMin &&
+        +item.enginePower < +powerMax &&
         // filter by engine type
-        (type === 'all' || item.engine.type === type) &&
+        (engineType === 'all' || item.engineType === engineType) &&
         // filter by condition
         (condition === 'all' || item.condition === condition) &&
         // filter by color

@@ -5,10 +5,8 @@
     "model": "C 400 X",
     "type": "scooter",
     "price": 1310000,
-    "engine": {
-      "type": "gas",
-      "power": "34"
-    },
+    "engineType": "gas",
+    "enginePower": "34",
     "color": "gray",
     "condition": "new"
   },
@@ -18,10 +16,8 @@
     "model": "CE 04",
     "type": "scooter",
     "price": 2500000,
-    "engine": {
-      "type": "electro",
-      "power": "42"
-    },
+    "engineType": "electro",
+    "enginePower": "42",
     "color": "white",
     "condition": "new"
   },
@@ -31,10 +27,8 @@
     "model": "C 650 Sport",
     "type": "scooter",
     "price": 595000,
-    "engine": {
-      "type": "gas",
-      "power": "60"
-    },
+    "engineType": "gas",
+    "enginePower": "60",
     "color": "white",
     "condition": "used"
   },
@@ -44,10 +38,8 @@
     "model": "C evolution",
     "type": "scooter",
     "price": 1700000,
-    "engine": {
-      "type": "gas",
-      "power": "43"
-    },
+    "engineType": "gas",
+    "enginePower": "43",
     "color": "gray",
     "condition": "used"
   },
@@ -57,10 +49,8 @@
     "model": "Forza",
     "type": "scooter",
     "price": 1500000,
-    "engine": {
-      "type": "gas",
-      "power": "57"
-    },
+    "engineType": "gas",
+    "enginePower": "57",
     "color": "gray",
     "condition": "new"
   },
@@ -70,10 +60,8 @@
     "model": "PCX 125",
     "type": "scooter",
     "price": 530000,
-    "engine": {
-      "type": "gas",
-      "power": "14"
-    },
+    "engineType": "gas",
+    "enginePower": "14",
     "color": "red",
     "condition": "new"
   },
@@ -83,10 +71,8 @@
     "model": "Giorno",
     "type": "scooter",
     "price": 129000,
-    "engine": {
-      "type": "gas",
-      "power": "4"
-    },
+    "engineType": "gas",
+    "enginePower": "4",
     "color": "white",
     "condition": "used"
   },
@@ -96,10 +82,8 @@
     "model": "Silver Wing 400",
     "type": "scooter",
     "price": 450000,
-    "engine": {
-      "type": "gas",
-      "power": "38"
-    },
+    "engineType": "gas",
+    "enginePower": "38",
     "color": "black",
     "condition": "used"
   }

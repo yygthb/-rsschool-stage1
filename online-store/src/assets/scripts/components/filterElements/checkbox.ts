@@ -12,6 +12,8 @@ export type CheckboxCbValue = string[];
 export type ICheckBoxCb = (values: CheckboxCbValue) => void;
 
 export class SelectCheckbox extends NodeElement {
+  private inputs: Array<Input> = [];
+
   constructor(nodeProps: INodeProps) {
     super({
       ...nodeProps,
@@ -49,6 +51,17 @@ export class SelectCheckbox extends NodeElement {
         tagName: 'label',
         content: checkbox.content,
         attributes: [['for', `${checkbox.id}-${checkbox.value}`]],
+      });
+      this.inputs.push(input);
+    });
+  }
+
+  reset(defaultBtns: Array<RadioInput>) {
+    this.inputs.forEach((input) => {
+      defaultBtns.forEach((btn) => {
+        if (btn.value === input.value) {
+          input.reset(btn.value, btn.checked);
+        }
       });
     });
   }

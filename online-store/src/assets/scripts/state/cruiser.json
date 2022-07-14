@@ -5,10 +5,8 @@
     "model": "Softail Standard",
     "type": "cruiser",
     "price": 1790000,
-    "engine": {
-      "type": "gas",
-      "power": "87"
-    },
+    "engineType": "gas",
+    "enginePower": "87",
     "color": "black",
     "condition": "new"
   },
@@ -18,10 +16,8 @@
     "model": "R 18 Classic",
     "type": "cruiser",
     "price": 2630000,
-    "engine": {
-      "type": "gas",
-      "power": "91"
-    },
+    "engineType": "gas",
+    "enginePower": "91",
     "color": "black",
     "condition": "new"
   },
@@ -31,10 +27,8 @@
     "model": "Street Bob",
     "type": "cruiser",
     "price": 2350000,
-    "engine": {
-      "type": "gas",
-      "power": "95"
-    },
+    "engineType": "gas",
+    "enginePower": "95",
     "color": "green",
     "condition": "new"
   },
@@ -44,10 +38,8 @@
     "model": "R 18",
     "type": "cruiser",
     "price": 2800000,
-    "engine": {
-      "type": "gas",
-      "power": "91"
-    },
+    "engineType": "gas",
+    "enginePower": "91",
     "color": "blue",
     "condition": "new"
   },
@@ -57,10 +49,8 @@
     "model": "Street Bob",
     "type": "cruiser",
     "price": 2400000,
-    "engine": {
-      "type": "gas",
-      "power": "95"
-    },
+    "engineType": "gas",
+    "enginePower": "95",
     "color": "green",
     "condition": "new"
   },
@@ -70,10 +60,8 @@
     "model": "Low Rider",
     "type": "cruiser",
     "price": 2600000,
-    "engine": {
-      "type": "gas",
-      "power": "106"
-    },
+    "engineType": "gas",
+    "enginePower": "106",
     "color": "black",
     "condition": "new"
   },
@@ -83,10 +71,8 @@
     "model": "CMX 1100 Rebel",
     "type": "cruiser",
     "price": 1790000,
-    "engine": {
-      "type": "gas",
-      "power": "87"
-    },
+    "engineType": "gas",
+    "enginePower": "87",
     "color": "red",
     "condition": "new"
   },
@@ -96,10 +82,8 @@
     "model": "VT 600",
     "type": "cruiser",
     "price": 270000,
-    "engine": {
-      "type": "gas",
-      "power": "41"
-    },
+    "engineType": "gas",
+    "enginePower": "41",
     "color": "blue",
     "condition": "used"
   },
@@ -109,10 +93,8 @@
     "model": "XVS1300",
     "type": "cruiser",
     "price": 580000,
-    "engine": {
-      "type": "gas",
-      "power": "42"
-    },
+    "engineType": "gas",
+    "enginePower": "42",
     "color": "red",
     "condition": "used"
   },
@@ -122,10 +104,8 @@
     "model": "XV950 Bolt",
     "type": "cruiser",
     "price": 700000,
-    "engine": {
-      "type": "gas",
-      "power": "52"
-    },
+    "engineType": "gas",
+    "enginePower": "52",
     "color": "white",
     "condition": "used"
   },
@@ -135,10 +115,8 @@
     "model": "Street Rod",
     "type": "cruiser",
     "price": 780000,
-    "engine": {
-      "type": "gas",
-      "power": "71"
-    },
+    "engineType": "gas",
+    "enginePower": "71",
     "color": "gray",
     "condition": "used"
   },
@@ -148,10 +126,8 @@
     "model": "Diavel",
     "type": "cruiser",
     "price": 1065000,
-    "engine": {
-      "type": "gas",
-      "power": "163"
-    },
+    "engineType": "gas",
+    "enginePower": "163",
     "color": "black",
     "condition": "used"
   }

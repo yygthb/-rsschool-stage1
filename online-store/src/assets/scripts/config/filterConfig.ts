@@ -1,7 +1,6 @@
 import { SortValue } from '../components/filterElements/select';
 import {
   ControlMethod,
-  EngineProp,
   FilterProp,
   IControls,
 } from '../controller/storeController';
@@ -44,10 +43,8 @@ const defaultControls: IControls = {
     [FilterProp.Title]: '',
     [FilterProp.MotoType]: 'all',
     [FilterProp.Price]: [0, 3000000],
-    [FilterProp.Engine]: {
-      [EngineProp.Type]: 'all',
-      [EngineProp.Power]: [0, 300],
-    },
+    [FilterProp.EngineType]: 'all',
+    [FilterProp.EnginePower]: [0, 300],
     [FilterProp.Condition]: 'all',
     [FilterProp.Colors]: [],
   },

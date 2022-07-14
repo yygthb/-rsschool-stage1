@@ -9,6 +9,8 @@ type RadioInput = {
 };
 
 export class SelectRadio extends NodeElement {
+  private inputs: Array<Input> = [];
+
   constructor(nodeProps: INodeProps) {
     super({
       ...nodeProps,
@@ -33,6 +35,17 @@ export class SelectRadio extends NodeElement {
         tagName: 'label',
         content: radioBtn.content,
         attributes: [['for', `${radioBtn.id}-${radioBtn.value}`]],
+      });
+      this.inputs.push(input);
+    });
+  }
+
+  reset(defaultBtns: Array<RadioInput>) {
+    this.inputs.forEach((input) => {
+      defaultBtns.forEach((btn) => {
+        if (btn.value === input.value) {
+          input.reset(btn.value, btn.checked);
+        }
       });
     });
   }

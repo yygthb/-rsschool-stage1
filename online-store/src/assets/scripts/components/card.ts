@@ -6,10 +6,8 @@ export interface IMotoCard {
   model: string;
   type: string;
   price: number;
-  engine: {
-    type: string;
-    power: string;
-  };
+  engineType: string;
+  enginePower: string;
   color: string;
   condition: string;
 }

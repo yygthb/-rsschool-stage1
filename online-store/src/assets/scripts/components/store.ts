@@ -2,7 +2,11 @@ import { StoreContent } from './content';
 import { StoreFilter } from './filter';
 import { SortValue } from './filterElements/select';
 import { NodeElement, INodeProps } from '../utils/nodeElement';
-import { StoreController } from '../controller/storeController';
+import {
+  ControlMethod,
+  IControls,
+  StoreController,
+} from '../controller/storeController';
 import { state } from '../state/state';
 import { CheckboxCbValue } from './filterElements/checkbox';
 import { defaultControls } from '../config/filterConfig';
@@ -11,6 +15,7 @@ export class Store extends NodeElement {
   public storeContent: StoreContent;
   public storeFilter: StoreFilter;
   private controller: StoreController;
+  private initialControls: IControls;
 
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
@@ -29,6 +34,8 @@ export class Store extends NodeElement {
 
     this.controller = new StoreController(state, defaultControls);
 
+    this.initialControls = JSON.parse(JSON.stringify(defaultControls));
+
     this.init();
   }
 
@@ -42,6 +49,7 @@ export class Store extends NodeElement {
       conditionCb: this.filterByConditionCb.bind(this),
       motoTypeCb: this.filterByMotoType.bind(this),
       checkboxCb: this.filterByColor.bind(this),
+      resetFilterCb: this.resetFilter.bind(this),
     });
 
     this.storeContent.render(this.controller.state);
@@ -84,6 +92,13 @@ export class Store extends NodeElement {
 
   private filterByColor(value: CheckboxCbValue) {
     this.controller.filterByColor(value);
+    this.storeContent.render(this.controller.state);
+  }
+
+  private resetFilter() {
+    this.storeFilter.reset(this.initialControls[ControlMethod.Filter]);
+
+    this.controller.resetFilter(this.initialControls[ControlMethod.Filter]);
     this.storeContent.render(this.controller.state);
   }
 }

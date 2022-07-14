@@ -5,10 +5,8 @@
     "model": "G 310 GS",
     "type": "enduro",
     "price": 485000,
-    "engine": {
-      "type": "gas",
-      "power": "34"
-    },
+    "engineType": "gas",
+    "enginePower": "34",
     "color": "red",
     "condition": "used"
   },
@@ -18,10 +16,8 @@
     "model": "G 310 GS",
     "type": "enduro",
     "price": 510000,
-    "engine": {
-      "type": "gas",
-      "power": "34"
-    },
+    "engineType": "gas",
+    "enginePower": "34",
     "color": "white",
     "condition": "used"
   },
@@ -31,10 +27,8 @@
     "model": "CRF 250L",
     "type": "enduro",
     "price": 475000,
-    "engine": {
-      "type": "gas",
-      "power": "25"
-    },
+    "engineType": "gas",
+    "enginePower": "25",
     "color": "red",
     "condition": "used"
   },
@@ -44,10 +38,8 @@
     "model": "CRF 450X",
     "type": "enduro",
     "price": 470000,
-    "engine": {
-      "type": "gas",
-      "power": "60"
-    },
+    "engineType": "gas",
+    "enginePower": "60",
     "color": "red",
     "condition": "used"
   },
@@ -57,10 +49,8 @@
     "model": "XR 250",
     "type": "enduro",
     "price": 300000,
-    "engine": {
-      "type": "gas",
-      "power": "28"
-    },
+    "engineType": "gas",
+    "enginePower": "28",
     "color": "black",
     "condition": "used"
   },
@@ -70,10 +60,8 @@
     "model": "Scrambler",
     "type": "enduro",
     "price": 1605000,
-    "engine": {
-      "type": "gas",
-      "power": "73"
-    },
+    "engineType": "gas",
+    "enginePower": "73",
     "color": "red",
     "condition": "new"
   },
@@ -83,10 +71,8 @@
     "model": "Light Bee",
     "type": "enduro",
     "price": 350000,
-    "engine": {
-      "type": "gas",
-      "power": "7"
-    },
+    "engineType": "gas",
+    "enginePower": "7",
     "color": "black",
     "condition": "used"
   }

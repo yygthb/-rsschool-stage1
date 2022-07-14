@@ -10,6 +10,8 @@ import {
   engineFilterControls,
   motoTypeFilterControls,
 } from '../config/filterConfig';
+import { Button, IButtonCb } from './UI/Button';
+import { FilterProp, IFilterConfig } from '../controller/storeController';
 
 export interface IFilterCb {
   sortCb: ISelectCb;
@@ -20,6 +22,7 @@ export interface IFilterCb {
   conditionCb: IInputCb;
   motoTypeCb: IInputCb;
   checkboxCb: ICheckBoxCb;
+  resetFilterCb: IButtonCb;
 }
 
 export class StoreFilter extends NodeElement {
@@ -31,6 +34,7 @@ export class StoreFilter extends NodeElement {
   private condition: SelectRadio;
   private motoType: SelectRadio;
   private color: SelectCheckbox;
+  private resetFilterBtn: Button;
 
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
@@ -72,6 +76,13 @@ export class StoreFilter extends NodeElement {
     this.color = new SelectCheckbox({
       parentNode: this.node,
     });
+
+    this.resetFilterBtn = new Button({
+      parentNode: this.node,
+      tagName: 'button',
+      classNames: 'filter__reset',
+      content: 'reset filter',
+    });
   }
 
   init({
@@ -83,6 +94,7 @@ export class StoreFilter extends NodeElement {
     conditionCb,
     motoTypeCb,
     checkboxCb,
+    resetFilterCb,
   }: IFilterCb) {
     this.select.init(sortCb);
     this.titleFilter.init(titleCb);
@@ -92,5 +104,16 @@ export class StoreFilter extends NodeElement {
     this.condition.init(conditionCb, conditionFilterControls);
     this.motoType.init(motoTypeCb, motoTypeFilterControls);
     this.color.init(checkboxCb, colorFilterControls);
+    this.resetFilterBtn.init(resetFilterCb);
+  }
+
+  reset(defaultFilterConfig: IFilterConfig) {
+    this.titleFilter.reset(defaultFilterConfig[FilterProp.Title]);
+    this.priceFilter.reset();
+    this.powerFilter.reset();
+    this.engineType.reset(engineFilterControls);
+    this.motoType.reset(motoTypeFilterControls);
+    this.condition.reset(conditionFilterControls);
+    this.color.reset(colorFilterControls);
   }
 }

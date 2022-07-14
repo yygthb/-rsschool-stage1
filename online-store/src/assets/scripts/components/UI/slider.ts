@@ -5,14 +5,30 @@ import 'nouislider/dist/nouislider.css';
 export type ISliderCb = (value: [number, number]) => void;
 
 export class Slider extends NodeElement {
+  private slider!: noUiSlider.target;
+  private sliderInfo!: NodeElement;
+  private spanMin!: NodeElement;
+  private spanMax!: NodeElement;
+  private _range!: [number, number];
+
+  get range() {
+    return this._range;
+  }
+
+  set range([min, max]: [number, number]) {
+    this._range = [min, max];
+  }
+
   constructor(nodeProps: INodeProps) {
     super({ ...nodeProps, classNames: `slider ${nodeProps.classNames}` });
   }
 
   init(cb: ISliderCb, [min, max, step]: [number, number, number]) {
-    const slider = this.node as noUiSlider.target;
+    this.slider = this.node as noUiSlider.target;
 
-    noUiSlider.create(slider, {
+    this.range = [min, max];
+
+    noUiSlider.create(this.slider, {
       start: [min, max],
       connect: true,
       step: step,
@@ -30,32 +46,50 @@ export class Slider extends NodeElement {
       },
     });
 
-    const sliderInfo = new NodeElement({
+    this.sliderInfo = new NodeElement({
       parentNode: this.node,
       classNames: 'slider__info',
     });
-    const spanMin = new NodeElement({
-      parentNode: sliderInfo.node,
+
+    this.spanMin = new NodeElement({
+      parentNode: this.sliderInfo.node,
       tagName: 'p',
       classNames: 'slider-value slider-value-min',
-      content: min.toString(),
-    });
-    const spanMax = new NodeElement({
-      parentNode: sliderInfo.node,
-      tagName: 'p',
-      classNames: 'slider-value slider-value-max',
-      content: max.toString(),
+      content: 'min val',
     });
 
-    if (slider.noUiSlider) {
-      slider.noUiSlider.on(
+    this.spanMax = new NodeElement({
+      parentNode: this.sliderInfo.node,
+      tagName: 'p',
+      classNames: 'slider-value slider-value-max',
+      content: 'max val',
+    });
+
+    this.spanMin.updateContent(min.toString());
+    this.spanMax.updateContent(max.toString());
+
+    if (this.slider.noUiSlider) {
+      this.slider.noUiSlider.on('change', this.sliderHandler.bind(this));
+      this.slider.noUiSlider.on(
         'change',
         function ([valueMin, valueMax]: (string | number)[]) {
-          spanMin.updateContent(valueMin.toString());
-          spanMax.updateContent(valueMax.toString());
           cb([+valueMin, +valueMax]);
         }
       );
+    }
+  }
+
+  private sliderHandler = ([valueMin, valueMax]: (string | number)[]) => {
+    this.spanMin.updateContent(valueMin.toString());
+    this.spanMax.updateContent(valueMax.toString());
+  };
+
+  reset() {
+    if (this.slider.noUiSlider) {
+      this.slider.noUiSlider.reset();
+      const [min, max] = this.range;
+      this.spanMin.updateContent(min.toString());
+      this.spanMax.updateContent(max.toString());
     }
   }
 }
