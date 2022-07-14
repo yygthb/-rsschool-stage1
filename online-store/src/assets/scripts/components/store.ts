@@ -15,6 +15,7 @@ const defaultControls: IControls = {
   [ControlMethod.Sort]: SortValue.TitleUp,
   [ControlMethod.Filter]: {
     [FilterProp.Title]: '',
+    [FilterProp.MotoType]: 'all',
     [FilterProp.Price]: [0, 3000000],
     [FilterProp.Engine]: {
       [EngineProp.Type]: 'all',
@@ -57,6 +58,7 @@ export class Store extends NodeElement {
       powerCb: this.filterByPowerCb.bind(this),
       engineTypeCb: this.filterByEngineTypeCb.bind(this),
       conditionCb: this.filterByConditionCb.bind(this),
+      motoTypeCb: this.filterByMotoType.bind(this),
     });
 
     this.storeContent.render(this.controller.state);
@@ -89,6 +91,11 @@ export class Store extends NodeElement {
 
   private filterByConditionCb(value: string) {
     this.controller.filterByCondition(value);
+    this.storeContent.render(this.controller.state);
+  }
+
+  private filterByMotoType(value: string) {
+    this.controller.filterByMotoType(value);
     this.storeContent.render(this.controller.state);
   }
 }

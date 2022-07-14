@@ -8,6 +8,7 @@ export enum ControlMethod {
 
 export enum FilterProp {
   Title = 'title',
+  MotoType = 'motoType',
   Price = 'price',
   Engine = 'engine',
   Condition = 'condition',
@@ -20,8 +21,17 @@ export enum EngineProp {
 
 export type EngineType = 'all' | 'gas' | 'electro';
 
+export type MotoType =
+  | 'all'
+  | 'classic'
+  | 'sport'
+  | 'cruiser'
+  | 'enduro'
+  | 'scooter';
+
 export interface IFilterConfig {
   [FilterProp.Title]: string;
+  [FilterProp.MotoType]: string;
   [FilterProp.Price]: [number, number];
   [FilterProp.Engine]: {
     [EngineProp.Type]: string;
@@ -70,8 +80,7 @@ export class StoreController {
     this.baseState = [...data];
     this.state = [...data];
 
-    this.sortState();
-    this.filterState();
+    this.updateContentState();
   }
 
   sortByValue = (selectValue: SortValue): void => {
@@ -81,6 +90,11 @@ export class StoreController {
 
   filterByTitle = (value: string): void => {
     this.controls[ControlMethod.Filter][FilterProp.Title] = value;
+    this.updateContentState();
+  };
+
+  filterByMotoType = (value: string): void => {
+    this.controls[ControlMethod.Filter][FilterProp.MotoType] = value;
     this.updateContentState();
   };
 
@@ -153,6 +167,7 @@ export class StoreController {
   private filterState(): void {
     const {
       title,
+      motoType,
       price: [priceMin, priceMax],
       engine: {
         power: [powerMin, powerMax],
@@ -167,6 +182,8 @@ export class StoreController {
       if (
         // filter by title
         (item.brand + ' ' + item.model).match(new RegExp(title.trim(), 'i')) &&
+        // filter by moto type
+        (motoType === 'all' || item.type === motoType) &&
         // fiilter by price
         +item.price > +priceMin &&
         +item.price < +priceMax &&

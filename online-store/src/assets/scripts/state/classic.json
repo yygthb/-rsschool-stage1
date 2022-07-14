@@ -3,7 +3,7 @@
     "id": "1",
     "brand": "BMW",
     "model": "F 900 R",
-    "type": "standard",
+    "type": "classic",
     "price": 2250000,
     "engine": {
       "type": "gas",
@@ -16,7 +16,7 @@
     "id": "2",
     "brand": "BMW",
     "model": "G 310 R",
-    "type": "standard",
+    "type": "classic",
     "price": 875000,
     "engine": {
       "type": "gas",
@@ -29,7 +29,7 @@
     "id": "3",
     "brand": "BMW",
     "model": "G 310 R",
-    "type": "standard",
+    "type": "classic",
     "price": 479000,
     "engine": {
       "type": "gas",
@@ -42,7 +42,7 @@
     "id": "4",
     "brand": "BMW",
     "model": "F 900 R",
-    "type": "standard",
+    "type": "classic",
     "price": 1420000,
     "engine": {
       "type": "gas",
@@ -55,7 +55,7 @@
     "id": "5",
     "brand": "BMW",
     "model": "R 1250 R",
-    "type": "standard",
+    "type": "classic",
     "price": 1950000,
     "engine": {
       "type": "gas",
@@ -68,7 +68,7 @@
     "id": "6",
     "brand": "Ducati",
     "model": "Scrambler 1100",
-    "type": "standard",
+    "type": "classic",
     "price": 1950000,
     "engine": {
       "type": "gas",
@@ -81,7 +81,7 @@
     "id": "7",
     "brand": "Ducati",
     "model": "Monster 1200",
-    "type": "standard",
+    "type": "classic",
     "price": 830000,
     "engine": {
       "type": "gas",
@@ -95,7 +95,7 @@
     "id": "8",
     "brand": "Honda",
     "model": "CB 650R",
-    "type": "standard",
+    "type": "classic",
     "price": 1750000,
     "engine": {
       "type": "gas",
@@ -108,7 +108,7 @@
     "id": "9",
     "brand": "Honda",
     "model": "NC 750S",
-    "type": "standard",
+    "type": "classic",
     "price": 635000,
     "engine": {
       "type": "gas",
@@ -121,7 +121,7 @@
     "id": "10",
     "brand": "Honda",
     "model": "CB 300R",
-    "type": "standard",
+    "type": "classic",
     "price": 333000,
     "engine": {
       "type": "gas",
@@ -134,7 +134,7 @@
     "id": "11",
     "brand": "Honda",
     "model": "NC 750S",
-    "type": "standard",
+    "type": "classic",
     "price": 530000,
     "engine": {
       "type": "gas",
@@ -147,7 +147,7 @@
     "id": "12",
     "brand": "Honda",
     "model": "X4",
-    "type": "standard",
+    "type": "classic",
     "price": 520000,
     "engine": {
       "type": "gas",
@@ -161,7 +161,7 @@
     "id": "13",
     "brand": "Honda",
     "model": "CB 600F (Hornet)",
-    "type": "standard",
+    "type": "classic",
     "price": 520000,
     "engine": {
       "type": "gas",
@@ -174,7 +174,7 @@
     "id": "14",
     "brand": "Yamaha",
     "model": "MT-03",
-    "type": "standard",
+    "type": "classic",
     "price": 639000,
     "engine": {
       "type": "gas",
@@ -187,7 +187,7 @@
     "id": "15",
     "brand": "Yamaha",
     "model": "XSR900",
-    "type": "standard",
+    "type": "classic",
     "price": 1150000 ,
     "engine": {
       "type": "gas",
@@ -200,7 +200,7 @@
     "id": "16",
     "brand": "Yamaha",
     "model": "MT-07 (FZ-07)",
-    "type": "standard",
+    "type": "classic",
     "price": 699999,
     "engine": {
       "type": "gas",
@@ -213,7 +213,7 @@
     "id": "17",
     "brand": "Super Soco",
     "model": "TCmax",
-    "type": "standard",
+    "type": "classic",
     "price": 400000,
     "engine": {
       "type": "electro",
@@ -226,7 +226,7 @@
     "id": "18",
     "brand": "Super Soco",
     "model": "TC",
-    "type": "standard",
+    "type": "classic",
     "price": 250000,
     "engine": {
       "type": "electro",
