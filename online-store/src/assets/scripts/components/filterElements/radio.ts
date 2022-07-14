@@ -8,7 +8,7 @@ type RadioInput = {
   checked: boolean;
 };
 
-export class SelectRadio extends NodeElement {
+export class Radio extends NodeElement {
   private inputs: Array<Input> = [];
 
   constructor(nodeProps: INodeProps) {

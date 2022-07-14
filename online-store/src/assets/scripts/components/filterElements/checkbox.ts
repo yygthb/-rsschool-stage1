@@ -11,7 +11,7 @@ type RadioInput = {
 export type CheckboxCbValue = string[];
 export type ICheckBoxCb = (values: CheckboxCbValue) => void;
 
-export class SelectCheckbox extends NodeElement {
+export class CheckBox extends NodeElement {
   private inputs: Array<Input> = [];
 
   constructor(nodeProps: INodeProps) {

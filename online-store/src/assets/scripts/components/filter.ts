@@ -1,8 +1,8 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IInputCb, Input } from './UI/Input';
 import { ISelectCb, Select } from './filterElements/select';
-import { ICheckBoxCb, SelectCheckbox } from './filterElements/checkbox';
-import { SelectRadio } from './filterElements/radio';
+import { ICheckBoxCb, CheckBox } from './filterElements/checkbox';
+import { Radio } from './filterElements/radio';
 import { ISliderCb, Slider } from './UI/Slider';
 import {
   colorFilterControls,
@@ -30,10 +30,10 @@ export class StoreFilter extends NodeElement {
   private titleFilter: Input;
   private priceFilter: Slider;
   private powerFilter: Slider;
-  private engineType: SelectRadio;
-  private condition: SelectRadio;
-  private motoType: SelectRadio;
-  private color: SelectCheckbox;
+  private engineType: Radio;
+  private condition: Radio;
+  private motoType: Radio;
+  private color: CheckBox;
   private resetFilterBtn: Button;
 
   constructor(nodeProps: INodeProps) {
@@ -51,7 +51,7 @@ export class StoreFilter extends NodeElement {
       attributes: [['placeholder', 'Find by model']],
     });
 
-    this.motoType = new SelectRadio({
+    this.motoType = new Radio({
       parentNode: this.node,
     });
 
@@ -65,15 +65,15 @@ export class StoreFilter extends NodeElement {
       classNames: 'filter__element filter__element-slider',
     });
 
-    this.engineType = new SelectRadio({
+    this.engineType = new Radio({
       parentNode: this.node,
     });
 
-    this.condition = new SelectRadio({
+    this.condition = new Radio({
       parentNode: this.node,
     });
 
-    this.color = new SelectCheckbox({
+    this.color = new CheckBox({
       parentNode: this.node,
     });
 
