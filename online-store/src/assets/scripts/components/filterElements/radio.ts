@@ -1,5 +1,5 @@
 import { INodeProps, NodeElement } from '../../utils/nodeElement';
-import { IInputCb, Input } from '../filterElements/input';
+import { IInputCb, Input } from '../UI/input';
 
 type RadioInput = {
   id: string;
@@ -27,7 +27,7 @@ export class SelectRadio extends NodeElement {
           ['name', radioBtn.id],
         ],
       });
-      input.initRadio(radioBtn.checked, cb);
+      input.init(cb, radioBtn.checked);
       new NodeElement({
         parentNode: this.node,
         tagName: 'label',

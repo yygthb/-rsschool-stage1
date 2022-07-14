@@ -10,6 +10,7 @@ import {
   StoreController,
 } from '../controller/storeController';
 import { state } from '../state/state';
+import { CheckboxCbValue } from './filterElements/checkbox';
 
 const defaultControls: IControls = {
   [ControlMethod.Sort]: SortValue.TitleUp,
@@ -22,6 +23,7 @@ const defaultControls: IControls = {
       [EngineProp.Power]: [0, 300],
     },
     [FilterProp.Condition]: 'all',
+    [FilterProp.Colors]: [],
   },
 };
 
@@ -59,6 +61,7 @@ export class Store extends NodeElement {
       engineTypeCb: this.filterByEngineTypeCb.bind(this),
       conditionCb: this.filterByConditionCb.bind(this),
       motoTypeCb: this.filterByMotoType.bind(this),
+      checkboxCb: this.filterByColor.bind(this),
     });
 
     this.storeContent.render(this.controller.state);
@@ -96,6 +99,11 @@ export class Store extends NodeElement {
 
   private filterByMotoType(value: string) {
     this.controller.filterByMotoType(value);
+    this.storeContent.render(this.controller.state);
+  }
+
+  private filterByColor(value: CheckboxCbValue) {
+    this.controller.filterByColor(value);
     this.storeContent.render(this.controller.state);
   }
 }

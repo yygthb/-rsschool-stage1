@@ -1,5 +1,6 @@
 import { IMotoCard } from '../components/card';
 import { SortValue } from '../components/filterElements/select';
+import { CheckboxCbValue } from '../components/filterElements/checkbox';
 
 export enum ControlMethod {
   Sort = 'sort',
@@ -12,6 +13,7 @@ export enum FilterProp {
   Price = 'price',
   Engine = 'engine',
   Condition = 'condition',
+  Colors = 'colors',
 }
 
 export enum EngineProp {
@@ -38,6 +40,7 @@ export interface IFilterConfig {
     [EngineProp.Power]: [number, number];
   };
   [FilterProp.Condition]: string;
+  [FilterProp.Colors]: CheckboxCbValue;
 }
 
 export interface IControls {
@@ -122,6 +125,11 @@ export class StoreController {
     this.updateContentState();
   };
 
+  filterByColor = (value: CheckboxCbValue) => {
+    this.controls[ControlMethod.Filter][FilterProp.Colors] = value;
+    this.updateContentState();
+  };
+
   private updateContentState() {
     this.filterState();
     this.sortState();
@@ -174,6 +182,7 @@ export class StoreController {
         type,
       },
       condition,
+      colors,
     } = this.controls[ControlMethod.Filter];
 
     this.state = [...this.baseState];
@@ -193,7 +202,9 @@ export class StoreController {
         // filter by engine type
         (type === 'all' || item.engine.type === type) &&
         // filter by condition
-        (condition === 'all' || item.condition === condition)
+        (condition === 'all' || item.condition === condition) &&
+        // filter by color
+        (!colors.length || colors.includes(item.color))
       ) {
         return item;
       }

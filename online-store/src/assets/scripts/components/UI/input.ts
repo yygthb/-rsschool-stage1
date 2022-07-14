@@ -7,17 +7,10 @@ export class Input extends NodeElement {
     super({ ...nodeProps, tagName: 'input' });
   }
 
-  init(cb: IInputCb) {
-    const input = this.node as HTMLInputElement;
-    input.oninput = () => {
-      cb(input.value);
-    };
-  }
-
-  initRadio(isChecked: boolean, cb: IInputCb) {
+  init(cb: IInputCb, isChecked = false) {
     const input = this.node as HTMLInputElement;
     input.checked = isChecked;
-    input.onchange = () => {
+    input.oninput = () => {
       cb(input.value);
     };
   }

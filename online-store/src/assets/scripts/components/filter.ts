@@ -1,7 +1,8 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
-import { IInputCb, Input } from './filterElements/input';
+import { IInputCb, Input } from './UI/input';
 import { ISelectCb, Select } from './filterElements/select';
-import { SelectRadio } from './UI/radio';
+import { ICheckBoxCb, SelectCheckbox } from './filterElements/checkbox';
+import { SelectRadio } from './filterElements/radio';
 import { ISliderCb, Slider } from './UI/slider';
 
 export interface IFilterCb {
@@ -12,6 +13,7 @@ export interface IFilterCb {
   engineTypeCb: IInputCb;
   conditionCb: IInputCb;
   motoTypeCb: IInputCb;
+  checkboxCb: ICheckBoxCb;
 }
 
 const motoTypeFilterControls = [
@@ -21,6 +23,17 @@ const motoTypeFilterControls = [
   { id: 'brand', content: 'Cruiser', value: 'cruiser', checked: false },
   { id: 'brand', content: 'Enduro', value: 'enduro', checked: false },
   { id: 'brand', content: 'Scooter', value: 'scooter', checked: false },
+];
+
+const colorFilterControls = [
+  { id: 'color', content: 'white', value: 'white', checked: false },
+  { id: 'color', content: 'gray', value: 'gray', checked: false },
+  { id: 'color', content: 'black', value: 'black', checked: false },
+  { id: 'color', content: 'brown', value: 'brown', checked: false },
+  { id: 'color', content: 'yellow', value: 'yellow', checked: false },
+  { id: 'color', content: 'red', value: 'red', checked: false },
+  { id: 'color', content: 'green', value: 'green', checked: false },
+  { id: 'color', content: 'blue', value: 'blue', checked: false },
 ];
 
 const engineFilterControls = [
@@ -43,6 +56,7 @@ export class StoreFilter extends NodeElement {
   private engineType: SelectRadio;
   private condition: SelectRadio;
   private motoType: SelectRadio;
+  private color: SelectCheckbox;
 
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
@@ -80,6 +94,10 @@ export class StoreFilter extends NodeElement {
     this.condition = new SelectRadio({
       parentNode: this.node,
     });
+
+    this.color = new SelectCheckbox({
+      parentNode: this.node,
+    });
   }
 
   init({
@@ -90,6 +108,7 @@ export class StoreFilter extends NodeElement {
     engineTypeCb,
     conditionCb,
     motoTypeCb,
+    checkboxCb,
   }: IFilterCb) {
     this.select.init(sortCb);
     this.titleFilter.init(titleCb);
@@ -98,5 +117,6 @@ export class StoreFilter extends NodeElement {
     this.engineType.init(engineTypeCb, engineFilterControls);
     this.condition.init(conditionCb, conditionFilterControls);
     this.motoType.init(motoTypeCb, motoTypeFilterControls);
+    this.color.init(checkboxCb, colorFilterControls);
   }
 }
