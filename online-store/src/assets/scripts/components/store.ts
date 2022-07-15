@@ -63,6 +63,7 @@ export class Store extends NodeElement {
       conditionCb: this.filterByConditionCb.bind(this),
       motoTypeCb: this.filterByMotoType.bind(this),
       checkboxCb: this.filterByColor.bind(this),
+      favCb: this.filterByFav.bind(this),
       resetFilterCb: this.resetFilter.bind(this),
     });
 
@@ -106,6 +107,11 @@ export class Store extends NodeElement {
 
   private filterByColor(value: CheckboxCbValue) {
     this.controller.filterBy(FilterProp.Colors, value);
+    this.storeContent.render(this.controller.state);
+  }
+
+  private filterByFav(value: string) {
+    this.controller.filterBy(FilterProp.Fav, value);
     this.storeContent.render(this.controller.state);
   }
 

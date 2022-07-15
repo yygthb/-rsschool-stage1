@@ -15,6 +15,7 @@ export enum FilterProp {
   EnginePower = 'enginePower',
   Condition = 'condition',
   Colors = 'colors',
+  Fav = 'fav',
 }
 
 export enum EngineProp {
@@ -39,6 +40,7 @@ export interface IFilterConfig {
   [FilterProp.EngineType]: string;
   [FilterProp.EnginePower]: [number, number];
   [FilterProp.Condition]: string;
+  [FilterProp.Fav]: string;
   [FilterProp.Colors]: CheckboxCbValue;
 }
 
@@ -162,6 +164,7 @@ export class StoreController {
       enginePower: [powerMin, powerMax],
       condition,
       colors,
+      fav,
     } = this.controls[ControlMethod.Filter];
 
     this.state = [...this.baseState];
@@ -183,7 +186,10 @@ export class StoreController {
         // filter by condition
         (condition === 'all' || item.condition === condition) &&
         // filter by color
-        (!colors.length || colors.includes(item.color))
+        (!colors.length || colors.includes(item.color)) &&
+        // filter by fav
+        (fav === 'all' || (item.isFav && item.isFav === true))
+        // (item.isFav === true && isFav === true)
       ) {
         return item;
       }

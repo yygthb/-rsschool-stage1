@@ -5,13 +5,13 @@ import {
   IControls,
 } from '../controller/storeController';
 
-const conditionFilterControls = [
+const conditionRadioControls = [
   { id: 'condition', content: 'все', value: 'all', checked: true },
   { id: 'condition', content: 'new', value: 'new', checked: false },
   { id: 'condition', content: 'used', value: 'used', checked: false },
 ];
 
-const motoTypeFilterControls = [
+const motoTypeRadioControls = [
   { id: 'brand', content: 'все', value: 'all', checked: true },
   { id: 'brand', content: 'Classic', value: 'classic', checked: false },
   { id: 'brand', content: 'Sport', value: 'sport', checked: false },
@@ -20,7 +20,7 @@ const motoTypeFilterControls = [
   { id: 'brand', content: 'Scooter', value: 'scooter', checked: false },
 ];
 
-const colorFilterControls = [
+const colorCheckboxControls = [
   { id: 'color', content: 'white', value: 'white', checked: false },
   { id: 'color', content: 'gray', value: 'gray', checked: false },
   { id: 'color', content: 'black', value: 'black', checked: false },
@@ -31,10 +31,15 @@ const colorFilterControls = [
   { id: 'color', content: 'blue', value: 'blue', checked: false },
 ];
 
-const engineFilterControls = [
+const engineRadioControls = [
   { id: 'engine-type', content: 'все', value: 'all', checked: true },
   { id: 'engine-type', content: 'gas', value: 'gas', checked: false },
   { id: 'engine-type', content: 'electro', value: 'electro', checked: false },
+];
+
+const favRadioControls = [
+  { id: 'favorite', content: 'все', value: 'all', checked: true },
+  { id: 'favorite', content: 'favorite', value: 'fav', checked: false },
 ];
 
 const defaultControls: IControls = {
@@ -46,14 +51,16 @@ const defaultControls: IControls = {
     [FilterProp.EngineType]: 'all',
     [FilterProp.EnginePower]: [0, 300],
     [FilterProp.Condition]: 'all',
+    [FilterProp.Fav]: 'all',
     [FilterProp.Colors]: [],
   },
 };
 
 export {
-  motoTypeFilterControls,
-  colorFilterControls,
-  engineFilterControls,
-  conditionFilterControls,
+  motoTypeRadioControls,
+  colorCheckboxControls,
+  engineRadioControls,
+  conditionRadioControls,
+  favRadioControls,
   defaultControls,
 };
