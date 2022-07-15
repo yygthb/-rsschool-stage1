@@ -50,4 +50,10 @@
       background-color: transparent;
     }
   }
+
+  &.fav {
+    .item__fav-button {
+      background-color: coral;
+    }
+  }
 }

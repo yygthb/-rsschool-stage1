@@ -10,10 +10,14 @@ export interface IMotoCard {
   enginePower: string;
   color: string;
   condition: string;
+  isFav?: boolean;
 }
+
+export type FavClickCb = (val: string) => string;
 
 export class StoreCard extends NodeElement {
   private _id: string = '';
+  private _isFav: boolean = false;
 
   set id(val: string) {
     this._id = val;
@@ -23,13 +27,24 @@ export class StoreCard extends NodeElement {
     return this._id;
   }
 
-  constructor(nodeProps: INodeProps, data: IMotoCard) {
-    super(nodeProps);
-
-    this.render(data);
+  set isFav(val: boolean) {
+    this._isFav = val;
   }
 
-  render({ id, brand, model, price, type }: IMotoCard) {
+  get isFav() {
+    return this._isFav;
+  }
+
+  constructor(nodeProps: INodeProps, data: IMotoCard, cb: FavClickCb) {
+    super(nodeProps);
+
+    this.init(data, cb);
+  }
+
+  init(
+    { id, brand, model, price, type, isFav = false }: IMotoCard,
+    cb: FavClickCb
+  ) {
     this.id = id;
 
     const img = new NodeElement({
@@ -56,5 +71,28 @@ export class StoreCard extends NodeElement {
       classNames: 'item__price',
       content: price.toLocaleString(),
     });
+
+    const fav = new NodeElement({
+      parentNode: info.node,
+      tagName: 'button',
+      classNames: 'item__fav-button',
+      content: 'like',
+    });
+
+    if (isFav) {
+      this.node.classList.add('fav');
+    }
+
+    fav.node.onclick = () => {
+      const res: string = cb(this.id);
+      if (res === 'ok') {
+        this.updateFav();
+      }
+    };
+  }
+
+  updateFav() {
+    this.isFav = !this.isFav;
+    this.node.classList.toggle('fav');
   }
 }

@@ -1,9 +1,13 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
-import { IMotoCard, StoreCard } from './card';
+import { FavClickCb, IMotoCard, StoreCard } from './card';
 
 export class StoreContent extends NodeElement {
-  constructor(nodeProps: INodeProps) {
+  private clickCartCb: FavClickCb;
+
+  constructor(nodeProps: INodeProps, clickCartCb: FavClickCb) {
     super(nodeProps);
+
+    this.clickCartCb = clickCartCb;
   }
 
   render(storeData: Array<IMotoCard>) {
@@ -15,7 +19,8 @@ export class StoreContent extends NodeElement {
           parentNode: this.node,
           classNames: 'card__item',
         },
-        card
+        card,
+        this.clickCartCb
       );
     });
   }

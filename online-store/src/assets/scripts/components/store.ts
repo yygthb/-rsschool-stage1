@@ -10,6 +10,7 @@ import {
 import { state } from '../state/state';
 import { CheckboxCbValue } from './filterElements/checkbox';
 import { defaultControls } from '../config/filterConfig';
+import { cart } from './cart';
 
 export class Store extends NodeElement {
   public storeContent: StoreContent;
@@ -20,11 +21,14 @@ export class Store extends NodeElement {
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
 
-    this.storeContent = new StoreContent({
-      parentNode: this.node,
-      classNames: 'store__content',
-      content: 'Content',
-    });
+    this.storeContent = new StoreContent(
+      {
+        parentNode: this.node,
+        classNames: 'store__content',
+        content: 'Content',
+      },
+      this.clickOnCardCb.bind(this)
+    );
 
     this.storeFilter = new StoreFilter({
       parentNode: this.node,
@@ -37,6 +41,15 @@ export class Store extends NodeElement {
     this.initialControls = JSON.parse(JSON.stringify(defaultControls));
 
     this.init();
+  }
+
+  clickOnCardCb(id: string) {
+    const res: string = cart.clickCb(id);
+    if (res === 'ok') {
+      console.log('click on id: ', id);
+      this.controller.setFav(id);
+    }
+    return res;
   }
 
   private init() {

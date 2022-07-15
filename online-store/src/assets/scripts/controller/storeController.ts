@@ -130,6 +130,13 @@ export class StoreController {
     this.updateContentState();
   }
 
+  setFav(id: string) {
+    const card = this.baseState.find((card) => card.id === id);
+    if (card) {
+      card.isFav = !card.isFav;
+    }
+  }
+
   private updateContentState() {
     this.filterState();
     this.sortState();

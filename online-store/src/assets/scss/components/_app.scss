@@ -7,11 +7,17 @@
     margin-bottom: 20px;
     background-color: rgba(173, 216, 230, 0.445);
 
-    .app__title {
-      margin: 10px 0;
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-      @include media(t) {
-        font-size: 24px;
+      .app__title {
+        margin: 10px 0;
+
+        @include media(t) {
+          font-size: 24px;
+        }
       }
     }
   }

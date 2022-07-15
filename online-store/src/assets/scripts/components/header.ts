@@ -1,4 +1,5 @@
 import { INodeProps, NodeElement } from '../utils/nodeElement';
+import { cart } from './cart';
 import { Container } from './container';
 
 export class Header extends NodeElement {
@@ -27,5 +28,7 @@ export class Header extends NodeElement {
       classNames: 'app__title',
       content: 'Online Store',
     });
+
+    this.content.node.append(cart.node);
   }
 }
