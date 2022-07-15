@@ -4,6 +4,7 @@ import { SortValue } from './filterElements/select';
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import {
   ControlMethod,
+  FilterProp,
   IControls,
   StoreController,
 } from '../controller/storeController';
@@ -74,37 +75,37 @@ export class Store extends NodeElement {
   }
 
   private filterByTitleCb(value: string) {
-    this.controller.filterByTitle(value);
+    this.controller.filterBy(FilterProp.Title, value);
     this.storeContent.render(this.controller.state);
   }
 
-  private filterByPriceCb([min, max]: [number, number]) {
-    this.controller.filterByPrice([min, max]);
+  private filterByPriceCb(value: [number, number]) {
+    this.controller.filterBy(FilterProp.Price, value);
     this.storeContent.render(this.controller.state);
   }
 
-  private filterByPowerCb([min, max]: [number, number]) {
-    this.controller.filterByPower([min, max]);
+  private filterByPowerCb(value: [number, number]) {
+    this.controller.filterBy(FilterProp.EnginePower, value);
     this.storeContent.render(this.controller.state);
   }
 
   private filterByEngineTypeCb(value: string) {
-    this.controller.filterByEngineType(value);
+    this.controller.filterBy(FilterProp.EngineType, value);
     this.storeContent.render(this.controller.state);
   }
 
   private filterByConditionCb(value: string) {
-    this.controller.filterByCondition(value);
+    this.controller.filterBy(FilterProp.Condition, value);
     this.storeContent.render(this.controller.state);
   }
 
   private filterByMotoType(value: string) {
-    this.controller.filterByMotoType(value);
+    this.controller.filterBy(FilterProp.MotoType, value);
     this.storeContent.render(this.controller.state);
   }
 
   private filterByColor(value: CheckboxCbValue) {
-    this.controller.filterByColor(value);
+    this.controller.filterBy(FilterProp.Colors, value);
     this.storeContent.render(this.controller.state);
   }
 

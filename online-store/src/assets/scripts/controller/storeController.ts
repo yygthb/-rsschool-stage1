@@ -85,56 +85,29 @@ export class StoreController {
     this.updateContentState();
   }
 
-  sortByValue = (selectValue: SortValue): void => {
-    this.controls[ControlMethod.Sort] = selectValue;
-    this.sortState();
-  };
-
-  filterByTitle = (value: string): void => {
-    this.controls[ControlMethod.Filter][FilterProp.Title] = value;
-    this.updateContentState();
-  };
-
-  filterByMotoType = (value: string): void => {
-    this.controls[ControlMethod.Filter][FilterProp.MotoType] = value;
-    this.updateContentState();
-  };
-
-  filterByPrice = ([min, max]: [number, number]): void => {
-    this.controls[ControlMethod.Filter][FilterProp.Price] = [min, max];
-    this.updateContentState();
-  };
-
-  filterByPower = ([min, max]: [number, number]): void => {
-    this.controls[ControlMethod.Filter][FilterProp.EnginePower] = [min, max];
-    this.updateContentState();
-  };
-
-  filterByEngineType = (value: string): void => {
-    this.controls[ControlMethod.Filter][FilterProp.EngineType] = value;
-    this.updateContentState();
-  };
-
-  filterByCondition = (value: string): void => {
-    this.controls[ControlMethod.Filter][FilterProp.Condition] = value;
-    this.updateContentState();
-  };
-
-  filterByColor = (value: CheckboxCbValue) => {
-    this.controls[ControlMethod.Filter][FilterProp.Colors] = value;
-    this.updateContentState();
-  };
-
-  resetFilter(filterProps: IFilterConfig) {
-    this.controls[ControlMethod.Filter] = { ...filterProps };
-    this.updateContentState();
-  }
-
   setFav(id: string) {
     const card = this.baseState.find((card) => card.id === id);
     if (card) {
       card.isFav = !card.isFav;
     }
+  }
+
+  sortByValue = (selectValue: SortValue): void => {
+    this.controls[ControlMethod.Sort] = selectValue;
+    this.sortState();
+  };
+
+  filterBy<T extends IFilterConfig, U extends keyof IFilterConfig>(
+    filterProp: U,
+    value: T[U]
+  ): void {
+    this.controls[ControlMethod.Filter][filterProp] = value;
+    this.updateContentState();
+  }
+
+  resetFilter(filterProps: IFilterConfig) {
+    this.controls[ControlMethod.Filter] = { ...filterProps };
+    this.updateContentState();
   }
 
   private updateContentState() {
