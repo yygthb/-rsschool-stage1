@@ -15,15 +15,17 @@ export class Input extends NodeElement {
 
   constructor(nodeProps: INodeProps) {
     super({ ...nodeProps, tagName: 'input' });
-
     this.input = this.node as HTMLInputElement;
   }
 
-  init(cb: IInputCb, isChecked = false) {
+  init(cb: IInputCb, isChecked = false, value = '') {
     this.input.checked = isChecked;
     this.input.oninput = () => {
       cb(this.input.value);
     };
+    if (value) {
+      this.value = value;
+    }
   }
 
   reset(value: string, isChecked = false) {

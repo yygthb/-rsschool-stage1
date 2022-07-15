@@ -5,6 +5,13 @@ import {
   IControls,
 } from '../controller/storeController';
 
+export type RadioType = {
+  id: string;
+  content: string;
+  value: string;
+  checked: boolean;
+};
+
 const conditionRadioControls = [
   { id: 'condition', content: 'все', value: 'all', checked: true },
   { id: 'condition', content: 'new', value: 'new', checked: false },
@@ -12,12 +19,12 @@ const conditionRadioControls = [
 ];
 
 const motoTypeRadioControls = [
-  { id: 'brand', content: 'все', value: 'all', checked: true },
-  { id: 'brand', content: 'Classic', value: 'classic', checked: false },
-  { id: 'brand', content: 'Sport', value: 'sport', checked: false },
-  { id: 'brand', content: 'Cruiser', value: 'cruiser', checked: false },
-  { id: 'brand', content: 'Enduro', value: 'enduro', checked: false },
-  { id: 'brand', content: 'Scooter', value: 'scooter', checked: false },
+  { id: 'motoType', content: 'все', value: 'all', checked: true },
+  { id: 'motoType', content: 'Classic', value: 'classic', checked: false },
+  { id: 'motoType', content: 'Sport', value: 'sport', checked: false },
+  { id: 'motoType', content: 'Cruiser', value: 'cruiser', checked: false },
+  { id: 'motoType', content: 'Enduro', value: 'enduro', checked: false },
+  { id: 'motoType', content: 'Scooter', value: 'scooter', checked: false },
 ];
 
 const colorCheckboxControls = [
@@ -32,14 +39,14 @@ const colorCheckboxControls = [
 ];
 
 const engineRadioControls = [
-  { id: 'engine-type', content: 'все', value: 'all', checked: true },
-  { id: 'engine-type', content: 'gas', value: 'gas', checked: false },
-  { id: 'engine-type', content: 'electro', value: 'electro', checked: false },
+  { id: 'engineType', content: 'все', value: 'all', checked: true },
+  { id: 'engineType', content: 'gas', value: 'gas', checked: false },
+  { id: 'engineType', content: 'electro', value: 'electro', checked: false },
 ];
 
 const favRadioControls = [
-  { id: 'favorite', content: 'все', value: 'all', checked: true },
-  { id: 'favorite', content: 'favorite', value: 'fav', checked: false },
+  { id: 'fav', content: 'все', value: 'all', checked: true },
+  { id: 'fav', content: 'favorite', value: 'fav', checked: false },
 ];
 
 const defaultControls: IControls = {

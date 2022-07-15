@@ -1,6 +1,7 @@
 import { IMotoCard } from '../components/card';
 import { SortValue } from '../components/filterElements/select';
 import { CheckboxCbValue } from '../components/filterElements/checkbox';
+import { FilterStorage } from './filterStorage';
 
 export enum ControlMethod {
   Sort = 'sort',
@@ -16,11 +17,6 @@ export enum FilterProp {
   Condition = 'condition',
   Colors = 'colors',
   Fav = 'fav',
-}
-
-export enum EngineProp {
-  Type = 'type',
-  Power = 'power',
 }
 
 export type EngineType = 'all' | 'gas' | 'electro';
@@ -52,7 +48,7 @@ export interface IControls {
 export class StoreController {
   private _baseState!: Array<IMotoCard>;
   private _state!: Array<IMotoCard>;
-  private _controls!: IControls;
+  private filterStorage: FilterStorage;
 
   set baseState(state: Array<IMotoCard>) {
     this._baseState = state;
@@ -70,16 +66,8 @@ export class StoreController {
     return this._state;
   }
 
-  set controls(controls: IControls) {
-    this._controls = controls;
-  }
-
-  get controls() {
-    return this._controls;
-  }
-
-  constructor(data: Array<IMotoCard>, controls: IControls) {
-    this.controls = controls;
+  constructor(data: Array<IMotoCard>, filterStorage: FilterStorage) {
+    this.filterStorage = filterStorage;
 
     this.baseState = [...data];
     this.state = [...data];
@@ -95,30 +83,30 @@ export class StoreController {
   }
 
   sortByValue = (selectValue: SortValue): void => {
-    this.controls[ControlMethod.Sort] = selectValue;
-    this.sortState();
+    this.filterStorage.sort = selectValue;
+    this.sort();
   };
 
   filterBy<T extends IFilterConfig, U extends keyof IFilterConfig>(
     filterProp: U,
     value: T[U]
   ): void {
-    this.controls[ControlMethod.Filter][filterProp] = value;
+    this.filterStorage.updateFilter(filterProp, value);
     this.updateContentState();
   }
 
-  resetFilter(filterProps: IFilterConfig) {
-    this.controls[ControlMethod.Filter] = { ...filterProps };
+  resetFilter() {
+    this.filterStorage.reset();
     this.updateContentState();
   }
 
   private updateContentState() {
-    this.filterState();
-    this.sortState();
+    this.filter();
+    this.sort();
   }
 
-  private sortState(): void {
-    switch (this.controls[ControlMethod.Sort]) {
+  private sort(): void {
+    switch (this.filterStorage.sort) {
       case SortValue.TitleUp:
         this.state.sort((a, b) => {
           if (
@@ -155,7 +143,7 @@ export class StoreController {
     console.log(this.state.length);
   }
 
-  private filterState(): void {
+  private filter(): void {
     const {
       title,
       motoType,
@@ -165,7 +153,7 @@ export class StoreController {
       condition,
       colors,
       fav,
-    } = this.controls[ControlMethod.Filter];
+    } = this.filterStorage.filters;
 
     this.state = [...this.baseState];
 

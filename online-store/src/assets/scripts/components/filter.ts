@@ -1,9 +1,12 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IInputCb, Input } from './UI/Input';
-import { ISelectCb, Select } from './filterElements/select';
+import { ISelectCb, Select, SortValue } from './filterElements/select';
 import { ICheckBoxCb, CheckBox } from './filterElements/checkbox';
 import { Radio } from './filterElements/radio';
 import { ISliderCb, Slider } from './UI/Slider';
+import { Button, IButtonCb } from './UI/Button';
+import { FilterProp, IFilterConfig } from '../controller/storeController';
+import { updateCheckboxes, updateRadios } from '../utils/updateFilterControls';
 import {
   colorCheckboxControls,
   conditionRadioControls,
@@ -11,8 +14,6 @@ import {
   favRadioControls,
   motoTypeRadioControls,
 } from '../config/filterConfig';
-import { Button, IButtonCb } from './UI/Button';
-import { FilterProp, IFilterConfig } from '../controller/storeController';
 
 export interface IFilterCb {
   sortCb: ISelectCb;
@@ -92,27 +93,57 @@ export class StoreFilter extends NodeElement {
     });
   }
 
-  init({
-    sortCb,
-    priceCb,
-    titleCb,
-    powerCb,
-    engineTypeCb,
-    conditionCb,
-    motoTypeCb,
-    checkboxCb,
-    favCb,
-    resetFilterCb,
-  }: IFilterCb) {
+  init(
+    {
+      sortCb,
+      priceCb,
+      titleCb,
+      powerCb,
+      engineTypeCb,
+      conditionCb,
+      motoTypeCb,
+      checkboxCb,
+      favCb,
+      resetFilterCb,
+    }: IFilterCb,
+    loadSort: SortValue,
+    loadFilter: IFilterConfig
+  ) {
+    const engineTypeBtns = updateRadios(
+      engineRadioControls,
+      loadFilter[FilterProp.EngineType]
+    );
+    const conditionBtns = updateRadios(
+      conditionRadioControls,
+      loadFilter[FilterProp.Condition]
+    );
+    const motoTypeBtns = updateRadios(
+      motoTypeRadioControls,
+      loadFilter[FilterProp.MotoType]
+    );
+    const colorBtns = updateCheckboxes(
+      colorCheckboxControls,
+      loadFilter[FilterProp.Colors]
+    );
+    const favBtns = updateRadios(favRadioControls, loadFilter[FilterProp.Fav]);
+
     this.select.init(sortCb);
-    this.titleFilter.init(titleCb);
-    this.priceFilter.init(priceCb, [0, 3000000, 10000]);
-    this.powerFilter.init(powerCb, [0, 300, 1]);
-    this.engineType.init(engineTypeCb, engineRadioControls);
-    this.condition.init(conditionCb, conditionRadioControls);
-    this.motoType.init(motoTypeCb, motoTypeRadioControls);
-    this.color.init(checkboxCb, colorCheckboxControls);
-    this.fav.init(favCb, favRadioControls);
+    this.titleFilter.init(titleCb, false, loadFilter[FilterProp.Title]);
+    this.priceFilter.init(
+      priceCb,
+      [0, 3000000, 10000],
+      loadFilter[FilterProp.Price]
+    );
+    this.powerFilter.init(
+      powerCb,
+      [0, 300, 1],
+      loadFilter[FilterProp.EnginePower]
+    );
+    this.engineType.init(engineTypeCb, engineTypeBtns);
+    this.condition.init(conditionCb, conditionBtns);
+    this.motoType.init(motoTypeCb, motoTypeBtns);
+    this.color.init(checkboxCb, colorBtns);
+    this.fav.init(favCb, favBtns);
     this.resetFilterBtn.init(resetFilterCb);
   }
 
