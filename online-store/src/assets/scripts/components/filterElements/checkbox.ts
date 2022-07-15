@@ -13,6 +13,7 @@ export type ICheckBoxCb = (values: CheckboxCbValue) => void;
 
 export class CheckBox extends NodeElement {
   private inputs: Array<Input> = [];
+  private colors: string[] = [];
 
   constructor(nodeProps: INodeProps) {
     super({
@@ -22,11 +23,9 @@ export class CheckBox extends NodeElement {
   }
 
   init(cb: ICheckBoxCb, btns: Array<RadioInput>) {
-    let colors: string[] = [];
-
     btns.forEach((checkbox) => {
       if (checkbox.checked) {
-        colors.push(checkbox.value);
+        this.colors.push(checkbox.value);
       }
       const input = new Input({
         parentNode: this.node,
@@ -38,12 +37,12 @@ export class CheckBox extends NodeElement {
         ],
       });
       const callback = (value: string) => {
-        if (colors.includes(value)) {
-          colors = colors.filter((color) => color !== value);
+        if (this.colors.includes(value)) {
+          this.colors = this.colors.filter((color) => color !== value);
         } else {
-          colors.push(value);
+          this.colors.push(value);
         }
-        cb(colors);
+        cb(this.colors);
       };
       input.init(callback, checkbox.checked);
       new NodeElement({
@@ -57,6 +56,7 @@ export class CheckBox extends NodeElement {
   }
 
   reset(defaultBtns: Array<RadioInput>) {
+    this.colors = [];
     this.inputs.forEach((input) => {
       defaultBtns.forEach((btn) => {
         if (btn.value === input.value) {
