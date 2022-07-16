@@ -44,15 +44,12 @@ export class FilterStorage {
       ...filtersFromLS,
     };
 
-    // console.log('this.filters: ', this.filters);
-
     localStorage.setItem(LS_SORT_ITEM, this.sort);
     this.writeFilterToLS();
   }
 
   reset() {
     this.filters = { ...this.initialControls[ControlMethod.Filter] };
-    // console.log('this.filters: ', this.filters);
     this.writeFilterToLS();
   }
 

@@ -1,6 +1,6 @@
 import { RadioType } from '../config/filterConfig';
 
-export const updateRadios = <T extends RadioType>(
+export const transfromRadios = <T extends RadioType>(
   radios: T[],
   activeValue: string
 ): T[] => {
@@ -16,7 +16,7 @@ export const updateRadios = <T extends RadioType>(
   return radioBtns;
 };
 
-export const updateCheckboxes = <T extends RadioType>(
+export const transfromCheckboxes = <T extends RadioType>(
   radios: T[],
   activeValues: string[] = []
 ): T[] => {

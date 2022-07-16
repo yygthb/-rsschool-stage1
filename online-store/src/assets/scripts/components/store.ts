@@ -7,7 +7,8 @@ import { state } from '../state/state';
 import { CheckboxCbValue } from './filterElements/checkbox';
 import { cart } from './cart';
 import { FilterStorage } from '../controller/filterStorage';
-import { defaultControls, engineRadioControls } from '../config/filterConfig';
+import { defaultControls } from '../config/filterConfig';
+import { transfromStore } from '../utils/transformStoreData';
 
 export class Store extends NodeElement {
   public storeContent: StoreContent;
@@ -33,8 +34,10 @@ export class Store extends NodeElement {
       content: 'Filter',
     });
 
+    const storeData = transfromStore(state, cart.getFavs());
+
     this.filterStorage = new FilterStorage(defaultControls);
-    this.controller = new StoreController(state, this.filterStorage);
+    this.controller = new StoreController(storeData, this.filterStorage);
 
     this.init();
   }
@@ -49,7 +52,6 @@ export class Store extends NodeElement {
   }
 
   private init() {
-    // console.log(engineRadioControls);
     this.storeFilter.init(
       {
         sortCb: this.sortCallback.bind(this),

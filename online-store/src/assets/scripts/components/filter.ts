@@ -6,7 +6,10 @@ import { Radio } from './filterElements/radio';
 import { ISliderCb, Slider } from './UI/Slider';
 import { Button, IButtonCb } from './UI/Button';
 import { FilterProp, IFilterConfig } from '../controller/storeController';
-import { updateCheckboxes, updateRadios } from '../utils/updateFilterControls';
+import {
+  transfromCheckboxes,
+  transfromRadios,
+} from '../utils/transformFilterControls';
 import {
   colorCheckboxControls,
   conditionRadioControls,
@@ -109,23 +112,26 @@ export class StoreFilter extends NodeElement {
     loadSort: SortValue,
     loadFilter: IFilterConfig
   ) {
-    const engineTypeBtns = updateRadios(
+    const engineTypeBtns = transfromRadios(
       engineRadioControls,
       loadFilter[FilterProp.EngineType]
     );
-    const conditionBtns = updateRadios(
+    const conditionBtns = transfromRadios(
       conditionRadioControls,
       loadFilter[FilterProp.Condition]
     );
-    const motoTypeBtns = updateRadios(
+    const motoTypeBtns = transfromRadios(
       motoTypeRadioControls,
       loadFilter[FilterProp.MotoType]
     );
-    const colorBtns = updateCheckboxes(
+    const colorBtns = transfromCheckboxes(
       colorCheckboxControls,
       loadFilter[FilterProp.Colors]
     );
-    const favBtns = updateRadios(favRadioControls, loadFilter[FilterProp.Fav]);
+    const favBtns = transfromRadios(
+      favRadioControls,
+      loadFilter[FilterProp.Fav]
+    );
 
     this.select.init(sortCb, loadSort);
     this.titleFilter.init(titleCb, false, loadFilter[FilterProp.Title]);
