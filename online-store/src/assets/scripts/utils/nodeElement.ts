@@ -6,7 +6,7 @@ export interface INodeProps {
   attributes?: Array<AttrType>;
 }
 
-type AttrType = [string, string] | [string];
+export type AttrType = [string, string] | [string];
 
 export class NodeElement {
   public node: HTMLElement;

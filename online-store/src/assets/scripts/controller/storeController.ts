@@ -46,37 +46,37 @@ export interface IControls {
 }
 
 export class StoreController {
-  private _baseState!: Array<IMotoCard>;
-  private _state!: Array<IMotoCard>;
+  private _stateOriginal!: Array<IMotoCard>;
+  private _stateToRender!: Array<IMotoCard>;
   private filterStorage: FilterStorage;
 
-  set baseState(state: Array<IMotoCard>) {
-    this._baseState = state;
+  set stateOriginal(state: Array<IMotoCard>) {
+    this._stateOriginal = state;
   }
 
-  get baseState() {
-    return this._baseState;
+  get stateOriginal() {
+    return this._stateOriginal;
   }
 
-  set state(state: Array<IMotoCard>) {
-    this._state = state;
+  set stateToRender(state: Array<IMotoCard>) {
+    this._stateToRender = state;
   }
 
-  get state() {
-    return this._state;
+  get stateToRender() {
+    return this._stateToRender;
   }
 
   constructor(data: Array<IMotoCard>, filterStorage: FilterStorage) {
     this.filterStorage = filterStorage;
 
-    this.baseState = [...data];
-    this.state = [...data];
+    this.stateOriginal = [...data];
+    this.stateToRender = [...data];
 
     this.updateContentState();
   }
 
   setFav(id: string) {
-    const card = this.baseState.find((card) => card.id === id);
+    const card = this.stateOriginal.find((card) => card.id === id);
     if (card) {
       card.isFav = !card.isFav;
     }
@@ -108,7 +108,7 @@ export class StoreController {
   private sort(): void {
     switch (this.filterStorage.sort) {
       case SortValue.TitleUp:
-        this.state.sort((a, b) => {
+        this.stateToRender.sort((a, b) => {
           if (
             (a.brand + a.model).toLowerCase() >
             (b.brand + b.model).toLowerCase()
@@ -120,7 +120,7 @@ export class StoreController {
         });
         break;
       case SortValue.TitleDown:
-        this.state.sort((a, b) => {
+        this.stateToRender.sort((a, b) => {
           if (
             (a.brand + a.model).toLowerCase() >
             (b.brand + b.model).toLowerCase()
@@ -132,15 +132,15 @@ export class StoreController {
         });
         break;
       case SortValue.PriceUp:
-        this.state.sort((a, b) => a.price - b.price);
+        this.stateToRender.sort((a, b) => a.price - b.price);
         break;
       case SortValue.PriceDown:
-        this.state.sort((a, b) => b.price - a.price);
+        this.stateToRender.sort((a, b) => b.price - a.price);
         break;
       default:
         break;
     }
-    console.log(this.state.length);
+    console.log(this.stateToRender.length);
   }
 
   private filter(): void {
@@ -155,9 +155,9 @@ export class StoreController {
       fav,
     } = this.filterStorage.filters;
 
-    this.state = [...this.baseState];
+    this.stateToRender = [...this.stateOriginal];
 
-    this.state = this.state.filter((item) => {
+    this.stateToRender = this.stateToRender.filter((item) => {
       if (
         // filter by title
         (item.brand + ' ' + item.model).match(new RegExp(title.trim(), 'i')) &&

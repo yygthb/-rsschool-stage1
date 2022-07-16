@@ -127,7 +127,7 @@ export class StoreFilter extends NodeElement {
     );
     const favBtns = updateRadios(favRadioControls, loadFilter[FilterProp.Fav]);
 
-    this.select.init(sortCb);
+    this.select.init(sortCb, loadSort);
     this.titleFilter.init(titleCb, false, loadFilter[FilterProp.Title]);
     this.priceFilter.init(
       priceCb,

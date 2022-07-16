@@ -1,4 +1,4 @@
-import { INodeProps, NodeElement } from '../../utils/nodeElement';
+import { AttrType, INodeProps, NodeElement } from '../../utils/nodeElement';
 
 export enum SortValue {
   TitleUp = 'title-up',
@@ -48,13 +48,15 @@ export class Select extends NodeElement {
     });
   }
 
-  init(cb: ISelectCb) {
-    sortOptions.forEach((option) => {
+  init(cb: ISelectCb, selected: SortValue = SortValue.TitleDown) {
+    sortOptions.forEach((opt) => {
+      const selectedAttr: AttrType =
+        opt.value === selected ? ['selected', 'true'] : [''];
       new NodeElement({
         parentNode: this.node,
         tagName: 'option',
-        content: option.content,
-        attributes: [['value', option.value]],
+        content: opt.content,
+        attributes: [['value', opt.value], selectedAttr],
       });
     });
 

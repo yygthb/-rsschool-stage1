@@ -67,57 +67,57 @@ export class Store extends NodeElement {
       this.filterStorage.filters
     );
 
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private sortCallback(selectValue: SortValue) {
     this.controller.sortByValue(selectValue);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private filterByTitleCb(value: string) {
     this.controller.filterBy(FilterProp.Title, value);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private filterByPriceCb(value: [number, number]) {
     this.controller.filterBy(FilterProp.Price, value);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private filterByPowerCb(value: [number, number]) {
     this.controller.filterBy(FilterProp.EnginePower, value);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private filterByEngineTypeCb(value: string) {
     this.controller.filterBy(FilterProp.EngineType, value);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private filterByConditionCb(value: string) {
     this.controller.filterBy(FilterProp.Condition, value);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private filterByMotoType(value: string) {
     this.controller.filterBy(FilterProp.MotoType, value);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private filterByColor(value: CheckboxCbValue) {
     this.controller.filterBy(FilterProp.Colors, value);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private filterByFav(value: string) {
     this.controller.filterBy(FilterProp.Fav, value);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 
   private resetFilter() {
     this.controller.resetFilter();
     this.storeFilter.reset(this.filterStorage.filters);
-    this.storeContent.render(this.controller.state);
+    this.storeContent.render(this.controller.stateToRender);
   }
 }
