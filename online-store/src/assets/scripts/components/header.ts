@@ -26,7 +26,7 @@ export class Header extends NodeElement {
       parentNode: this.content.node,
       tagName: 'h1',
       classNames: 'app__title',
-      content: 'Online Store',
+      content: 'MotoStore',
     });
 
     this.content.node.append(cart.node);

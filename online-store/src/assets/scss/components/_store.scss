@@ -3,24 +3,28 @@
   flex-direction: row;
   gap: 20px;
 
-  @include media(d) {
+  @include media(t) {
     flex-direction: column;
   }
 
   &__content {
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     height: max-content;
 
-    @include media(t) {
+    @include media(d) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media(m) {
       grid-template-columns: 1fr;
     }
   }
 
   &__filter {
-    width: 300px;
+    width: 250px;
     height: max-content;
     order: 1;
     display: flex;
@@ -29,7 +33,7 @@
     padding: 10px;
     border-radius: $box-border-radius;
 
-    @include media(d) {
+    @include media(t) {
       width: 100%;
       order: -1;
       min-height: inherit;

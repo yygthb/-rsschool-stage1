@@ -19,6 +19,22 @@
           font-size: 24px;
         }
       }
+
+      .cart {
+        position: relative;
+
+        .cart-icon {
+          width: 50px;
+        }
+
+        .cart-count {
+          position: absolute;
+          top: 52%;
+          right: 50%;
+          transform: translate(50%, -50%);
+          font-size: 14px;
+        }
+      }
     }
   }
 

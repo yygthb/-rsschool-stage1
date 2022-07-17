@@ -1,4 +1,5 @@
 import { INodeProps, NodeElement } from '../utils/nodeElement';
+import { Image } from './UI/Image';
 
 export interface IMotoCard {
   id: string;
@@ -72,23 +73,32 @@ export class StoreCard extends NodeElement {
       content: price.toLocaleString(),
     });
 
-    const fav = new NodeElement({
-      parentNode: info.node,
+    const favBtn = new NodeElement({
+      parentNode: this.node,
       tagName: 'button',
       classNames: 'item__fav-button',
-      content: 'like',
     });
 
     if (isFav) {
       this.node.classList.add('fav');
     }
 
-    fav.node.onclick = () => {
+    favBtn.node.onclick = () => {
       const res: string = cb(this.id);
       if (res === 'ok') {
         this.updateFav();
       }
     };
+
+    const favImg = new Image({
+      parentNode: favBtn.node,
+      classNames: 'fav-icon',
+    });
+    favImg.init({
+      src: './assets/img/icons/star.svg',
+      alt: 'star icon',
+      title: 'Add to favorites ',
+    });
   }
 
   updateFav() {

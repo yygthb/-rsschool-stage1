@@ -1,11 +1,9 @@
 .card__item {
-  padding: 10px;
+  position: relative;
   height: max-content;
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 10px;
   border: 1px solid #ddd;
   border-radius: $box-border-radius;
+  overflow: hidden;
 
   @include media(d) {
     grid-template-columns: 180px 1fr;
@@ -18,7 +16,7 @@
   .item__img {
     position: relative;
     display: block;
-    height: 135px;
+    height: 250px;
     background-color: rgba(#ddd, 0.2);
     background-position: center;
     background-repeat: no-repeat;
@@ -32,17 +30,59 @@
       right: 0;
       display: block;
       content: "";
-      background-color: rgba(#000, 0.1);
+      background-color: rgba(#222, 0.2);
       transition: background-color 0.3s ease-out;
     }
   }
 
-  .item__title {
-    margin-bottom: 7px;
+  .item__info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    color: #fff;
+    background-color: rgba(#111, 0.65);
+
+    .item__title {
+      margin-bottom: 5px;
+      font-size: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item__price {
+      font-size: 15px;
+
+      &::after {
+        content: " ₽";
+      }
+    }
   }
 
-  .item__price::after {
-    content: " ₽";
+  .item__fav-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    border: none;
+    background-color: transparent;
+
+    .fav-icon {
+      filter: invert(0) sepia(1) saturate(0) hue-rotate(0deg);
+    }
+
+    &:hover {
+      .fav-icon {
+        filter: invert(0) sepia(1) saturate(10) hue-rotate(340deg);
+      }
+    }
+
+    &:active {
+      .fav-icon {
+        filter: invert(0) sepia(1) saturate(10) hue-rotate(300deg);
+      }
+    }
   }
 
   &:hover {
@@ -53,7 +93,21 @@
 
   &.fav {
     .item__fav-button {
-      background-color: coral;
+      .fav-icon {
+        filter: invert(0) sepia(0) saturate(30) hue-rotate(320deg);
+      }
+
+      &:hover {
+        .fav-icon {
+          filter: invert(0) sepia(1) saturate(10) hue-rotate(340deg);
+        }
+      }
+
+      &:active {
+        .fav-icon {
+          filter: invert(0) sepia(1) saturate(10) hue-rotate(300deg);
+        }
+      }
     }
   }
 }
