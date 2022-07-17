@@ -80,6 +80,7 @@ export class StoreController {
     if (card) {
       card.isFav = !card.isFav;
     }
+    this.updateContentState();
   }
 
   sortByValue = (selectValue: SortValue): void => {
