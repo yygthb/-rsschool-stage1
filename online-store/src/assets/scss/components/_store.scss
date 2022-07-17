@@ -5,6 +5,7 @@
 
   @include media(t) {
     flex-direction: column;
+    gap: 10px;
   }
 
   &__content {

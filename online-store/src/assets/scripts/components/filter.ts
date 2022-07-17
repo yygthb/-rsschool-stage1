@@ -32,6 +32,8 @@ export interface IFilterCb {
 }
 
 export class StoreFilter extends NodeElement {
+  private container: NodeElement;
+  private ControlFilterBtn: Button;
   private titleFilter: Input;
   private priceFilter: Slider;
   private powerFilter: Slider;
@@ -45,77 +47,88 @@ export class StoreFilter extends NodeElement {
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
 
-    this.titleFilter = new Input({
+    this.container = new NodeElement({
       parentNode: this.node,
+      classNames: 'filter__container',
+    });
+
+    this.ControlFilterBtn = new Button({
+      parentNode: this.node,
+      classNames: 'btn__show-filter',
+      content: 'Show/hide Filter',
+    });
+
+    this.titleFilter = new Input({
+      parentNode: this.container.node,
       classNames: 'filter__el filter__el-input',
       attributes: [['placeholder', 'Search...']],
     });
 
     new FilterTitle({
-      parentNode: this.node,
+      parentNode: this.container.node,
       content: 'Category',
     });
     this.motoType = new Radio({
-      parentNode: this.node,
+      parentNode: this.container.node,
       classNames: 'filter__el, filter__el-type',
     });
 
     new FilterTitle({
-      parentNode: this.node,
+      parentNode: this.container.node,
       content: 'Price',
     });
     this.priceFilter = new Slider({
-      parentNode: this.node,
+      parentNode: this.container.node,
       classNames: 'filter__el filter__el-slider',
     });
 
     new FilterTitle({
-      parentNode: this.node,
+      parentNode: this.container.node,
       content: 'Engine Power (hp)',
     });
     this.powerFilter = new Slider({
-      parentNode: this.node,
+      parentNode: this.container.node,
       classNames: 'filter__el filter__el-slider',
     });
 
     new FilterTitle({
-      parentNode: this.node,
+      parentNode: this.container.node,
       content: 'Engine Type',
     });
     this.engineType = new Radio({
-      parentNode: this.node,
+      parentNode: this.container.node,
       classNames: 'radio__horiz filter__el filter__el-engine',
     });
 
     new FilterTitle({
-      parentNode: this.node,
+      parentNode: this.container.node,
       content: 'Condition',
     });
     this.condition = new Radio({
-      parentNode: this.node,
+      parentNode: this.container.node,
       classNames: 'radio__horiz filter__el filter__el-condition',
     });
 
     new FilterTitle({
-      parentNode: this.node,
+      parentNode: this.container.node,
       content: 'Color',
     });
     this.color = new CheckBox({
-      parentNode: this.node,
+      parentNode: this.container.node,
       classNames: 'filter__el filter__el-color',
     });
 
     new FilterTitle({
-      parentNode: this.node,
+      parentNode: this.container.node,
       content: 'Favorites',
     });
     this.fav = new Radio({
-      parentNode: this.node,
+      parentNode: this.container.node,
       classNames: 'radio__horiz filter__el filter__el-fav',
     });
 
     this.resetFilterBtn = new Button({
-      parentNode: this.node,
+      parentNode: this.container.node,
       tagName: 'button',
       classNames: 'filter__reset',
       content: 'reset filter',
@@ -136,6 +149,8 @@ export class StoreFilter extends NodeElement {
     }: IFilterCb,
     loadFilter: IFilterConfig
   ) {
+    this.ControlFilterBtn.init(this.controlFilterCb.bind(this));
+
     const engineTypeBtns = transfromRadios(
       engineRadioControls,
       loadFilter[FilterProp.EngineType]
@@ -174,6 +189,10 @@ export class StoreFilter extends NodeElement {
     this.color.init(checkboxCb, colorBtns);
     this.fav.init(favCb, favBtns);
     this.resetFilterBtn.init(resetFilterCb);
+  }
+
+  controlFilterCb() {
+    this.container.node.classList.toggle('open');
   }
 
   reset(defaultFilterConfig: IFilterConfig) {

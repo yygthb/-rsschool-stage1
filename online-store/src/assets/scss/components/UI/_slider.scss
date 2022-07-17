@@ -1,6 +1,7 @@
 .slider {
   height: 10px;
-  margin-bottom: 30px;
+  width: calc(100% - 20px);
+  margin: 0 auto 30px;
   background-color: #f5235ed0;
 
   .slider__info {
@@ -12,8 +13,6 @@
     }
   }
 
-
-  
   .noUi-handle {
     height: 18px;
     width: 18px;
