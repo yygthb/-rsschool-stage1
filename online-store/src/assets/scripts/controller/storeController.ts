@@ -141,7 +141,6 @@ export class StoreController {
       default:
         break;
     }
-    console.log(this.stateToRender.length);
   }
 
   private filter(): void {

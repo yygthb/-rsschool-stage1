@@ -40,7 +40,6 @@ export class Store extends NodeElement {
   clickOnCardCb(id: string) {
     const res: string = cart.clickCb(id);
     if (res === 'ok') {
-      console.log('click on id: ', id);
       this.controller.setFav(id);
       this.storeContent.render(this.controller.stateToRender);
     }

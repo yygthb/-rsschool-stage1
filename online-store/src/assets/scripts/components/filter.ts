@@ -71,7 +71,7 @@ export class StoreFilter extends NodeElement {
 
     new FilterTitle({
       parentNode: this.node,
-      content: 'Engine Power',
+      content: 'Engine Power (hp)',
     });
     this.powerFilter = new Slider({
       parentNode: this.node,

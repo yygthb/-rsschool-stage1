@@ -28,9 +28,10 @@
   .filter__el {
     display: flex;
     flex-direction: column;
+    border: transparent;
 
     &-title {
-      margin-bottom: -5px;
+      margin-bottom: -4px;
       color: $filter-color-main;
     }
 
@@ -49,11 +50,13 @@
 
       input:checked + .radio__label {
         color: $filter-color-main;
+        border-bottom: 1px solid $filter-color-main;
       }
 
       .radio__label {
         display: block;
         margin-bottom: 7px;
+        width: max-content;
 
         &:hover {
           color: $filter-color-main-light;

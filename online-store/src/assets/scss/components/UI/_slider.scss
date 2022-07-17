@@ -1,13 +1,30 @@
 .slider {
+  height: 10px;
   margin-bottom: 30px;
-  background-color: lightblue;
+  background-color: #f5235ed0;
 
   .slider__info {
     display: flex;
     justify-content: space-between;
 
     .slider-value {
-      padding: 5px;
+      padding: 15px 5px 5px;
+    }
+  }
+
+
+  
+  .noUi-handle {
+    height: 18px;
+    width: 18px;
+    top: -5px;
+    right: -9px;
+    border-radius: 9px;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      display: none;
     }
   }
 }

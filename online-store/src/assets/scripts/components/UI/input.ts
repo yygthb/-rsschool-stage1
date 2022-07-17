@@ -24,7 +24,6 @@ export class Input extends NodeElement {
       cb(this.input.value);
     };
     if (value) {
-      console.log('init input');
       this.value = value;
     }
   }

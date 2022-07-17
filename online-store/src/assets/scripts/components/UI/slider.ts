@@ -1,6 +1,5 @@
 import { INodeProps, NodeElement } from '../../utils/nodeElement';
 import * as noUiSlider from 'nouislider';
-import 'nouislider/dist/nouislider.css';
 
 export type ISliderCb = (value: [number, number]) => void;
 
