@@ -48,4 +48,8 @@ export class NodeElement {
   updateContent(value: string) {
     this.node.innerHTML = value;
   }
+
+  clearContent() {
+    this.updateContent('');
+  }
 }

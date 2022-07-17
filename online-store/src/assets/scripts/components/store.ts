@@ -1,4 +1,4 @@
-import { StoreContent } from './content';
+import { StoreContent } from './storeContent';
 import { StoreFilter } from './filter';
 import { SortValue } from './filterElements/select';
 import { NodeElement, INodeProps } from '../utils/nodeElement';
@@ -23,7 +23,6 @@ export class Store extends NodeElement {
       {
         parentNode: this.node,
         classNames: 'store__content',
-        content: 'Content',
       },
       this.clickOnCardCb.bind(this)
     );
