@@ -14,7 +14,7 @@ export class Radio extends NodeElement {
   constructor(nodeProps: INodeProps) {
     super({
       ...nodeProps,
-      classNames: `radio__container ${nodeProps.classNames}`,
+      classNames: `radio-container ${nodeProps.classNames}`,
     });
   }
 
@@ -22,6 +22,7 @@ export class Radio extends NodeElement {
     btns.forEach((radioBtn) => {
       const input = new Input({
         parentNode: this.node,
+        classNames: 'radio__input',
         attributes: [
           ['type', 'radio'],
           ['id', `${radioBtn.id}-${radioBtn.value}`],
@@ -33,6 +34,7 @@ export class Radio extends NodeElement {
       new NodeElement({
         parentNode: this.node,
         tagName: 'label',
+        classNames: 'radio__label',
         content: radioBtn.content,
         attributes: [['for', `${radioBtn.id}-${radioBtn.value}`]],
       });

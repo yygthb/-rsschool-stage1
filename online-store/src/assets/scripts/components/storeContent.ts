@@ -34,7 +34,7 @@ export class StoreContent extends NodeElement {
       parentNode: this.storeInfo.node,
       classNames: 'store__info-sort',
     });
-    const sortLabel = new NodeElement({
+    new NodeElement({
       parentNode: sortContainer.node,
       tagName: 'span',
       content: 'Sort by ',
@@ -42,7 +42,7 @@ export class StoreContent extends NodeElement {
     this.select = new Select({
       parentNode: sortContainer.node,
       tagName: 'select',
-      classNames: 'filter__element filter__element-select',
+      classNames: 'store__info-select',
     });
     this.select.init(sortCb, loadSort);
     this.clickCartCb = clickCartCb;

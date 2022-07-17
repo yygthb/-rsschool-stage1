@@ -48,7 +48,7 @@ export class CheckBox extends NodeElement {
       new NodeElement({
         parentNode: this.node,
         tagName: 'label',
-        content: checkbox.content,
+        classNames: `label label-${checkbox.value}`,
         attributes: [['for', `${checkbox.id}-${checkbox.value}`]],
       });
       this.inputs.push(input);

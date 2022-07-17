@@ -27,7 +27,6 @@ export class Store extends NodeElement {
     this.storeFilter = new StoreFilter({
       parentNode: this.node,
       classNames: 'store__filter',
-      content: 'Filter',
     });
 
     const storeData = transfromStore(state, cart.getFavs());

@@ -17,6 +17,7 @@ import {
   favRadioControls,
   motoTypeRadioControls,
 } from '../config/filterConfig';
+import { FilterTitle } from './filterElements/filterTitle';
 
 export interface IFilterCb {
   titleCb: IInputCb;
@@ -46,38 +47,71 @@ export class StoreFilter extends NodeElement {
 
     this.titleFilter = new Input({
       parentNode: this.node,
-      classNames: 'filter__element filter__element-input',
-      attributes: [['placeholder', 'Find by model']],
+      classNames: 'filter__el filter__el-input',
+      attributes: [['placeholder', 'Search...']],
     });
 
+    new FilterTitle({
+      parentNode: this.node,
+      content: 'Category',
+    });
     this.motoType = new Radio({
       parentNode: this.node,
+      classNames: 'filter__el, filter__el-type',
     });
 
+    new FilterTitle({
+      parentNode: this.node,
+      content: 'Price',
+    });
     this.priceFilter = new Slider({
       parentNode: this.node,
-      classNames: 'filter__element filter__element-slider',
+      classNames: 'filter__el filter__el-slider',
     });
 
+    new FilterTitle({
+      parentNode: this.node,
+      content: 'Engine Power',
+    });
     this.powerFilter = new Slider({
       parentNode: this.node,
-      classNames: 'filter__element filter__element-slider',
+      classNames: 'filter__el filter__el-slider',
     });
 
+    new FilterTitle({
+      parentNode: this.node,
+      content: 'Engine Type',
+    });
     this.engineType = new Radio({
       parentNode: this.node,
+      classNames: 'radio__horiz filter__el filter__el-engine',
     });
 
+    new FilterTitle({
+      parentNode: this.node,
+      content: 'Condition',
+    });
     this.condition = new Radio({
       parentNode: this.node,
+      classNames: 'radio__horiz filter__el filter__el-condition',
     });
 
+    new FilterTitle({
+      parentNode: this.node,
+      content: 'Color',
+    });
     this.color = new CheckBox({
       parentNode: this.node,
+      classNames: 'filter__el filter__el-color',
     });
 
+    new FilterTitle({
+      parentNode: this.node,
+      content: 'Favorites',
+    });
     this.fav = new Radio({
       parentNode: this.node,
+      classNames: 'radio__horiz filter__el filter__el-fav',
     });
 
     this.resetFilterBtn = new Button({

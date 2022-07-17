@@ -15,6 +15,14 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 10px;
+
+      .store__info-select {
+        border: none;
+        border-bottom: 1px solid #bbb;
+        font-size: 14px;
+        cursor: pointer;
+        outline: transparent;
+      }
     }
     .store__cards {
       display: grid;
@@ -32,29 +40,5 @@
     }
   }
 
-  &__filter {
-    width: 250px;
-    height: max-content;
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 10px;
-    border-radius: $box-border-radius;
-
-    @include media(t) {
-      width: 100%;
-      order: -1;
-      min-height: inherit;
-    }
-    background-color: rgba(144, 179, 76, 0.493);
-
-    .filter__element {
-      display: block;
-
-      &-slider {
-        margin-bottom: 20px;
-      }
-    }
-  }
+  
 }

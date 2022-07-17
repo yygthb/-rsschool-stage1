@@ -13,13 +13,13 @@ export type RadioType = {
 };
 
 const conditionRadioControls = [
-  { id: 'condition', content: 'все', value: 'all', checked: true },
-  { id: 'condition', content: 'new', value: 'new', checked: false },
-  { id: 'condition', content: 'used', value: 'used', checked: false },
+  { id: 'condition', content: 'All', value: 'all', checked: true },
+  { id: 'condition', content: 'New', value: 'new', checked: false },
+  { id: 'condition', content: 'Used', value: 'used', checked: false },
 ];
 
 const motoTypeRadioControls = [
-  { id: 'motoType', content: 'все', value: 'all', checked: true },
+  { id: 'motoType', content: 'All', value: 'all', checked: true },
   { id: 'motoType', content: 'Classic', value: 'classic', checked: false },
   { id: 'motoType', content: 'Sport', value: 'sport', checked: false },
   { id: 'motoType', content: 'Cruiser', value: 'cruiser', checked: false },
@@ -39,14 +39,14 @@ const colorCheckboxControls = [
 ];
 
 const engineRadioControls = [
-  { id: 'engineType', content: 'все', value: 'all', checked: true },
-  { id: 'engineType', content: 'gas', value: 'gas', checked: false },
-  { id: 'engineType', content: 'electro', value: 'electro', checked: false },
+  { id: 'engineType', content: 'All', value: 'all', checked: true },
+  { id: 'engineType', content: 'Gas', value: 'gas', checked: false },
+  { id: 'engineType', content: 'Electro', value: 'electro', checked: false },
 ];
 
 const favRadioControls = [
-  { id: 'fav', content: 'все', value: 'all', checked: true },
-  { id: 'fav', content: 'favorite', value: 'fav', checked: false },
+  { id: 'fav', content: 'All', value: 'all', checked: true },
+  { id: 'fav', content: 'Favorite', value: 'fav', checked: false },
 ];
 
 const defaultControls: IControls = {
