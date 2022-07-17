@@ -1,13 +1,15 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { FavClickCb, IMotoCard, StoreCard } from './card';
+import { ISelectCb, Select, SortValue } from './filterElements/select';
 
 export class StoreContent extends NodeElement {
   private storeInfo: NodeElement;
-  private cardsCount: NodeElement;
+  private cardsCount!: NodeElement;
+  private select!: Select;
   private storeCards: NodeElement;
-  private clickCartCb: FavClickCb;
+  private clickCartCb!: FavClickCb;
 
-  constructor(nodeProps: INodeProps, clickCartCb: FavClickCb) {
+  constructor(nodeProps: INodeProps) {
     super({ ...nodeProps });
 
     this.storeInfo = new NodeElement({
@@ -15,17 +17,34 @@ export class StoreContent extends NodeElement {
       classNames: 'store__info',
     });
 
+    this.storeCards = new NodeElement({
+      parentNode: this.node,
+      classNames: 'store__cards',
+    });
+  }
+
+  init(clickCartCb: FavClickCb, sortCb: ISelectCb, loadSort: SortValue) {
     this.cardsCount = new NodeElement({
       parentNode: this.storeInfo.node,
       tagName: 'p',
       classNames: 'store__info-count',
     });
 
-    this.storeCards = new NodeElement({
-      parentNode: this.node,
-      classNames: 'store__cards',
+    const sortContainer = new NodeElement({
+      parentNode: this.storeInfo.node,
+      classNames: 'store__info-sort',
     });
-
+    const sortLabel = new NodeElement({
+      parentNode: sortContainer.node,
+      tagName: 'span',
+      content: 'Sort by ',
+    });
+    this.select = new Select({
+      parentNode: sortContainer.node,
+      tagName: 'select',
+      classNames: 'filter__element filter__element-select',
+    });
+    this.select.init(sortCb, loadSort);
     this.clickCartCb = clickCartCb;
   }
 

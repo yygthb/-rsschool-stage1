@@ -19,13 +19,10 @@ export class Store extends NodeElement {
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
 
-    this.storeContent = new StoreContent(
-      {
-        parentNode: this.node,
-        classNames: 'store__content',
-      },
-      this.clickOnCardCb.bind(this)
-    );
+    this.storeContent = new StoreContent({
+      parentNode: this.node,
+      classNames: 'store__content',
+    });
 
     this.storeFilter = new StoreFilter({
       parentNode: this.node,
@@ -52,9 +49,13 @@ export class Store extends NodeElement {
   }
 
   private init() {
+    this.storeContent.init(
+      this.clickOnCardCb.bind(this),
+      this.sortCallback.bind(this),
+      this.filterStorage.sort
+    );
     this.storeFilter.init(
       {
-        sortCb: this.sortCallback.bind(this),
         titleCb: this.filterByTitleCb.bind(this),
         priceCb: this.filterByPriceCb.bind(this),
         powerCb: this.filterByPowerCb.bind(this),
@@ -65,7 +66,6 @@ export class Store extends NodeElement {
         favCb: this.filterByFav.bind(this),
         resetFilterCb: this.resetFilter.bind(this),
       },
-      this.filterStorage.sort,
       this.filterStorage.filters
     );
 

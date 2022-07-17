@@ -8,10 +8,10 @@ export enum SortValue {
 }
 
 enum SortContent {
-  TitleUp = 'By title (A-Z)',
-  TitleDown = 'By title (Z-A)',
-  PriceUp = 'By price (🡥)',
-  PriceDown = 'By price (🡦)',
+  TitleUp = 'Title (A-Z)',
+  TitleDown = 'Title (Z-A)',
+  PriceUp = 'Price (🡥)',
+  PriceDown = 'Price (🡦)',
 }
 
 type SelectOptionType = {

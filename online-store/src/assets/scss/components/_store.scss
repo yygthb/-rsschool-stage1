@@ -11,6 +11,9 @@
     flex: 1;
 
     .store__info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 10px;
     }
     .store__cards {

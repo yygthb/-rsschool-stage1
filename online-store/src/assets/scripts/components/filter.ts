@@ -19,7 +19,6 @@ import {
 } from '../config/filterConfig';
 
 export interface IFilterCb {
-  sortCb: ISelectCb;
   titleCb: IInputCb;
   priceCb: ISliderCb;
   powerCb: ISliderCb;
@@ -32,7 +31,6 @@ export interface IFilterCb {
 }
 
 export class StoreFilter extends NodeElement {
-  private select: Select;
   private titleFilter: Input;
   private priceFilter: Slider;
   private powerFilter: Slider;
@@ -45,12 +43,6 @@ export class StoreFilter extends NodeElement {
 
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
-
-    this.select = new Select({
-      parentNode: this.node,
-      tagName: 'select',
-      classNames: 'filter__element filter__element-select',
-    });
 
     this.titleFilter = new Input({
       parentNode: this.node,
@@ -98,7 +90,6 @@ export class StoreFilter extends NodeElement {
 
   init(
     {
-      sortCb,
       priceCb,
       titleCb,
       powerCb,
@@ -109,7 +100,6 @@ export class StoreFilter extends NodeElement {
       favCb,
       resetFilterCb,
     }: IFilterCb,
-    loadSort: SortValue,
     loadFilter: IFilterConfig
   ) {
     const engineTypeBtns = transfromRadios(
@@ -133,7 +123,6 @@ export class StoreFilter extends NodeElement {
       loadFilter[FilterProp.Fav]
     );
 
-    this.select.init(sortCb, loadSort);
     this.titleFilter.init(titleCb, false, loadFilter[FilterProp.Title]);
     this.priceFilter.init(
       priceCb,
