@@ -1,6 +1,5 @@
 import { NodeElement, INodeProps } from '../utils/nodeElement';
 import { IInputCb, Input } from './UI/Input';
-import { ISelectCb, Select, SortValue } from './filterElements/select';
 import { ICheckBoxCb, CheckBox } from './filterElements/checkbox';
 import { Radio } from './filterElements/radio';
 import { ISliderCb, Slider } from './UI/Slider';

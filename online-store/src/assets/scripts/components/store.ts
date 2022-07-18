@@ -8,7 +8,6 @@ import { CheckboxCbValue } from './filterElements/checkbox';
 import { cart } from './cart';
 import { FilterStorage } from '../controller/filterStorage';
 import { defaultControls } from '../config/filterConfig';
-import { transfromStore } from '../utils/transformStoreData';
 
 export class Store extends NodeElement {
   public storeContent: StoreContent;
