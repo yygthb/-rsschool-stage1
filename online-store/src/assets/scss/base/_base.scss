@@ -62,18 +62,18 @@ input {
   outline: transparent;
 }
 
-button {
+.button {
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
-  background-color: rgba(#99173c, 0.8);
+  background-color: $color-secondary-light;
   color: #fff;
 
   &:hover {
-    background-color: #99173c;
+    background-color: $color-secondary;
   }
 
   &:active {
-    background-color: #770c2a;
+    background-color: $color-secondary-dark;
   }
 }

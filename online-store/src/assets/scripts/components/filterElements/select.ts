@@ -41,6 +41,8 @@ const sortOptions: SelectOptionType[] = [
 export type ISelectCb = (selectValue: SortValue) => void;
 
 export class Select extends NodeElement {
+  private options: NodeElement[] = [];
+
   constructor(nodeProps: INodeProps) {
     super({
       ...nodeProps,
@@ -52,17 +54,28 @@ export class Select extends NodeElement {
     sortOptions.forEach((opt) => {
       const selectedAttr: AttrType =
         opt.value === selected ? ['selected', 'true'] : [''];
-      new NodeElement({
+      const option = new NodeElement({
         parentNode: this.node,
         tagName: 'option',
         content: opt.content,
         attributes: [['value', opt.value], selectedAttr],
       });
+      this.options.push(option);
     });
 
     const select = this.node as HTMLSelectElement;
     select.onchange = () => {
       cb(select.options[select.selectedIndex].value as SortValue);
     };
+  }
+
+  resetSelect() {
+    this.options.forEach((option) => {
+      const optValue = option.node.getAttribute('value');
+      if (optValue === SortValue.TitleUp) {
+        const select = this.node as HTMLSelectElement;
+        select.value = SortValue.TitleUp;
+      }
+    });
   }
 }

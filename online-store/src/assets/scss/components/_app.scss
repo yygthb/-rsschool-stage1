@@ -5,7 +5,7 @@
 
   .header {
     margin-bottom: 20px;
-    background-color: #555152;
+    background-color: $color-primary;
 
     &__content {
       display: flex;
@@ -71,10 +71,10 @@
 
       .info {
         &__link {
-          color: #666;
+          color: lighten($color-primary, 20%);
 
           &:hover {
-            color: #444;
+            color: $color-primary;
             text-decoration: underline;
           }
         }

@@ -68,4 +68,8 @@ export class StoreContent extends NodeElement {
   private clear() {
     this.storeCards.clearContent();
   }
+
+  resetSelect() {
+    this.select.resetSelect();
+  }
 }

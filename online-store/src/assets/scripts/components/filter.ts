@@ -29,6 +29,7 @@ export interface IFilterCb {
   checkboxCb: ICheckBoxCb;
   favCb: IInputCb;
   resetFilterCb: IButtonCb;
+  clearAllCb: IButtonCb;
 }
 
 export class StoreFilter extends NodeElement {
@@ -43,6 +44,7 @@ export class StoreFilter extends NodeElement {
   private color: CheckBox;
   private fav: Radio;
   private resetFilterBtn: Button;
+  private clearAllBtn: Button;
 
   constructor(nodeProps: INodeProps) {
     super(nodeProps);
@@ -131,7 +133,14 @@ export class StoreFilter extends NodeElement {
       parentNode: this.container.node,
       tagName: 'button',
       classNames: 'filter__reset',
-      content: 'reset filter',
+      content: 'Reset Filter',
+    });
+
+    this.clearAllBtn = new Button({
+      parentNode: this.container.node,
+      tagName: 'button',
+      classNames: 'filter__reset',
+      content: 'Reset All',
     });
   }
 
@@ -146,6 +155,7 @@ export class StoreFilter extends NodeElement {
       checkboxCb,
       favCb,
       resetFilterCb,
+      clearAllCb,
     }: IFilterCb,
     loadFilter: IFilterConfig
   ) {
@@ -189,6 +199,7 @@ export class StoreFilter extends NodeElement {
     this.color.init(checkboxCb, colorBtns);
     this.fav.init(favCb, favBtns);
     this.resetFilterBtn.init(resetFilterCb);
+    this.clearAllBtn.init(clearAllCb);
   }
 
   controlFilterCb() {

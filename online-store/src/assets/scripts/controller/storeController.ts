@@ -2,6 +2,7 @@ import { IMotoCard } from '../components/card';
 import { SortValue } from '../components/filterElements/select';
 import { CheckboxCbValue } from '../components/filterElements/checkbox';
 import { FilterStorage } from './filterStorage';
+import { transfromStore } from '../utils/transformStoreData';
 
 export enum ControlMethod {
   Sort = 'sort',
@@ -66,13 +67,23 @@ export class StoreController {
     return this._stateToRender;
   }
 
-  constructor(data: Array<IMotoCard>, filterStorage: FilterStorage) {
+  constructor(
+    data: Array<IMotoCard>,
+    favs: string[],
+    filterStorage: FilterStorage
+  ) {
     this.filterStorage = filterStorage;
 
-    this.stateOriginal = [...data];
-    this.stateToRender = [...data];
+    this.updateStateByFavs(data, favs);
 
     this.updateContentState();
+  }
+
+  updateStateByFavs(data: Array<IMotoCard>, favs: string[]) {
+    const transformedData = transfromStore(data, favs);
+
+    this.stateOriginal = [...transformedData];
+    this.stateToRender = [...transformedData];
   }
 
   setFav(id: string) {
@@ -98,6 +109,12 @@ export class StoreController {
 
   resetFilter() {
     this.filterStorage.reset();
+    this.updateContentState();
+  }
+
+  clearAll() {
+    this.resetFilter();
+    this.sortByValue(SortValue.TitleUp);
     this.updateContentState();
   }
 

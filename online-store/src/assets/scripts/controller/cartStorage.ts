@@ -43,4 +43,9 @@ export class CartStorage {
     this.saveCartToLS();
     return res;
   }
+
+  clear() {
+    this.favs = [];
+    this.saveCartToLS();
+  }
 }

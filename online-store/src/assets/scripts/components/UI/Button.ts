@@ -4,7 +4,11 @@ export type IButtonCb = () => void;
 
 export class Button extends NodeElement {
   constructor(nodeProps: INodeProps) {
-    super({ ...nodeProps, tagName: 'button' });
+    super({
+      ...nodeProps,
+      tagName: 'button',
+      classNames: `button ${nodeProps.classNames}`,
+    });
   }
 
   init(cb: IButtonCb) {

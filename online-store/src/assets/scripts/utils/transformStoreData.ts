@@ -7,6 +7,8 @@ export const transfromStore = (
   data.forEach((item) => {
     if (favs.includes(item.id)) {
       item.isFav = true;
+    } else {
+      item.isFav = false;
     }
   });
 

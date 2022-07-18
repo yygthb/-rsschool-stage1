@@ -3,9 +3,6 @@
   height: max-content;
   order: 1;
 
-  $filter-color-main: #99173c;
-  $filter-color-main-light: rgba($filter-color-main, 0.8);
-
   .btn__show-filter {
     display: none;
   }
@@ -34,7 +31,7 @@
       transition: height 0.3s ease-out;
 
       &.open {
-        height: 760px;
+        height: 800px;
         margin-bottom: 10px;
       }
     }
@@ -54,13 +51,13 @@
 
       &-title {
         margin-bottom: -4px;
-        color: $filter-color-main;
+        color: $color-secondary;
       }
 
       &-input {
         padding: 5px 2px;
         border: none;
-        border-bottom: 1px solid $filter-color-main;
+        border-bottom: 1px solid $color-secondary;
       }
 
       &-type {
@@ -71,8 +68,8 @@
         }
 
         input:checked + .radio__label {
-          color: $filter-color-main;
-          border-bottom: 1px solid $filter-color-main;
+          color: $color-secondary;
+          border-bottom: 1px solid $color-secondary;
         }
 
         .radio__label {
@@ -81,7 +78,7 @@
           width: max-content;
 
           &:hover {
-            color: $filter-color-main-light;
+            color: $color-secondary-light;
           }
         }
       }
@@ -92,14 +89,14 @@
 
         .radio__label {
           display: block;
-          padding: 3px;
-          border: 1px solid $filter-color-main;
+          padding: 5px;
+          border: 1px solid $color-secondary;
           border-radius: 7px;
           text-align: center;
           cursor: pointer;
 
           &:hover {
-            background-color: $filter-color-main;
+            background-color: $color-secondary;
             color: #fff;
           }
 
@@ -117,8 +114,8 @@
         }
 
         input:checked + label {
-          border-color: $filter-color-main-light;
-          background-color: $filter-color-main-light;
+          border-color: $color-secondary-light;
+          background-color: $color-secondary-light;
           color: #fff;
         }
 
@@ -191,15 +188,15 @@
       padding: 10px 20px;
       border: none;
       border-radius: 10px;
-      background-color: $filter-color-main-light;
+      background-color: $color-secondary-light;
       color: #fff;
 
       &:hover {
-        background-color: $filter-color-main;
+        background-color: $color-secondary;
       }
 
       &:active {
-        background-color: #770c2a;
+        background-color: $color-secondary-dark;
       }
     }
   }

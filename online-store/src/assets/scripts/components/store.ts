@@ -29,10 +29,12 @@ export class Store extends NodeElement {
       classNames: 'store__filter',
     });
 
-    const storeData = transfromStore(state, cart.getFavs());
-
     this.filterStorage = new FilterStorage(defaultControls);
-    this.controller = new StoreController(storeData, this.filterStorage);
+    this.controller = new StoreController(
+      state,
+      cart.getFavs(),
+      this.filterStorage
+    );
 
     this.init();
   }
@@ -63,6 +65,7 @@ export class Store extends NodeElement {
         checkboxCb: this.filterByColor.bind(this),
         favCb: this.filterByFav.bind(this),
         resetFilterCb: this.resetFilter.bind(this),
+        clearAllCb: this.clearAll.bind(this),
       },
       this.filterStorage.filters
     );
@@ -118,6 +121,15 @@ export class Store extends NodeElement {
   private resetFilter() {
     this.controller.resetFilter();
     this.storeFilter.reset(this.filterStorage.filters);
+    this.storeContent.render(this.controller.stateToRender);
+  }
+
+  private clearAll() {
+    cart.clear();
+    this.controller.updateStateByFavs(state, cart.getFavs());
+    this.controller.clearAll();
+    this.storeFilter.reset(this.filterStorage.filters);
+    this.storeContent.resetSelect();
     this.storeContent.render(this.controller.stateToRender);
   }
 }

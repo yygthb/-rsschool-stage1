@@ -43,6 +43,11 @@ class Cart extends NodeElement {
   getFavs() {
     return this.cart.favs;
   }
+
+  clear() {
+    this.cart.clear();
+    this.updateFavCount();
+  }
 }
 
 export const cart = new Cart({

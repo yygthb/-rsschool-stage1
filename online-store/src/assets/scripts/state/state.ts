@@ -4,5 +4,4 @@ import cruiser from './cruiser.json';
 import enduro from './enduro.json';
 import scooter from './scooter.json';
 
-// export const state = [...scooter];
 export const state = [...classic, ...sport, ...cruiser, ...enduro, ...scooter];

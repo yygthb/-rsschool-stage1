@@ -1,1 +1,8 @@
 $box-border-radius: 8px;
+
+$color-primary: #515151;
+$color-secondary: #3178c9;
+$color-primary: #403B33;
+$color-secondary: #c44b1f;
+$color-secondary-light: lighten($color-secondary, 10%);
+$color-secondary-dark: darken($color-secondary, 10%);
