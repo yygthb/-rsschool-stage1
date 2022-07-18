@@ -80,7 +80,7 @@ export class StoreFilter extends NodeElement {
     });
     this.priceFilter = new Slider({
       parentNode: this.container.node,
-      classNames: 'filter__el filter__el-slider',
+      classNames: 'filter__el-slider',
     });
 
     new FilterTitle({
@@ -89,7 +89,7 @@ export class StoreFilter extends NodeElement {
     });
     this.powerFilter = new Slider({
       parentNode: this.container.node,
-      classNames: 'filter__el filter__el-slider',
+      classNames: 'filter__el-slider',
     });
 
     new FilterTitle({

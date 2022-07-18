@@ -2,7 +2,6 @@
   height: 10px;
   width: calc(100% - 20px);
   margin: 0 auto 30px;
-  background-color: $color-secondary-light;
 
   .slider__info {
     display: flex;
@@ -11,6 +10,10 @@
     .slider-value {
       padding: 15px 5px 5px;
     }
+  }
+
+  .noUi-connect {
+    background-color: $color-secondary-light;
   }
 
   .noUi-handle {

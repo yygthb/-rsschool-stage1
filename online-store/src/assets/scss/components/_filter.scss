@@ -20,7 +20,7 @@
   .filter__container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 17px;
     padding: 0 10px;
     border-radius: $box-border-radius;
 
@@ -31,7 +31,7 @@
       transition: height 0.3s ease-out;
 
       &.open {
-        height: 800px;
+        height: 820px;
         margin-bottom: 10px;
       }
     }
