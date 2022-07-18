@@ -52,4 +52,8 @@ export class NodeElement {
   clearContent() {
     this.updateContent('');
   }
+
+  destroy() {
+    this.node.remove();
+  }
 }

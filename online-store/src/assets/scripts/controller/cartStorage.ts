@@ -1,4 +1,7 @@
+import { Popup } from '../components/UI/Popup';
+
 const LS_SORT_ITEM = 'store__cart';
+const ERROR_TEXT = 'Sorry, all slots in the Cart are full';
 
 export class CartStorage {
   private _favItems: string[] = [];
@@ -33,10 +36,11 @@ export class CartStorage {
     if (this.favs.includes(id)) {
       this.favs = this.favs.filter((item) => item !== id);
     } else {
-      if (this.favs.length < 5) {
+      if (this.favs.length < 20) {
         this.favs.push(id);
       } else {
-        alert('the cart is full');
+        const popup = new Popup({});
+        popup.open(ERROR_TEXT);
         res = 'error';
       }
     }
