@@ -31,6 +31,11 @@ class App extends NodeElement {
     this.header.initNav(navTitles, clickNavCb);
   }
 
+  initContent(garage, winners) {
+    this.main.renderGarage(garage);
+    this.main.renderWinners(winners);
+  }
+
   setActiveNavItem(val: Navigation) {
     this.header.setActiveNavItem(val);
     this.main.setContentSection(val);
