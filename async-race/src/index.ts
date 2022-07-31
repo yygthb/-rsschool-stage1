@@ -1,3 +1,3 @@
 import './assets/scss/main.scss';
 
-console.log('index ts');
+import './assets/scripts';

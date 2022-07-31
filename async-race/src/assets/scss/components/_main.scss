@@ -1,0 +1,20 @@
+.main {
+  margin: 20px 0;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(2, 100%);
+    overflow: hidden;
+
+    .main__section {
+      width: 100%;
+      padding: 20px;
+      border: 1px solid blue;
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}

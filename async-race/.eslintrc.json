@@ -18,8 +18,12 @@
     "node": true
   },
   "rules": {
+    "class-methods-use-this": "off",
     "no-console": 1,
-    "@typescript-eslint/no-explicit-any": "error"
+    "no-new": 0,
+    "no-underscore-dangle": 0,
+    "@typescript-eslint/lines-between-class-members": 0,
+    "@typescript-eslint/no-explicit-any": 1
   },
   "ignorePatterns": ["*config.js", "dist/*"]
 }

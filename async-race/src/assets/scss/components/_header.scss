@@ -1,0 +1,28 @@
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .header__nav {
+    display: flex;
+
+    button {
+      padding: 0 10px;
+      border: none;
+      background-color: transparent;
+
+      &.active {
+        text-decoration: underline;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:not(:first-child) {
+        border-left: 1px solid #ccc;
+      }
+    }
+  }
+}
