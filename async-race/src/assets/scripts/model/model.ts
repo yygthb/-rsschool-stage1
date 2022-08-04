@@ -46,7 +46,6 @@ class Model {
       ...winner,
       ...this.garage.find((car) => car.id === winner.id),
     }));
-    console.log('this._winners:  ', this._winners);
   }
 
   constructor() {

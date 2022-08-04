@@ -1,4 +1,4 @@
-import { INodeProps, NodeElement } from '../../../utils/nodeElement';
+import { INodeProps, NodeElement } from '../../../../utils/nodeElement';
 
 class Winner extends NodeElement {
   constructor(nodeProps: INodeProps) {

@@ -36,7 +36,7 @@ class Main extends NodeElement {
   }
 
   renderWinners(winnersData: IWinner[]) {
-    console.log('renderWinners: ', winnersData);
+    // console.log('renderWinners: ', winnersData);
     this.winners.renderWinners(winnersData);
   }
 

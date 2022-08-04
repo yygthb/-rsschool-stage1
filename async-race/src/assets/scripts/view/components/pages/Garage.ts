@@ -1,6 +1,6 @@
 import { ICar } from '../../../model/model';
 import { INodeProps, NodeElement } from '../../../utils/nodeElement';
-import Car from './Car';
+import Car from './units/Car';
 import ContentSection from './ContentSection';
 
 class Garage extends ContentSection {
@@ -19,10 +19,13 @@ class Garage extends ContentSection {
 
   renderCars(data: ICar[] = []) {
     data.forEach((car) => {
+      console.log('car: ', car);
+
       const carItem = new Car({
         parentNode: this.node,
-        content: `${car.id} - ${car.name}`,
       });
+      carItem.setColor(car.color);
+
       this.garage.push(carItem);
     });
 
