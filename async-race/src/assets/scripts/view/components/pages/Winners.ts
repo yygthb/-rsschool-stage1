@@ -22,6 +22,8 @@ class Winners extends ContentSection {
         content: `${winner.name} (${winner.wins})`,
       });
     });
+
+    this.showTotalCount(data.length);
   }
 }
 

@@ -16,8 +16,18 @@
         display: block;
       }
 
-      .section__title {
+      .section__intro {
         margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .section__title {
+        }
+
+        .cars__count {
+          font-size: 15px;
+        }
       }
     }
   }

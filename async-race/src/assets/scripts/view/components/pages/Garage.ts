@@ -25,6 +25,8 @@ class Garage extends ContentSection {
       });
       this.garage.push(carItem);
     });
+
+    this.showTotalCount(data.length);
   }
 }
 
