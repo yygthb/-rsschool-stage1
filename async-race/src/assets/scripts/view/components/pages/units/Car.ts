@@ -40,8 +40,11 @@ class Car extends NodeElement {
     super({
       ...nodeProps,
       classNames: 'garage__car car',
-      content: carSvg,
     });
+
+    const car = new DOMParser().parseFromString(carSvg, 'text/xml');
+
+    this.node.append(car.documentElement);
   }
 
   setColor(color: string) {

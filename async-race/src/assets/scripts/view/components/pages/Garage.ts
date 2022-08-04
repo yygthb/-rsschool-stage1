@@ -13,18 +13,20 @@ class Garage extends ContentSection {
         tagName: 'section',
         classNames: 'content__garage',
       },
-      'GARAGE',
+      'GARAGE'
     );
   }
 
   renderCars(data: ICar[] = []) {
     data.forEach((car) => {
-      console.log('car: ', car);
-
       const carItem = new Car({
         parentNode: this.node,
       });
       carItem.setColor(car.color);
+
+      // carItem.node.addEventListener('click', () => {
+      //   console.log('click on ', carItem);
+      // });
 
       this.garage.push(carItem);
     });
