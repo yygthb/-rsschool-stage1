@@ -39,11 +39,10 @@ class Car extends NodeElement {
   constructor(nodeProps: INodeProps) {
     super({
       ...nodeProps,
-      classNames: 'garage__car car',
+      classNames: 'car',
     });
 
     const car = new DOMParser().parseFromString(carSvg, 'text/xml');
-
     this.node.append(car.documentElement);
   }
 

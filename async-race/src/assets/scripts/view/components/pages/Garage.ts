@@ -1,10 +1,11 @@
 import { ICar } from '../../../model/model';
 import { INodeProps, NodeElement } from '../../../utils/nodeElement';
-import Car from './units/Car';
+import GarageItem from './units/GarageItem';
 import ContentSection from './ContentSection';
 
 class Garage extends ContentSection {
   private garage: NodeElement[] = [];
+  private track: NodeElement;
 
   constructor(nodeProps: INodeProps) {
     super(
@@ -15,20 +16,24 @@ class Garage extends ContentSection {
       },
       'GARAGE'
     );
+
+    this.track = new NodeElement({
+      parentNode: this.node,
+      classNames: 'garage__cars',
+    });
   }
 
   renderCars(data: ICar[] = []) {
     data.forEach((car) => {
-      const carItem = new Car({
-        parentNode: this.node,
-      });
-      carItem.setColor(car.color);
+      const garageItem = new GarageItem(
+        {
+          parentNode: this.track.node,
+        },
+        car
+      );
+      garageItem.setColor(car.color);
 
-      // carItem.node.addEventListener('click', () => {
-      //   console.log('click on ', carItem);
-      // });
-
-      this.garage.push(carItem);
+      this.garage.push(garageItem);
     });
 
     this.showTotalCount(data.length);
