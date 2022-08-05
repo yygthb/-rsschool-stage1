@@ -1,5 +1,7 @@
 import Api, { ApiMethod } from '../api/api';
 import Model, { Navigation } from '../model/model';
+import { EmitterEvents } from '../types/types';
+import emitter from '../utils/eventEmitter';
 import App from '../view/app';
 import Button from '../view/ui/Button';
 
@@ -15,6 +17,8 @@ class Controller {
     this.model = model;
 
     this.init();
+
+    emitter.add(EmitterEvents.DELETE_CAR, this.deleteCar.bind(this));
   }
 
   async init() {
@@ -61,6 +65,16 @@ class Controller {
           this.view.addCar(newCar);
         }
       }
+    }
+  }
+
+  async deleteCar(id: number) {
+    console.log('delete car: ', id);
+    const res = await this.api.deleteCar(id);
+    console.log('res: ', res);
+    if (res && res.status === 200) {
+      this.model.deleteCar(id);
+      this.view.deleteCar(id);
     }
   }
 }

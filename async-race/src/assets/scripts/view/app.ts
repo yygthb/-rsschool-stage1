@@ -44,6 +44,10 @@ class App extends NodeElement {
     this.main.addNewCar(newCar);
   }
 
+  deleteCar(id: number) {
+    this.main.deleteCar(id);
+  }
+
   setActiveNavItem(val: Navigation) {
     this.header.setActiveNavItem(val);
     this.main.setContentSection(val);

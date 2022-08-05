@@ -1,4 +1,6 @@
 import { ICar } from '../../../../model/model';
+import { EmitterEvents } from '../../../../types/types';
+import emitter from '../../../../utils/eventEmitter';
 import { INodeProps, NodeElement } from '../../../../utils/nodeElement';
 import Button from '../../../ui/Button';
 import Track from './Track';
@@ -64,10 +66,10 @@ class GarageItem extends NodeElement {
       },
       this.carInfo,
     );
+    this.setCarColor(this.carInfo.color);
 
     this.delete.node.onclick = () => {
-      console.log('delete car', this.carInfo.id);
-      // this.destroy();
+      emitter.emit(EmitterEvents.DELETE_CAR, +this.carInfo.id);
     };
   }
 

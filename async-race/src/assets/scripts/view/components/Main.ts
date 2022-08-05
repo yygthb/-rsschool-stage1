@@ -40,6 +40,10 @@ class Main extends NodeElement {
     this.garage.addNewCar(newCar);
   }
 
+  deleteCar(id: number) {
+    this.garage.deleteCar(id);
+  }
+
   renderWinners(winnersData: IWinner[]) {
     this.winners.renderWinners(winnersData);
   }

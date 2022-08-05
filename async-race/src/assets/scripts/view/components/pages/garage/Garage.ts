@@ -5,7 +5,7 @@ import ContentSection from '../ContentSection';
 import GarageControl from './GarageControl';
 
 class Garage extends ContentSection {
-  // private garage: NodeElement[] = [];
+  private garage: GarageItem[] = [];
   private controls: GarageControl;
   private track: NodeElement;
 
@@ -36,8 +36,7 @@ class Garage extends ContentSection {
         },
         car,
       );
-      garageItem.setCarColor(car.color);
-      // this.garage.push(garageItem);
+      this.garage.push(garageItem);
     });
 
     this.showTotalCount(data.length);
@@ -50,11 +49,23 @@ class Garage extends ContentSection {
       },
       newCar,
     );
-    garageItem.setCarColor(newCar.color);
+
     const carControl = Object.entries(this.controls)[1][1];
     carControl.reset();
 
-    // this.garage.push(garageItem);
+    this.garage.push(garageItem);
+    this.showTotalCount(this.garage.length);
+  }
+
+  deleteCar(id: number) {
+    this.garage = this.garage.filter((car) => {
+      if (car.carInfo.id === id) {
+        car.destroy();
+        return false;
+      }
+      return true;
+    });
+    this.showTotalCount(this.garage.length);
   }
 }
 
