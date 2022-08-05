@@ -1,7 +1,7 @@
-import { IWinner } from '../../../model/model';
-import { INodeProps } from '../../../utils/nodeElement';
-import ContentSection from './ContentSection';
-import Winner from './units/Winner';
+import { IWinner } from '../../../../model/model';
+import { INodeProps } from '../../../../utils/nodeElement';
+import ContentSection from '../ContentSection';
+import Winner from './Winner';
 
 class Winners extends ContentSection {
   constructor(nodeProps: INodeProps) {

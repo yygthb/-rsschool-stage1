@@ -52,6 +52,10 @@ class Model {
     this.navTitles = [Navigation.ToGarage, Navigation.ToWinners];
     this.activePage = Navigation.ToGarage;
   }
+
+  deleteCar(id: number) {
+    this.garage.filter((car) => car.id !== id);
+  }
 }
 
 export default Model;

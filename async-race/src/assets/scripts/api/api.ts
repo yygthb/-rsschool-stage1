@@ -1,8 +1,23 @@
+import { ICar } from '../model/model';
+
 enum Route {
-  CARS = '/garage',
-  CAR = '/garage/:',
+  CARS = '/garage/',
   MOVING = '/engine',
   WINNERS = '/winners',
+}
+
+export enum ApiMethod {
+  CREATE = 'POST',
+  UPDATE = 'PUT',
+  DELETE = 'DELETE',
+}
+
+function catchError(error: unknown) {
+  if (typeof error === 'string') {
+    throw new Error(error);
+  } else if (error instanceof Error) {
+    throw new Error(error.message);
+  }
 }
 
 class Api {
@@ -21,11 +36,7 @@ class Api {
       }
       return [];
     } catch (error) {
-      if (typeof error === 'string') {
-        throw new Error(error);
-      } else if (error instanceof Error) {
-        throw new Error(error.message);
-      }
+      catchError(error);
       return [];
     }
   }
@@ -36,6 +47,34 @@ class Api {
 
   async getWinners() {
     return this.getData(Route.WINNERS);
+  }
+
+  async createCar(data: ICar) {
+    try {
+      const res = await fetch(this.url + Route.CARS, {
+        method: ApiMethod.CREATE,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      return res;
+    } catch (error) {
+      catchError(error);
+      return false;
+    }
+  }
+
+  async deleteCar(id: number) {
+    try {
+      const res = await fetch(this.url + Route.CARS + id, {
+        method: ApiMethod.DELETE,
+      });
+      return res;
+    } catch (error) {
+      catchError(error);
+      return false;
+    }
   }
 }
 

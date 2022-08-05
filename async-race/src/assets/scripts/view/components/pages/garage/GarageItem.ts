@@ -1,18 +1,17 @@
 import { ICar } from '../../../../model/model';
 import { INodeProps, NodeElement } from '../../../../utils/nodeElement';
 import Button from '../../../ui/Button';
-import Car from './Car';
+import Track from './Track';
 
 class GarageItem extends NodeElement {
   private _carInfo!: ICar;
   private engineControls!: NodeElement;
   private start!: Button;
   private stop!: Button;
-  private carControls!: NodeElement;
+  private carEdit!: NodeElement;
   private edit!: Button;
   private delete!: Button;
-  private track!: NodeElement;
-  private car!: Car;
+  private track!: Track;
 
   get carInfo() {
     return this._carInfo;
@@ -46,26 +45,25 @@ class GarageItem extends NodeElement {
       content: 'Stop',
     });
 
-    this.carControls = new NodeElement({
+    this.carEdit = new NodeElement({
       parentNode: this.node,
-      classNames: 'car-controls',
+      classNames: 'car-edit',
     });
     this.edit = new Button({
-      parentNode: this.carControls.node,
+      parentNode: this.carEdit.node,
       content: 'Edit',
     });
     this.delete = new Button({
-      parentNode: this.carControls.node,
+      parentNode: this.carEdit.node,
       content: 'Delete',
     });
 
-    this.track = new NodeElement({
-      parentNode: this.node,
-      classNames: 'car-track',
-    });
-    this.car = new Car({
-      parentNode: this.track.node,
-    });
+    this.track = new Track(
+      {
+        parentNode: this.node,
+      },
+      this.carInfo,
+    );
 
     this.delete.node.onclick = () => {
       console.log('delete car', this.carInfo.id);
@@ -73,8 +71,8 @@ class GarageItem extends NodeElement {
     };
   }
 
-  setColor(color: string) {
-    this.car.setColor(color);
+  setCarColor(color: string) {
+    this.track.setCarColor(color);
   }
 }
 

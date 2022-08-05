@@ -1,7 +1,8 @@
 import { ICar, Navigation, IWinner } from '../../model/model';
 import { INodeProps, NodeElement } from '../../utils/nodeElement';
-import Garage from './pages/Garage';
-import Winners from './pages/Winners';
+import Garage from './pages/garage/Garage';
+import GarageControl from './pages/garage/GarageControl';
+import Winners from './pages/winners/Winners';
 
 class Main extends NodeElement {
   private content: NodeElement;
@@ -19,24 +20,27 @@ class Main extends NodeElement {
       parentNode: this.node,
       classNames: 'main__content content',
     });
-
-    this.init();
   }
 
-  init() {
-    this.garage = new Garage({ parentNode: this.content.node });
+  init(cb) {
+    this.garage = new Garage(
+      { parentNode: this.content.node },
+      new GarageControl({}, cb),
+    );
     this.sections.push(this.garage);
     this.winners = new Winners({ parentNode: this.content.node });
     this.sections.push(this.winners);
   }
 
   renderGarage(garageData: ICar[]) {
-    console.log('renderGarage: ', garageData);
     this.garage.renderCars(garageData);
   }
 
+  addNewCar(newCar: ICar) {
+    this.garage.addNewCar(newCar);
+  }
+
   renderWinners(winnersData: IWinner[]) {
-    // console.log('renderWinners: ', winnersData);
     this.winners.renderWinners(winnersData);
   }
 
@@ -47,11 +51,9 @@ class Main extends NodeElement {
   setContentSection(val: Navigation) {
     this.hideSections();
     if (val === Navigation.ToGarage) {
-      // this.garage.node.classList.add('active');
       this.garage.show();
     }
     if (val === Navigation.ToWinners) {
-      // this.winners.node.classList.add('active');
       this.winners.show();
     }
   }

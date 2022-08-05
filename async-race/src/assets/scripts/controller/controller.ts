@@ -1,4 +1,4 @@
-import Api from '../api/api';
+import Api, { ApiMethod } from '../api/api';
 import Model, { Navigation } from '../model/model';
 import App from '../view/app';
 import Button from '../view/ui/Button';
@@ -18,12 +18,13 @@ class Controller {
   }
 
   async init() {
+    this.view.initControls(this.garageControlBtnHandler.bind(this));
     this.view.initNav(this.model.navTitles, this.clickNavBtn.bind(this));
     this.setActiveNavBtn();
 
     this.api = new Api(BASE_URL);
     const [garage, winners] = await this.getContent();
-    this.view.initContent(garage, winners);
+    this.view.renderContent(garage, winners);
   }
 
   clickNavBtn(val: Button) {
@@ -47,6 +48,20 @@ class Controller {
     this.model.winners = winnersData;
 
     return [this.model.garage, this.model.winners];
+  }
+
+  async garageControlBtnHandler(props) {
+    const [method, car] = props;
+    if (car.name.trim()) {
+      if (method === ApiMethod.CREATE) {
+        const res = await this.api.createCar(car);
+        if (res && res.status === 201) {
+          const newCar = await res.json();
+          this.model.garage.push(newCar);
+          this.view.addCar(newCar);
+        }
+      }
+    }
   }
 }
 
