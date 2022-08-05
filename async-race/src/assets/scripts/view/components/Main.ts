@@ -20,12 +20,14 @@ class Main extends NodeElement {
       parentNode: this.node,
       classNames: 'main__content content',
     });
+
+    this.init();
   }
 
-  init(cb) {
+  init() {
     this.garage = new Garage(
       { parentNode: this.content.node },
-      new GarageControl({}, cb),
+      new GarageControl({}),
     );
     this.sections.push(this.garage);
     this.winners = new Winners({ parentNode: this.content.node });

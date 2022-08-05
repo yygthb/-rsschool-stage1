@@ -1,5 +1,5 @@
 import Api, { ApiMethod } from '../api/api';
-import Model, { Navigation } from '../model/model';
+import Model, { ICar, Navigation } from '../model/model';
 import { EmitterEvents } from '../types/types';
 import emitter from '../utils/eventEmitter';
 import App from '../view/app';
@@ -18,11 +18,11 @@ class Controller {
 
     this.init();
 
+    emitter.add(EmitterEvents.UPDATE_CAR, this.updateCar.bind(this));
     emitter.add(EmitterEvents.DELETE_CAR, this.deleteCar.bind(this));
   }
 
   async init() {
-    this.view.initControls(this.garageControlBtnHandler.bind(this));
     this.view.initNav(this.model.navTitles, this.clickNavBtn.bind(this));
     this.setActiveNavBtn();
 
@@ -54,7 +54,7 @@ class Controller {
     return [this.model.garage, this.model.winners];
   }
 
-  async garageControlBtnHandler(props) {
+  async updateCar(props: [ApiMethod, ICar]) {
     const [method, car] = props;
     if (car.name.trim()) {
       if (method === ApiMethod.CREATE) {
@@ -69,9 +69,7 @@ class Controller {
   }
 
   async deleteCar(id: number) {
-    console.log('delete car: ', id);
     const res = await this.api.deleteCar(id);
-    console.log('res: ', res);
     if (res && res.status === 200) {
       this.model.deleteCar(id);
       this.view.deleteCar(id);

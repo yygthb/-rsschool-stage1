@@ -31,11 +31,7 @@ class App extends NodeElement {
     this.header.initNav(navTitles, clickNavCb);
   }
 
-  initControls(cb) {
-    this.main.init(cb);
-  }
-
-  renderContent(garage, winners) {
+  renderContent(garage: ICar[], winners) {
     this.main.renderGarage(garage);
     this.main.renderWinners(winners);
   }
