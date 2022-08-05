@@ -55,10 +55,16 @@ class GarageItem extends NodeElement {
       parentNode: this.carEdit.node,
       content: 'Edit',
     });
+    this.edit.node.onclick = () => {
+      emitter.emit(EmitterEvents.SELECT_CAR, this.carInfo.id);
+    };
     this.delete = new Button({
       parentNode: this.carEdit.node,
       content: 'Delete',
     });
+    this.delete.node.onclick = () => {
+      emitter.emit(EmitterEvents.DELETE_CAR, this.carInfo.id);
+    };
 
     this.track = new Track(
       {
@@ -67,14 +73,14 @@ class GarageItem extends NodeElement {
       this.carInfo,
     );
     this.setCarColor(this.carInfo.color);
-
-    this.delete.node.onclick = () => {
-      emitter.emit(EmitterEvents.DELETE_CAR, +this.carInfo.id);
-    };
   }
 
   setCarColor(color: string) {
     this.track.setCarColor(color);
+  }
+
+  setCarName(name: string) {
+    this.track.setCarName(name);
   }
 }
 

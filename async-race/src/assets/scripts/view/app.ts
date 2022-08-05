@@ -40,6 +40,14 @@ class App extends NodeElement {
     this.main.addNewCar(newCar);
   }
 
+  selectCar(car: ICar) {
+    this.main.selectCar(car);
+  }
+
+  updateCar(car: ICar) {
+    this.main.updateCar(car);
+  }
+
   deleteCar(id: number) {
     this.main.deleteCar(id);
   }

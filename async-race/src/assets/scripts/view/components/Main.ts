@@ -42,6 +42,14 @@ class Main extends NodeElement {
     this.garage.addNewCar(newCar);
   }
 
+  selectCar(car: ICar) {
+    this.garage.selectCar(car);
+  }
+
+  updateCar(car: ICar) {
+    this.garage.updateCar(car);
+  }
+
   deleteCar(id: number) {
     this.garage.deleteCar(id);
   }

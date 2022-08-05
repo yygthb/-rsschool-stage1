@@ -65,6 +65,32 @@ class Api {
     }
   }
 
+  async updateCar(id, data: ICar) {
+    try {
+      const res = await fetch(this.url + Route.CARS + id, {
+        method: ApiMethod.UPDATE,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      return res;
+    } catch (error) {
+      catchError(error);
+      return false;
+    }
+  }
+
+  async getCar(id: number) {
+    try {
+      const res = await fetch(this.url + Route.CARS + id);
+      return res;
+    } catch (error) {
+      catchError(error);
+      return false;
+    }
+  }
+
   async deleteCar(id: number) {
     try {
       const res = await fetch(this.url + Route.CARS + id, {

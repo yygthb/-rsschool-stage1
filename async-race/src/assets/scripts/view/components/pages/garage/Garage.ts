@@ -50,11 +50,31 @@ class Garage extends ContentSection {
       newCar,
     );
 
-    const carControl = Object.entries(this.controls)[1][1];
-    carControl.reset();
+    const newCarControl = Object.entries(this.controls)[1][1];
+    newCarControl.reset();
 
     this.garage.push(garageItem);
     this.showTotalCount(this.garage.length);
+  }
+
+  selectCar(car: ICar | null) {
+    const editCarControl = Object.entries(this.controls)[2][1];
+    if (car) {
+      editCarControl.carName.setValue(car.name);
+      editCarControl.carColor.setValue(car.color);
+    } else {
+      editCarControl.reset();
+    }
+  }
+
+  updateCar(car: ICar) {
+    const foundIndex = this.garage.findIndex(
+      (item) => item.carInfo.id === car.id,
+    );
+    const foundCar = this.garage[foundIndex];
+    foundCar.setCarName(car.name);
+    foundCar.setCarColor(car.color);
+    this.selectCar(null);
   }
 
   deleteCar(id: number) {

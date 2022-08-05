@@ -20,6 +20,7 @@ class Model {
   private _activePage!: Navigation;
   private _garage: ICar[] = [];
   private _winners: IWinner[] = [];
+  private _selectedCar: ICar | null = null;
 
   get activePage() {
     return this._activePage;
@@ -49,9 +50,22 @@ class Model {
     }));
   }
 
+  set selectedCar(val: ICar | null) {
+    this._selectedCar = val;
+  }
+
+  get selectedCar(): ICar | null {
+    return this._selectedCar;
+  }
+
   constructor() {
     this.navTitles = [Navigation.ToGarage, Navigation.ToWinners];
     this.activePage = Navigation.ToGarage;
+  }
+
+  updateCar(car: ICar) {
+    const carIndex = this.garage.findIndex((item) => item.id === car.id);
+    this._garage[carIndex] = { ...car };
   }
 
   deleteCar(id: number) {

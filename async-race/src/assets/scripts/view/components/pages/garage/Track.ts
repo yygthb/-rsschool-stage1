@@ -32,6 +32,10 @@ class Track extends NodeElement {
   setCarColor(color: string) {
     this.car.setColor(color);
   }
+
+  setCarName(name: string) {
+    this.carTitle.node.innerHTML = name;
+  }
 }
 
 export default Track;

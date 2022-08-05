@@ -16,6 +16,10 @@ class Input extends NodeElement {
     return this.input.value;
   }
 
+  setValue(val: string) {
+    this.input.value = val;
+  }
+
   clear() {
     this.input.value = '';
   }

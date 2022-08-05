@@ -18,6 +18,7 @@ class Controller {
 
     this.init();
 
+    emitter.add(EmitterEvents.SELECT_CAR, this.selectCar.bind(this));
     emitter.add(EmitterEvents.UPDATE_CAR, this.updateCar.bind(this));
     emitter.add(EmitterEvents.DELETE_CAR, this.deleteCar.bind(this));
   }
@@ -65,6 +66,23 @@ class Controller {
           this.view.addCar(newCar);
         }
       }
+      if (method === ApiMethod.UPDATE) {
+        const res = await this.api.updateCar(this.model.selectedCar?.id, car);
+        if (res && res.status === 200) {
+          const newCar = await res.json();
+          this.model.updateCar(newCar);
+          this.view.updateCar(newCar);
+        }
+      }
+    }
+  }
+
+  async selectCar(id: number) {
+    const res = await this.api.getCar(id);
+    if (res && res.status === 200) {
+      const selectedCar: ICar = await res.json();
+      this.model.selectedCar = selectedCar;
+      this.view.selectCar(selectedCar);
     }
   }
 
