@@ -10,6 +10,10 @@ class Color extends Input {
 
     this.node.setAttribute('type', 'color');
   }
+
+  clear() {
+    (<HTMLInputElement> this.node).value = '#000000';
+  }
 }
 
 export default Color;

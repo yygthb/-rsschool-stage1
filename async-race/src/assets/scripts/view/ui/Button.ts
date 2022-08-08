@@ -8,7 +8,6 @@ class Button extends NodeElement {
       ...nodeProps,
       tagName: 'button',
     });
-    this.node as HTMLButtonElement;
   }
 
   click(cb: ClickNavCb) {
