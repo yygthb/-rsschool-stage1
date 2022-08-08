@@ -1,4 +1,4 @@
-import { ICar, Navigation } from '../model/model';
+import { ICar, IWinner, Navigation } from '../model/model';
 import { NodeElement } from '../utils/nodeElement';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -31,7 +31,7 @@ class App extends NodeElement {
     this.header.initNav(navTitles, clickNavCb);
   }
 
-  renderContent(garage: ICar[], winners) {
+  renderContent(garage: ICar[], winners: IWinner[]) {
     this.main.renderGarage(garage);
     this.main.renderWinners(winners);
   }

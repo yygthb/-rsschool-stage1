@@ -1,5 +1,7 @@
 import Api, { ApiMethod, EngineStatus } from '../api/api';
-import Model, { ICar, ICarInfo, Navigation } from '../model/model';
+import Model, {
+  ICar, ICarInfo, IWinner, Navigation,
+} from '../model/model';
 import { EmitterEvents } from '../types/types';
 import generateCar from '../utils/generateCar';
 import emitter from '../utils/eventEmitter';
@@ -54,7 +56,7 @@ class Controller {
     this.view.setActiveNavItem(this.model.activePage);
   }
 
-  async getContent() {
+  async getContent(): Promise<[ICar[], IWinner[]]> {
     const garageData = await this.api.getGarage();
     this.model.garage = garageData;
     const winnersData = await this.api.getWinners();
@@ -150,7 +152,7 @@ class Controller {
   }
 
   async addCars() {
-    new Array(5).fill(true).forEach(async () => {
+    new Array(100).fill(true).forEach(async () => {
       const car = {
         name: generateCar.generateCarName().join(' '),
         color: generateCar.generateCarColor(),

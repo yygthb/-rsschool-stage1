@@ -6,8 +6,8 @@ class Track extends NodeElement {
   private car!: Car;
   private carInfo!: ICar;
   private carTitle!: NodeElement;
-  private animationDuration;
-  private requestId;
+  private animationDuration!: number;
+  private requestId!: number;
 
   constructor(nodeProps: INodeProps, carInfo: ICar) {
     super({
