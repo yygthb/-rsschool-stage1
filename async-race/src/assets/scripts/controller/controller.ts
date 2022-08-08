@@ -60,6 +60,12 @@ class Controller {
     return [this.model.garage, this.model.winners];
   }
 
+  async selectCar(id: number) {
+    const selectedCar = await this.api.getCar(id);
+    this.model.selectedCar = selectedCar;
+    this.view.carMethod('selectCar', this.model.selectedCar);
+  }
+
   async updateCar(props: [ApiMethod, ICar]) {
     const [method, car] = props;
     if (car.name.trim()) {
@@ -67,8 +73,8 @@ class Controller {
         const res = await this.api.createCar(car);
         if (res && res.status === 201) {
           const newCar = await res.json();
-          this.model.garage.push(newCar);
-          this.view.addCar(newCar);
+          this.model.addNewCar(newCar);
+          this.view.carMethod('addNewCar', newCar);
         }
       }
       if (method === ApiMethod.UPDATE) {
@@ -79,23 +85,17 @@ class Controller {
         if (res && res.status === 200) {
           const newCar = await res.json();
           this.model.updateCar(newCar.id, newCar);
-          this.view.updateCar(newCar);
+          this.view.carMethod('updateCar', newCar);
         }
       }
     }
-  }
-
-  async selectCar(id: number) {
-    const selectedCar = await this.api.getCar(id);
-    this.model.selectedCar = selectedCar;
-    this.view.selectCar(selectedCar);
   }
 
   async deleteCar(id: number) {
     const res = await this.api.deleteCar(id);
     if (res && res.status === 200) {
       this.model.deleteCar(id);
-      this.view.deleteCar(id);
+      this.view.carMethod('deleteCar', id);
     }
   }
 
@@ -107,10 +107,10 @@ class Controller {
         velocity: car.velocity,
         distance: car.distance,
       });
-      this.view.driveCar(updatedCar);
+      this.view.carMethod('driveCar', updatedCar);
       const drive = await this.driveCar(carInfo.id);
       if (drive && drive.status === 500) {
-        this.view.stopCar(carInfo.id);
+        this.view.carMethod('stopCar', carInfo.id);
       }
       await this.engineStop(carInfo.id);
     }
@@ -134,8 +134,8 @@ class Controller {
   }
 
   async resetCarPosition(id: number) {
+    this.view.carMethod('resetCarPosition', id);
     await this.engineStop(id);
-    this.view.resetCarPosition(id);
   }
 }
 

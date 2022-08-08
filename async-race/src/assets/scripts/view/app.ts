@@ -36,32 +36,8 @@ class App extends NodeElement {
     this.main.renderWinners(winners);
   }
 
-  addCar(newCar: ICar) {
-    this.main.addNewCar(newCar);
-  }
-
-  selectCar(car: ICar) {
-    this.main.selectCar(car);
-  }
-
-  updateCar(car: ICar) {
-    this.main.updateCar(car);
-  }
-
-  deleteCar(id: number) {
-    this.main.deleteCar(id);
-  }
-
-  driveCar(carInfo: ICar) {
-    this.main.driveCar(carInfo);
-  }
-
-  stopCar(id: number) {
-    this.main.stopCar(id);
-  }
-
-  resetCarPosition(id: number) {
-    this.main.resetCarPosition(id);
+  carMethod<T>(fnTitle: string, car: T) {
+    this.main.carMethod(fnTitle, car);
   }
 
   setActiveNavItem(val: Navigation) {

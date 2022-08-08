@@ -42,12 +42,12 @@ class Garage extends ContentSection {
     this.showTotalCount(data.length);
   }
 
-  addNewCar(newCar: ICar) {
+  addNewCar(car: ICar) {
     const garageItem = new GarageItem(
       {
         parentNode: this.track.node,
       },
-      newCar,
+      car,
     );
 
     const newCarControl = Object.entries(this.controls)[1][1];
@@ -55,6 +55,10 @@ class Garage extends ContentSection {
 
     this.garage.push(garageItem);
     this.showTotalCount(this.garage.length);
+  }
+
+  carMethod<T>(fnTitle: string, props: T) {
+    this[fnTitle].call(this, props);
   }
 
   selectCar(car: ICar | null) {

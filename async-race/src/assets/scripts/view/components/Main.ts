@@ -38,32 +38,8 @@ class Main extends NodeElement {
     this.garage.renderCars(garageData);
   }
 
-  addNewCar(newCar: ICar) {
-    this.garage.addNewCar(newCar);
-  }
-
-  selectCar(car: ICar) {
-    this.garage.selectCar(car);
-  }
-
-  updateCar(car: ICar) {
-    this.garage.updateCar(car);
-  }
-
-  deleteCar(id: number) {
-    this.garage.deleteCar(id);
-  }
-
-  driveCar(carInfo: ICar) {
-    this.garage.driveCar(carInfo);
-  }
-
-  stopCar(id: number) {
-    this.garage.stopCar(id);
-  }
-
-  resetCarPosition(id: number) {
-    this.garage.resetCarPosition(id);
+  carMethod<T>(fnTitle: string, car: T) {
+    this.garage.carMethod(fnTitle, car);
   }
 
   renderWinners(winnersData: IWinner[]) {

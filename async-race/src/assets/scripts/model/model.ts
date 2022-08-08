@@ -21,7 +21,7 @@ class Model {
   private _activePage!: Navigation;
   private _garage: ICar[] = [];
   private _winners: IWinner[] = [];
-  private _selectedCar: ICar | null = null;
+  private _selectedCar!: ICar;
 
   get activePage() {
     return this._activePage;
@@ -51,17 +51,21 @@ class Model {
     }));
   }
 
-  set selectedCar(val: ICar | null) {
+  set selectedCar(val: ICar) {
     this._selectedCar = val;
   }
 
-  get selectedCar(): ICar | null {
+  get selectedCar(): ICar {
     return this._selectedCar;
   }
 
   constructor() {
     this.navTitles = [Navigation.ToGarage, Navigation.ToWinners];
     this.activePage = Navigation.ToGarage;
+  }
+
+  addNewCar(car: ICar) {
+    this.garage.push(car);
   }
 
   updateCar(id: number, props: Record<string, ICar>) {
