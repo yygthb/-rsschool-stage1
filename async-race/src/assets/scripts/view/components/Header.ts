@@ -14,7 +14,7 @@ class Header extends NodeElement {
 
     new NodeElement({
       parentNode: this.node,
-      content: 'LOGO',
+      content: 'Async Race',
     });
   }
 
