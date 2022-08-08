@@ -1,4 +1,4 @@
-import Api, { ApiMethod } from '../api/api';
+import Api, { ApiMethod, EngineStatus } from '../api/api';
 import Model, { ICar, Navigation } from '../model/model';
 import { EmitterEvents } from '../types/types';
 import emitter from '../utils/eventEmitter';
@@ -21,6 +21,9 @@ class Controller {
     emitter.add(EmitterEvents.SELECT_CAR, this.selectCar.bind(this));
     emitter.add(EmitterEvents.UPDATE_CAR, this.updateCar.bind(this));
     emitter.add(EmitterEvents.DELETE_CAR, this.deleteCar.bind(this));
+
+    emitter.add(EmitterEvents.START_ENGINE, this.engineStart.bind(this));
+    emitter.add(EmitterEvents.STOP_ENGINE, this.engineStop.bind(this));
   }
 
   async init() {
@@ -30,6 +33,8 @@ class Controller {
     this.api = new Api(BASE_URL);
     const [garage, winners] = await this.getContent();
     this.view.renderContent(garage, winners);
+
+    console.log('Garage: ', garage);
   }
 
   clickNavBtn(val: Button) {
@@ -67,7 +72,10 @@ class Controller {
         }
       }
       if (method === ApiMethod.UPDATE) {
-        const res = await this.api.updateCar(this.model.selectedCar?.id, car);
+        const res = await this.api.updateCar(
+          this.model.selectedCar?.id || 0,
+          car,
+        );
         if (res && res.status === 200) {
           const newCar = await res.json();
           this.model.updateCar(newCar);
@@ -78,12 +86,9 @@ class Controller {
   }
 
   async selectCar(id: number) {
-    const res = await this.api.getCar(id);
-    if (res && res.status === 200) {
-      const selectedCar: ICar = await res.json();
-      this.model.selectedCar = selectedCar;
-      this.view.selectCar(selectedCar);
-    }
+    const selectedCar = await this.api.getCar(id);
+    this.model.selectedCar = selectedCar;
+    this.view.selectCar(selectedCar);
   }
 
   async deleteCar(id: number) {
@@ -92,6 +97,28 @@ class Controller {
       this.model.deleteCar(id);
       this.view.deleteCar(id);
     }
+  }
+
+  async engineStart(carInfo: ICar) {
+    const car = await this.api.engine(EngineStatus.START, carInfo.id);
+    const updatedCar = {
+      ...carInfo,
+      velocity: car.velocity,
+      distance: car.distance,
+    };
+    this.model.updateCar(updatedCar);
+    this.view.driveCar(updatedCar);
+  }
+
+  async engineStop(carInfo: ICar) {
+    const car = await this.api.engine(EngineStatus.STOP, carInfo.id);
+    const updatedCar = {
+      ...carInfo,
+      velocity: car.velocity,
+      distance: car.distance,
+    };
+    this.model.updateCar(updatedCar);
+    this.view.stopCar(updatedCar);
   }
 }
 

@@ -2,14 +2,21 @@ import { ICar } from '../model/model';
 
 enum Route {
   CARS = '/garage/',
-  MOVING = '/engine',
+  ENGINE = '/engine',
   WINNERS = '/winners',
 }
 
 export enum ApiMethod {
   CREATE = 'POST',
   UPDATE = 'PUT',
+  PATCH = 'PATCH',
   DELETE = 'DELETE',
+}
+
+export enum EngineStatus {
+  START = 'started',
+  STOP = 'stopped',
+  DRIVE = 'drive',
 }
 
 function catchError(error: unknown) {
@@ -30,11 +37,8 @@ class Api {
   async getData(route: string) {
     try {
       const res = await fetch(this.url + route);
-      if (res.ok === true) {
-        const data = await res.json();
-        return data;
-      }
-      return [];
+      const data = await res.json();
+      return data;
     } catch (error) {
       catchError(error);
       return [];
@@ -65,9 +69,9 @@ class Api {
     }
   }
 
-  async updateCar(id, data: ICar) {
+  async updateCar(id: number, data: ICar) {
     try {
-      const res = await fetch(this.url + Route.CARS + id, {
+      const res = await fetch(this.url + Route.CARS + id || '', {
         method: ApiMethod.UPDATE,
         headers: {
           'Content-Type': 'application/json',
@@ -82,13 +86,7 @@ class Api {
   }
 
   async getCar(id: number) {
-    try {
-      const res = await fetch(this.url + Route.CARS + id);
-      return res;
-    } catch (error) {
-      catchError(error);
-      return false;
-    }
+    return this.getData(Route.CARS + id);
   }
 
   async deleteCar(id: number) {
@@ -100,6 +98,23 @@ class Api {
     } catch (error) {
       catchError(error);
       return false;
+    }
+  }
+
+  async engine(status: EngineStatus, id: number) {
+    try {
+      const query = new URLSearchParams();
+      query.set('id', id.toString());
+      query.set('status', status);
+
+      const res = await fetch(`${this.url + Route.ENGINE}?${query}`, {
+        method: ApiMethod.PATCH,
+      });
+      const data = await res.json();
+      return data;
+    } catch (error) {
+      catchError(error);
+      return null;
     }
   }
 }

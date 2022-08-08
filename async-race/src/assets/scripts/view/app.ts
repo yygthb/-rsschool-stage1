@@ -52,6 +52,14 @@ class App extends NodeElement {
     this.main.deleteCar(id);
   }
 
+  driveCar(carInfo: ICar) {
+    this.main.driveCar(carInfo);
+  }
+
+  stopCar(carInfo: ICar) {
+    this.main.stopCar(carInfo);
+  }
+
   setActiveNavItem(val: Navigation) {
     this.header.setActiveNavItem(val);
     this.main.setContentSection(val);

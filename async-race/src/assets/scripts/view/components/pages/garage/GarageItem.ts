@@ -42,10 +42,16 @@ class GarageItem extends NodeElement {
       parentNode: this.engineControls.node,
       content: 'Start',
     });
-    this.start = new Button({
+    this.start.node.onclick = () => {
+      emitter.emit(EmitterEvents.START_ENGINE, this.carInfo);
+    };
+    this.stop = new Button({
       parentNode: this.engineControls.node,
       content: 'Stop',
     });
+    this.stop.node.onclick = () => {
+      emitter.emit(EmitterEvents.STOP_ENGINE, this.carInfo);
+    };
 
     this.carEdit = new NodeElement({
       parentNode: this.node,
@@ -81,6 +87,18 @@ class GarageItem extends NodeElement {
 
   setCarName(name: string) {
     this.track.setCarName(name);
+  }
+
+  driveCar(time: number) {
+    this.track.startCarAnimation(time);
+  }
+
+  stopCar() {
+    this.track.stopCarAnimation();
+  }
+
+  resetCarPosition() {
+    this.track.resetCarPosition();
   }
 }
 

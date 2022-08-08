@@ -87,6 +87,25 @@ class Garage extends ContentSection {
     });
     this.showTotalCount(this.garage.length);
   }
+
+  driveCar(car: ICar) {
+    const foundIndex = this.garage.findIndex(
+      (item) => item.carInfo.id === car.id,
+    );
+    const foundCar = this.garage[foundIndex];
+    if (car.distance && car.velocity) {
+      foundCar.driveCar(car.distance / car.velocity);
+    }
+  }
+
+  stopCar(car: ICar) {
+    const foundIndex = this.garage.findIndex(
+      (item) => item.carInfo.id === car.id,
+    );
+    const foundCar = this.garage[foundIndex];
+    // foundCar.stopCar();
+    foundCar.resetCarPosition();
+  }
 }
 
 export default Garage;

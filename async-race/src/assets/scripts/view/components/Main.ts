@@ -54,6 +54,14 @@ class Main extends NodeElement {
     this.garage.deleteCar(id);
   }
 
+  driveCar(carInfo: ICar) {
+    this.garage.driveCar(carInfo);
+  }
+
+  stopCar(carInfo: ICar) {
+    this.garage.stopCar(carInfo);
+  }
+
   renderWinners(winnersData: IWinner[]) {
     this.winners.renderWinners(winnersData);
   }
