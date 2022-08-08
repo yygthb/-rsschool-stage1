@@ -1,5 +1,5 @@
 import { ApiMethod } from '../../../../api/api';
-import { ICar } from '../../../../model/model';
+import { ICarInfo } from '../../../../model/model';
 import { EmitterEvents } from '../../../../types/types';
 import emitter from '../../../../utils/eventEmitter';
 import { INodeProps, NodeElement } from '../../../../utils/nodeElement';
@@ -22,7 +22,7 @@ class GarageControl extends NodeElement {
       'Add new Car to Garage',
       'Save',
     );
-    this.newCarControl.carControlCb((carInfo: ICar) => {
+    this.newCarControl.carControlCb((carInfo: ICarInfo) => {
       emitter.emit(EmitterEvents.UPDATE_CAR, [ApiMethod.CREATE, carInfo]);
     });
 
@@ -33,7 +33,7 @@ class GarageControl extends NodeElement {
       'Edit Car from Garage',
       'Save',
     );
-    this.editCarControl.carControlCb((carInfo: ICar) => {
+    this.editCarControl.carControlCb((carInfo: ICarInfo) => {
       emitter.emit(EmitterEvents.UPDATE_CAR, [ApiMethod.UPDATE, carInfo]);
     });
   }

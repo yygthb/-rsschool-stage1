@@ -1,4 +1,4 @@
-import { ICar } from '../model/model';
+import { ICarInfo } from '../model/model';
 
 enum Route {
   CARS = '/garage/',
@@ -65,7 +65,7 @@ class Api {
     }
   }
 
-  async createCar(data: ICar) {
+  async createCar(data: ICarInfo) {
     try {
       const res = await fetch(this.url + Route.CARS, {
         method: ApiMethod.CREATE,
@@ -81,7 +81,7 @@ class Api {
     }
   }
 
-  async carUpdate(id: number, data: ICar) {
+  async carUpdate(id: number, data: ICarInfo) {
     try {
       const res = await fetch(this.url + Route.CARS + id || '', {
         method: ApiMethod.UPDATE,

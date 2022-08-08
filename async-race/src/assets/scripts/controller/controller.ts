@@ -1,6 +1,7 @@
 import Api, { ApiMethod, EngineStatus } from '../api/api';
-import Model, { ICar, Navigation } from '../model/model';
+import Model, { ICar, ICarInfo, Navigation } from '../model/model';
 import { EmitterEvents } from '../types/types';
+import generateCar from '../utils/generateCar';
 import emitter from '../utils/eventEmitter';
 import App from '../view/app';
 import Button from '../view/ui/Button';
@@ -68,7 +69,7 @@ class Controller {
     this.view.carMethod('carSelect', this.model.selectedCar);
   }
 
-  async carUpdate(props: [ApiMethod, ICar]) {
+  async carUpdate(props: [ApiMethod, ICarInfo]) {
     const [method, car] = props;
     if (car.name.trim()) {
       if (method === ApiMethod.CREATE) {
@@ -149,7 +150,13 @@ class Controller {
   }
 
   async addCars() {
-    console.log('add cars to garage');
+    new Array(5).fill(true).forEach(async () => {
+      const car = {
+        name: generateCar.generateCarName().join(' '),
+        color: generateCar.generateCarColor(),
+      };
+      await this.carUpdate([ApiMethod.CREATE, car]);
+    });
   }
 
   async raceStart() {

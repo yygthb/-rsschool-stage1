@@ -1,3 +1,4 @@
+import { ICarInfo } from '../../../../model/model';
 import { INodeProps, NodeElement } from '../../../../utils/nodeElement';
 import Button from '../../../ui/Button';
 import Color from '../../../ui/Color';
@@ -42,7 +43,7 @@ class CarControl extends NodeElement {
     });
   }
 
-  carControlCb(cb) {
+  carControlCb(cb: (obj: ICarInfo) => void) {
     this.btn.click(() => {
       cb({
         name: this.carName.getValue(),

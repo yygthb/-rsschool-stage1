@@ -11,6 +11,8 @@ export interface ICar {
   distance?: number;
 }
 
+export type ICarInfo = Pick<ICar, 'color' | 'name'>;
+
 export interface IWinner extends ICar {
   wins: number;
   time: number;
