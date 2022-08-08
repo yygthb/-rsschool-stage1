@@ -19,7 +19,7 @@ export enum EngineStatus {
   DRIVE = 'drive',
 }
 
-function catchError(error) {
+function catchError<T>(error: T) {
   if (error instanceof Error) {
     console.log(error.message);
   } else {
