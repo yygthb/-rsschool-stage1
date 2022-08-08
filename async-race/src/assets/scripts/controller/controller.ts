@@ -33,8 +33,6 @@ class Controller {
     this.api = new Api(BASE_URL);
     const [garage, winners] = await this.getContent();
     this.view.renderContent(garage, winners);
-
-    console.log('Garage: ', garage);
   }
 
   clickNavBtn(val: Button) {
@@ -92,10 +90,17 @@ class Controller {
   }
 
   async carDelete(id: number) {
-    const res = await this.api.carDelete(id);
-    if (res && res.status === 200) {
+    const delCar = await this.api.carDelete(id);
+    if (delCar && delCar.status === 200) {
       this.model.carDelete(id);
       this.view.carMethod('carDelete', id);
+    }
+    if (this.model.winners.findIndex((item) => item.id === id) >= 0) {
+      const delWinner = await this.api.winnerDelete(id);
+      if (delWinner && delWinner.status === 200) {
+        this.model.winnerDelete(id);
+        this.view.winnerDelete(id);
+      }
     }
   }
 

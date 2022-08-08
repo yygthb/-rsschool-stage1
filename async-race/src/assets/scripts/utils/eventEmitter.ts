@@ -1,6 +1,5 @@
 class EventEmitter {
   private events: Record<string, (params) => void>;
-  private timeStart!: number;
 
   constructor() {
     this.events = {};

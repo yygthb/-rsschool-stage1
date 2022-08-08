@@ -77,6 +77,10 @@ class Model {
   carDelete(id: number) {
     this.garage.filter((car) => car.id !== id);
   }
+
+  winnerDelete(id: number) {
+    this.winners.filter((car) => car.id !== id);
+  }
 }
 
 export default Model;

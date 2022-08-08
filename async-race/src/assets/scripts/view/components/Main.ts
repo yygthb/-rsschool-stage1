@@ -46,6 +46,10 @@ class Main extends NodeElement {
     this.winners.renderWinners(winnersData);
   }
 
+  winnerDelete(id: number) {
+    this.winners.winnerDelete(id);
+  }
+
   hideSections() {
     this.sections.forEach((section) => section.node.classList.remove('active'));
   }

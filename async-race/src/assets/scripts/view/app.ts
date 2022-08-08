@@ -40,6 +40,10 @@ class App extends NodeElement {
     this.main.carMethod(fnTitle, car);
   }
 
+  winnerDelete(id: number) {
+    this.main.winnerDelete(id);
+  }
+
   setActiveNavItem(val: Navigation) {
     this.header.setActiveNavItem(val);
     this.main.setContentSection(val);

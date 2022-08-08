@@ -4,6 +4,8 @@ import ContentSection from '../ContentSection';
 import Winner from './Winner';
 
 class Winners extends ContentSection {
+  private winners: Winner[] = [];
+
   constructor(nodeProps: INodeProps) {
     super(
       {
@@ -17,13 +19,27 @@ class Winners extends ContentSection {
 
   renderWinners(data: IWinner[] = []) {
     data.forEach((winner) => {
-      new Winner({
-        parentNode: this.node,
-        content: `${winner.name} (${winner.wins})`,
-      });
+      const win = new Winner(
+        {
+          parentNode: this.node,
+          content: `${winner.name} (${winner.wins})`,
+        },
+        winner,
+      );
+      this.winners.push(win);
     });
 
     this.showTotalCount(data.length);
+  }
+
+  winnerDelete(id: number) {
+    this.winners = this.winners.filter((winner) => {
+      if (winner.winnerInfo.id === id) {
+        winner.destroy();
+        return false;
+      }
+      return true;
+    });
   }
 }
 

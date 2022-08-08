@@ -3,7 +3,7 @@ import { ICar } from '../model/model';
 enum Route {
   CARS = '/garage/',
   ENGINE = '/engine',
-  WINNERS = '/winners',
+  WINNERS = '/winners/',
 }
 
 export enum ApiMethod {
@@ -51,6 +51,18 @@ class Api {
 
   async getWinners() {
     return this.getData(Route.WINNERS);
+  }
+
+  async winnerDelete(id: number) {
+    try {
+      const res = await fetch(this.url + Route.WINNERS + id, {
+        method: ApiMethod.DELETE,
+      });
+      return res;
+    } catch (error) {
+      catchError(error);
+      return false;
+    }
   }
 
   async createCar(data: ICar) {
