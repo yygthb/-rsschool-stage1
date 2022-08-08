@@ -135,8 +135,8 @@ class Controller {
   }
 
   async resetCarPosition(id: number) {
-    this.view.carMethod('resetCarPosition', id);
     await this.engineStop(id);
+    this.view.carMethod('resetCarPosition', id);
   }
 }
 
