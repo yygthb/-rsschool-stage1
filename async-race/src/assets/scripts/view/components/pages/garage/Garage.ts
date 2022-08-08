@@ -28,6 +28,11 @@ class Garage extends ContentSection {
     });
   }
 
+  findCarInGarage(id: number) {
+    const foundIndex = this.garage.findIndex((item) => item.carInfo.id === id);
+    return this.garage[foundIndex];
+  }
+
   renderCars(data: ICar[] = []) {
     data.forEach((car) => {
       const garageItem = new GarageItem(
@@ -61,7 +66,7 @@ class Garage extends ContentSection {
     this[fnTitle].call(this, props);
   }
 
-  selectCar(car: ICar | null) {
+  carSelect(car: ICar | null) {
     const editCarControl = Object.entries(this.controls)[2][1];
     if (car) {
       editCarControl.carName.setValue(car.name);
@@ -71,17 +76,14 @@ class Garage extends ContentSection {
     }
   }
 
-  updateCar(car: ICar) {
-    const foundIndex = this.garage.findIndex(
-      (item) => item.carInfo.id === car.id,
-    );
-    const foundCar = this.garage[foundIndex];
-    foundCar.setCarName(car.name);
-    foundCar.setCarColor(car.color);
-    this.selectCar(null);
+  carUpdate(car: ICar) {
+    const foundedCar = this.findCarInGarage(car.id);
+    foundedCar.setCarName(car.name);
+    foundedCar.setCarColor(car.color);
+    this.carSelect(null);
   }
 
-  deleteCar(id: number) {
+  carDelete(id: number) {
     this.garage = this.garage.filter((car) => {
       if (car.carInfo.id === id) {
         car.destroy();
@@ -92,30 +94,21 @@ class Garage extends ContentSection {
     this.showTotalCount(this.garage.length);
   }
 
-  driveCar(car: ICar) {
-    const foundIndex = this.garage.findIndex(
-      (item) => item.carInfo.id === car.id,
-    );
-    const foundCar = this.garage[foundIndex];
+  carDrive(car: ICar) {
+    const foundedCar = this.findCarInGarage(car.id);
     if (car.distance && car.velocity) {
-      foundCar.driveCar(car.distance / car.velocity);
+      foundedCar.carDrive(car.distance / car.velocity);
     }
   }
 
-  stopCar(id: number) {
-    const foundIndex = this.garage.findIndex(
-      (item) => item.carInfo.id === id,
-    );
-    const foundCar = this.garage[foundIndex];
-    foundCar.stopCar();
+  carStop(id: number) {
+    const foundedCar = this.findCarInGarage(id);
+    foundedCar.carStop();
   }
 
   resetCarPosition(id: number) {
-    const foundIndex = this.garage.findIndex(
-      (item) => item.carInfo.id === id,
-    );
-    const foundCar = this.garage[foundIndex];
-    foundCar.resetCarPosition();
+    const foundedCar = this.findCarInGarage(id);
+    foundedCar.resetCarPosition();
   }
 }
 

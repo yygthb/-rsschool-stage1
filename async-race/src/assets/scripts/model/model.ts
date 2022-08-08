@@ -68,13 +68,13 @@ class Model {
     this.garage.push(car);
   }
 
-  updateCar(id: number, props: Record<string, ICar>) {
+  carUpdate(id: number, props: Record<string, ICar>) {
     const carIndex = this.garage.findIndex((item) => item.id === id);
     this._garage[carIndex] = { ...this._garage[carIndex], ...props };
     return this._garage[carIndex];
   }
 
-  deleteCar(id: number) {
+  carDelete(id: number) {
     this.garage.filter((car) => car.id !== id);
   }
 }

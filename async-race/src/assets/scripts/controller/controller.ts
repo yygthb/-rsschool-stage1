@@ -18,9 +18,9 @@ class Controller {
 
     this.init();
 
-    emitter.add(EmitterEvents.SELECT_CAR, this.selectCar.bind(this));
-    emitter.add(EmitterEvents.UPDATE_CAR, this.updateCar.bind(this));
-    emitter.add(EmitterEvents.DELETE_CAR, this.deleteCar.bind(this));
+    emitter.add(EmitterEvents.SELECT_CAR, this.carSelect.bind(this));
+    emitter.add(EmitterEvents.UPDATE_CAR, this.carUpdate.bind(this));
+    emitter.add(EmitterEvents.DELETE_CAR, this.carDelete.bind(this));
 
     emitter.add(EmitterEvents.START_ENGINE, this.engineStart.bind(this));
     emitter.add(EmitterEvents.STOP_ENGINE, this.resetCarPosition.bind(this));
@@ -60,13 +60,13 @@ class Controller {
     return [this.model.garage, this.model.winners];
   }
 
-  async selectCar(id: number) {
+  async carSelect(id: number) {
     const selectedCar = await this.api.getCar(id);
     this.model.selectedCar = selectedCar;
-    this.view.carMethod('selectCar', this.model.selectedCar);
+    this.view.carMethod('carSelect', this.model.selectedCar);
   }
 
-  async updateCar(props: [ApiMethod, ICar]) {
+  async carUpdate(props: [ApiMethod, ICar]) {
     const [method, car] = props;
     if (car.name.trim()) {
       if (method === ApiMethod.CREATE) {
@@ -78,24 +78,24 @@ class Controller {
         }
       }
       if (method === ApiMethod.UPDATE) {
-        const res = await this.api.updateCar(
+        const res = await this.api.carUpdate(
           this.model.selectedCar?.id || 0,
           car,
         );
         if (res && res.status === 200) {
           const newCar = await res.json();
-          this.model.updateCar(newCar.id, newCar);
-          this.view.carMethod('updateCar', newCar);
+          this.model.carUpdate(newCar.id, newCar);
+          this.view.carMethod('carUpdate', newCar);
         }
       }
     }
   }
 
-  async deleteCar(id: number) {
-    const res = await this.api.deleteCar(id);
+  async carDelete(id: number) {
+    const res = await this.api.carDelete(id);
     if (res && res.status === 200) {
-      this.model.deleteCar(id);
-      this.view.carMethod('deleteCar', id);
+      this.model.carDelete(id);
+      this.view.carMethod('carDelete', id);
     }
   }
 
@@ -103,20 +103,21 @@ class Controller {
     const data = await this.api.engine(EngineStatus.START, carInfo.id);
     if (data && data.status === 200) {
       const car = await data.json();
-      const updatedCar = this.model.updateCar(carInfo.id, {
-        velocity: car.velocity,
-        distance: car.distance,
+      const updatedCar = this.model.carUpdate(carInfo.id, {
+        velocity: car.velocity || 1,
+        distance: car.distance || 1,
       });
-      this.view.carMethod('driveCar', updatedCar);
-      const drive = await this.driveCar(carInfo.id);
+      this.view.carMethod('carDrive', updatedCar);
+
+      const drive = await this.carDrive(carInfo.id);
       if (drive && drive.status === 500) {
-        this.view.carMethod('stopCar', carInfo.id);
+        this.view.carMethod('carStop', carInfo.id);
       }
       await this.engineStop(carInfo.id);
     }
   }
 
-  async driveCar(id: number) {
+  async carDrive(id: number) {
     const data = await this.api.engine(EngineStatus.DRIVE, id);
     return data;
   }
@@ -129,7 +130,7 @@ class Controller {
         velocity: car.velocity,
         distance: car.distance,
       };
-      this.model.updateCar(id, updatedCar);
+      this.model.carUpdate(id, updatedCar);
     }
   }
 

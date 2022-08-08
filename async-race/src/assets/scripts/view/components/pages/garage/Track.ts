@@ -44,16 +44,15 @@ class Track extends NodeElement {
     const { width: carWidth } = this.car.node.getBoundingClientRect();
 
     const framesCount = (this.animationDuration / 1000) * 60;
-    let currentML = (carWidth * 100) / trackWidth;
-    const dx = 100 / framesCount;
+    let currentML = 0;
+    const end = ((trackWidth - carWidth) * 100) / trackWidth;
+    const dx = end / framesCount;
 
     const step = () => {
       currentML += dx;
-      this.car.node.style.marginLeft = `calc(${Math.ceil(
-        currentML,
-      )}% - ${carWidth}px)`;
+      this.car.node.style.marginLeft = `${Math.floor(currentML)}%`;
 
-      if (currentML < 100) {
+      if (currentML < end) {
         this.requestId = requestAnimationFrame(step);
       } else {
         this.car.node.style.marginLeft = `calc(100% - ${carWidth}px)`;
@@ -68,7 +67,7 @@ class Track extends NodeElement {
     this.requestId = requestAnimationFrame(this.performAnimation.bind(this));
   }
 
-  stopCarAnimation() {
+  carStopAnimation() {
     cancelAnimationFrame(this.requestId);
   }
 

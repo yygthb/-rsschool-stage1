@@ -69,7 +69,7 @@ class Api {
     }
   }
 
-  async updateCar(id: number, data: ICar) {
+  async carUpdate(id: number, data: ICar) {
     try {
       const res = await fetch(this.url + Route.CARS + id || '', {
         method: ApiMethod.UPDATE,
@@ -89,7 +89,7 @@ class Api {
     return this.getData(Route.CARS + id);
   }
 
-  async deleteCar(id: number) {
+  async carDelete(id: number) {
     try {
       const res = await fetch(this.url + Route.CARS + id, {
         method: ApiMethod.DELETE,

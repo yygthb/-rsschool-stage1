@@ -89,12 +89,12 @@ class GarageItem extends NodeElement {
     this.track.setCarName(name);
   }
 
-  driveCar(time: number) {
+  carDrive(time: number) {
     this.track.startCarAnimation(time);
   }
 
-  stopCar() {
-    this.track.stopCarAnimation();
+  carStop() {
+    this.track.carStopAnimation();
   }
 
   resetCarPosition() {
