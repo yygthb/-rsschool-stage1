@@ -3,11 +3,12 @@ import { INodeProps, NodeElement } from '../../../../utils/nodeElement';
 import GarageItem from './GarageItem';
 import ContentSection from '../ContentSection';
 import GarageControl from './GarageControl';
+import RaceControl from './RaceControl';
 
 class Garage extends ContentSection {
   private garage: GarageItem[] = [];
   private controls: GarageControl;
-  private track: NodeElement;
+  private carsContainer: NodeElement;
 
   constructor(nodeProps: INodeProps, controls: GarageControl) {
     super(
@@ -21,8 +22,11 @@ class Garage extends ContentSection {
 
     this.controls = controls;
     this.node.append(this.controls.node);
+    new RaceControl({
+      parentNode: this.node,
+    });
 
-    this.track = new NodeElement({
+    this.carsContainer = new NodeElement({
       parentNode: this.node,
       classNames: 'garage__cars',
     });
@@ -37,7 +41,7 @@ class Garage extends ContentSection {
     data.forEach((car) => {
       const garageItem = new GarageItem(
         {
-          parentNode: this.track.node,
+          parentNode: this.carsContainer.node,
         },
         car,
       );
@@ -50,7 +54,7 @@ class Garage extends ContentSection {
   addNewCar(car: ICar) {
     const garageItem = new GarageItem(
       {
-        parentNode: this.track.node,
+        parentNode: this.carsContainer.node,
       },
       car,
     );

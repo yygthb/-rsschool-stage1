@@ -5,11 +5,11 @@ class EventEmitter {
     this.events = {};
   }
 
-  add(name: string, listener: (params) => void) {
+  add<T>(name: string, listener: (params: T) => void) {
     this.events[name] = listener;
   }
 
-  emit(name: string, args) {
+  emit<U>(name: string, args?: U) {
     if (this.events[name]) {
       this.events[name](args);
     }

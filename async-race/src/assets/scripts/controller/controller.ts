@@ -24,6 +24,10 @@ class Controller {
 
     emitter.add(EmitterEvents.START_ENGINE, this.engineStart.bind(this));
     emitter.add(EmitterEvents.STOP_ENGINE, this.resetCarPosition.bind(this));
+
+    emitter.add(EmitterEvents.ADD_CARS, this.addCars.bind(this));
+    emitter.add(EmitterEvents.RACE_START, this.raceStart.bind(this));
+    emitter.add(EmitterEvents.RACE_RESET, this.raceReset.bind(this));
   }
 
   async init() {
@@ -142,6 +146,18 @@ class Controller {
   async resetCarPosition(id: number) {
     await this.engineStop(id);
     this.view.carMethod('resetCarPosition', id);
+  }
+
+  async addCars() {
+    console.log('add cars to garage');
+  }
+
+  async raceStart() {
+    console.log('start race');
+  }
+
+  async raceReset() {
+    console.log('reset race');
   }
 }
 
