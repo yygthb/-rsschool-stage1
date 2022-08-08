@@ -56,8 +56,12 @@ class App extends NodeElement {
     this.main.driveCar(carInfo);
   }
 
-  stopCar(carInfo: ICar) {
-    this.main.stopCar(carInfo);
+  stopCar(id: number) {
+    this.main.stopCar(id);
+  }
+
+  resetCarPosition(id: number) {
+    this.main.resetCarPosition(id);
   }
 
   setActiveNavItem(val: Navigation) {

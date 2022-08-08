@@ -19,11 +19,11 @@ export enum EngineStatus {
   DRIVE = 'drive',
 }
 
-function catchError(error: unknown) {
-  if (typeof error === 'string') {
-    throw new Error(error);
-  } else if (error instanceof Error) {
-    throw new Error(error.message);
+function catchError(error) {
+  if (error instanceof Error) {
+    console.log(error.message);
+  } else {
+    console.log('Unexpected error', error);
   }
 }
 
@@ -110,11 +110,10 @@ class Api {
       const res = await fetch(`${this.url + Route.ENGINE}?${query}`, {
         method: ApiMethod.PATCH,
       });
-      const data = await res.json();
-      return data;
+      return res;
     } catch (error) {
       catchError(error);
-      return null;
+      return false;
     }
   }
 }

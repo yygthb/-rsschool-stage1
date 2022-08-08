@@ -64,9 +64,10 @@ class Model {
     this.activePage = Navigation.ToGarage;
   }
 
-  updateCar(car: ICar) {
-    const carIndex = this.garage.findIndex((item) => item.id === car.id);
-    this._garage[carIndex] = { ...car };
+  updateCar(id: number, props: Record<string, ICar>) {
+    const carIndex = this.garage.findIndex((item) => item.id === id);
+    this._garage[carIndex] = { ...this._garage[carIndex], ...props };
+    return this._garage[carIndex];
   }
 
   deleteCar(id: number) {

@@ -50,7 +50,7 @@ class GarageItem extends NodeElement {
       content: 'Stop',
     });
     this.stop.node.onclick = () => {
-      emitter.emit(EmitterEvents.STOP_ENGINE, this.carInfo);
+      emitter.emit(EmitterEvents.STOP_ENGINE, this.carInfo.id);
     };
 
     this.carEdit = new NodeElement({

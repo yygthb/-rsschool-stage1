@@ -23,7 +23,7 @@ class Controller {
     emitter.add(EmitterEvents.DELETE_CAR, this.deleteCar.bind(this));
 
     emitter.add(EmitterEvents.START_ENGINE, this.engineStart.bind(this));
-    emitter.add(EmitterEvents.STOP_ENGINE, this.engineStop.bind(this));
+    emitter.add(EmitterEvents.STOP_ENGINE, this.resetCarPosition.bind(this));
   }
 
   async init() {
@@ -78,7 +78,7 @@ class Controller {
         );
         if (res && res.status === 200) {
           const newCar = await res.json();
-          this.model.updateCar(newCar);
+          this.model.updateCar(newCar.id, newCar);
           this.view.updateCar(newCar);
         }
       }
@@ -100,25 +100,42 @@ class Controller {
   }
 
   async engineStart(carInfo: ICar) {
-    const car = await this.api.engine(EngineStatus.START, carInfo.id);
-    const updatedCar = {
-      ...carInfo,
-      velocity: car.velocity,
-      distance: car.distance,
-    };
-    this.model.updateCar(updatedCar);
-    this.view.driveCar(updatedCar);
+    const data = await this.api.engine(EngineStatus.START, carInfo.id);
+    if (data && data.status === 200) {
+      const car = await data.json();
+      const updatedCar = this.model.updateCar(carInfo.id, {
+        velocity: car.velocity,
+        distance: car.distance,
+      });
+      this.view.driveCar(updatedCar);
+      const drive = await this.driveCar(carInfo.id);
+      if (drive && drive.status === 500) {
+        this.view.stopCar(carInfo.id);
+      }
+      await this.engineStop(carInfo.id);
+    }
   }
 
-  async engineStop(carInfo: ICar) {
-    const car = await this.api.engine(EngineStatus.STOP, carInfo.id);
-    const updatedCar = {
-      ...carInfo,
-      velocity: car.velocity,
-      distance: car.distance,
-    };
-    this.model.updateCar(updatedCar);
-    this.view.stopCar(updatedCar);
+  async driveCar(id: number) {
+    const data = await this.api.engine(EngineStatus.DRIVE, id);
+    return data;
+  }
+
+  async engineStop(id: number) {
+    const data = await this.api.engine(EngineStatus.STOP, id);
+    if (data && data.status === 200) {
+      const car = await data.json();
+      const updatedCar = {
+        velocity: car.velocity,
+        distance: car.distance,
+      };
+      this.model.updateCar(id, updatedCar);
+    }
+  }
+
+  async resetCarPosition(id: number) {
+    await this.engineStop(id);
+    this.view.resetCarPosition(id);
   }
 }
 

@@ -58,8 +58,12 @@ class Main extends NodeElement {
     this.garage.driveCar(carInfo);
   }
 
-  stopCar(carInfo: ICar) {
-    this.garage.stopCar(carInfo);
+  stopCar(id: number) {
+    this.garage.stopCar(id);
+  }
+
+  resetCarPosition(id: number) {
+    this.garage.resetCarPosition(id);
   }
 
   renderWinners(winnersData: IWinner[]) {

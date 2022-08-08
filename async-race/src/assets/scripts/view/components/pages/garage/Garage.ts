@@ -98,12 +98,19 @@ class Garage extends ContentSection {
     }
   }
 
-  stopCar(car: ICar) {
+  stopCar(id: number) {
     const foundIndex = this.garage.findIndex(
-      (item) => item.carInfo.id === car.id,
+      (item) => item.carInfo.id === id,
     );
     const foundCar = this.garage[foundIndex];
-    // foundCar.stopCar();
+    foundCar.stopCar();
+  }
+
+  resetCarPosition(id: number) {
+    const foundIndex = this.garage.findIndex(
+      (item) => item.carInfo.id === id,
+    );
+    const foundCar = this.garage[foundIndex];
     foundCar.resetCarPosition();
   }
 }
