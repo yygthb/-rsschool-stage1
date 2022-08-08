@@ -33,6 +33,18 @@ a {
 
 button {
   cursor: pointer;
+  border: none;
+  padding: 7px 15px;
+  background-color: #ddd;
+  border-radius: 16px;
+
+  &:hover {
+    background-color: #ccc;
+  }
+
+  &:active {
+    background-color: #bbb;
+  }
 }
 
 li {
