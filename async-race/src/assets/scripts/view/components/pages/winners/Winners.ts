@@ -40,6 +40,8 @@ class Winners extends ContentSection {
       }
       return true;
     });
+
+    this.showTotalCount(this.winners.length);
   }
 }
 

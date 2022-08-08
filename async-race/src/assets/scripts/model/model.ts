@@ -49,6 +49,7 @@ class Model {
       ...winner,
       ...this.garage.find((car) => car.id === winner.id),
     }));
+    this.winnersSort();
   }
 
   set selectedCar(val: ICar) {
@@ -80,6 +81,10 @@ class Model {
 
   winnerDelete(id: number) {
     this.winners.filter((car) => car.id !== id);
+  }
+
+  winnersSort() {
+    this.winners.sort((a, b) => +b.wins - +a.wins);
   }
 }
 
