@@ -152,7 +152,7 @@ class Controller {
   }
 
   async addCars() {
-    new Array(100).fill(true).forEach(async () => {
+    new Array(10).fill(true).forEach(async () => {
       const car = {
         name: generateCar.generateCarName().join(' '),
         color: generateCar.generateCarColor(),
